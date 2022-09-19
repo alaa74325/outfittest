@@ -111,7 +111,7 @@ export default {
 
 <style lang="scss" scoped>
 .categories_section_content_wrapper {
-  padding-block: 50px 20px;
+  padding-block: 50px;
   .section_title_wrapper {
     margin-bottom: 30px;
     .section_title {

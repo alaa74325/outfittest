@@ -16,7 +16,9 @@ export default {
     profile: 'Profile',
     wishlist: 'Wishlist',
     cart: 'Cart',
-		categories: 'Shop By Category'
+		categories: 'Shop By Category',
+		salesOfTheDay: "Deals Of The Day",
+		flashSales: "Flash Sales"
   },
 
 	BUTTONS: {
@@ -129,7 +131,7 @@ export default {
 
 	
 
-	
+
   registerLink: 'REGISTER AS DRIVER',
   mainSlider: [
     {

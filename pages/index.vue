@@ -10,6 +10,10 @@
       <!-- Start:: Categories Section -->
       <CategoriesSection />
       <!-- End:: Categories Section -->
+
+      <!-- Start:: Flash Sales Section -->
+      <FlashSalesSection />
+      <!-- End:: Flash Sales Section -->
     </div>
   </div>
 </template>
@@ -20,6 +24,7 @@ import MainLoader from "~/components/ui/MainLoader.vue";
 // Start:: Importing Home Page Components
 import HeroSection from "~/components/general/HeroSection.vue";
 import CategoriesSection from "~/components/general/CategoriesSection.vue";
+import FlashSalesSection from "~/components/general/FlashSalesSection.vue";
 // End:: Importing Home Page Components
 
 export default {
@@ -61,6 +66,7 @@ export default {
     MainLoader,
     HeroSection,
     CategoriesSection,
+    FlashSalesSection,
   },
 
   data() {

@@ -15,7 +15,9 @@ export default {
     profile: 'الملف الشخصي',
     wishlist: 'المفضلة',
     cart: 'عربة التسوق',
-		categories: "الأقسام"
+		categories: "الأقسام",
+		salesOfTheDay: "عروض اليوم",
+		flashSales: "عروض مفاجأة"
   },
 
 	BUTTONS: {
@@ -115,7 +117,7 @@ export default {
 
 
 
-	
+
 
 
 
