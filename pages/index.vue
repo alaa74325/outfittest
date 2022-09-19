@@ -7,13 +7,9 @@
       <HeroSection />
       <!-- End:: Hero Carousel -->
 
-      <!-- Start:: Services Section -->
-      <ServicesSection />
-      <!-- End:: Services Section -->
-
-      <!-- Start:: Testimonials Section -->
-      <TestimonialsCarousel />
-      <!-- End:: Testimonials Section -->
+      <!-- Start:: Categories Section -->
+      <CategoriesSection />
+      <!-- End:: Categories Section -->
     </div>
   </div>
 </template>
@@ -23,9 +19,7 @@ import MainLoader from "~/components/ui/MainLoader.vue";
 
 // Start:: Importing Home Page Components
 import HeroSection from "~/components/general/HeroSection.vue";
-import ServicesSection from "~/components/general/ServicesSection.vue";
-import TestimonialsCarousel from "~/components/carousels/TestimonialsCarousel.vue";
-import BaseInput from "~/components/FormInputs/BaseInput.vue";
+import CategoriesSection from "~/components/general/CategoriesSection.vue";
 // End:: Importing Home Page Components
 
 export default {
@@ -66,9 +60,7 @@ export default {
   components: {
     MainLoader,
     HeroSection,
-    ServicesSection,
-    TestimonialsCarousel,
-    BaseInput,
+    CategoriesSection,
   },
 
   data() {

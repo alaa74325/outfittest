@@ -21,7 +21,11 @@
         <button class="star_now_btn" @click="scrollToSection('categories_section')">
           {{$t("BUTTONS.ShopNow")}}
           <img
-            src="@/assets/media/icons/ui_icons/arrowRight.svg"
+            :src="
+              $i18n.locale == 'en' ? 
+              require('~/assets/media/icons/ui_icons/arrowRight.svg') : 
+              require('~/assets/media/icons/ui_icons/arrowLeft.svg')
+            "
             alt="Arrow"
             width="35"
             height="25"
@@ -41,7 +45,7 @@
     >
       <img
         src="~/assets/media/images/heroImage.png"
-        alt="About Us Section Image"
+        alt="hero Section Image"
       />
     </div>
     <!-- End:: Section Image -->
@@ -84,11 +88,12 @@ export default {
     
     .section_title {
       color: var(--theme_text_clr);
+      font-style: italic;
     }
 
     .section_desc {
       margin-block: 10px 25px;
-      font-size: 74px;
+      font-size: 70px;
       font-weight: 400;
       font-style: italic;
       line-height: 1.4;
@@ -105,6 +110,7 @@ export default {
       button {
         color: var(--main_theme_clr);
         font-size: 20px;
+        font-style: italic;
         img {
           transition: all 0.4s linear;
         }
