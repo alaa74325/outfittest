@@ -3,12 +3,17 @@
     <div class="container-xl">
       <!-- Start:: Section Title -->
       <div class="section_title_wrapper">
-        <h2 class="section_title">{{ $t("nav.screen") }}</h2>
+        <h2 class="section_title">{{ $t('NAV.screen') }}</h2>
       </div>
       <!-- End:: Section Title -->
 
       <!-- Start:: Carousel -->
-      <AppScreensCarousel data-aos-once="true" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000"/>
+      <AppScreensCarousel
+        data-aos-once="true"
+        data-aos="fade-up"
+        data-aos-delay="500"
+        data-aos-duration="1000"
+      />
 
       <!-- End:: Carousel -->
     </div>
@@ -16,19 +21,19 @@
 </template>
 
 <script>
-import AppScreensCarousel from "~/components/carousels/AppScreensCarousel.vue";
+import AppScreensCarousel from '~/components/carousels/AppScreensCarousel.vue'
 
 export default {
-  name: "AppScreensSection",
+  name: 'AppScreensSection',
 
   components: {
     AppScreensCarousel,
   },
 
   data() {
-    return {};
+    return {}
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

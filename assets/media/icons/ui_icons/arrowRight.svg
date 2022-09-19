@@ -1,3 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="37.754" height="13.501" viewBox="0 0 37.754 13.501">
-  <path id="Icon_ionic-ios-arrow-round-forward" data-name="Icon ionic-ios-arrow-round-forward" d="M20.785,11.51a.919.919,0,0,0-.007,1.294l4.275,4.282H-8.729A.911.911,0,0,0-9.636,18a.911.911,0,0,0,.907.914H25.046L20.771,23.2a.925.925,0,0,0,.007,1.294.91.91,0,0,0,1.287-.007l5.794-5.836h0a1.027,1.027,0,0,0,.19-.288.872.872,0,0,0,.07-.352.916.916,0,0,0-.26-.64l-5.794-5.836A.9.9,0,0,0,20.785,11.51Z" transform="translate(9.636 -11.252)" fill="#1c1d20"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="52.523" height="23.828" viewBox="0 0 52.523 23.828">
+  <g id="Group_1243" data-name="Group 1243" transform="translate(1 1.414)">
+    <g id="Icon_feather-arrow-right" data-name="Icon feather-arrow-right">
+      <path id="Path_129" data-name="Path 129" d="M7.5,18H57.514" transform="translate(-7.5 -7.5)" fill="none" stroke="#339989" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_130" data-name="Path 130" d="M18,7.5,28.5,18,18,28.5" transform="translate(22.023 -7.5)" fill="none" stroke="#339989" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
 </svg>

@@ -5,7 +5,12 @@
         <!-- Start:: Logo Wrapper -->
         <div class="col-lg-3 col-xl-2 my-3">
           <div class="logo_wrapper focus_screen">
-            <img src="~/assets/media/logo/logo.svg" width="120" height="120" alt="Logo" />
+            <img
+              src="~/assets/media/logo/logo.svg"
+              width="120"
+              height="120"
+              alt="Logo"
+            />
           </div>
         </div>
         <!-- End:: Logo Wrapper -->
@@ -14,36 +19,50 @@
         <div class="col-lg-3 col-xl-2 d-flex justify-content-center my-3">
           <ul class="footer_routes_list">
             <li class="footer_route">
-              <button class="active" @click="scrollToSection('hero_section')"> {{ $t("nav.home") }} </button>
+              <button class="active" @click="scrollToSection('hero_section')">
+                {{ $t('NAV.home') }}
+              </button>
             </li>
 
             <li class="footer_route">
-              <button @click="scrollToSection('about_section')"> {{ $t("nav.about") }} </button>
+              <button @click="scrollToSection('about_section')">
+                {{ $t('NAV.about') }}
+              </button>
             </li>
 
             <li class="footer_route">
-              <button @click="scrollToSection('app_screens_section')"> {{ $t("nav.screen") }} </button>
+              <button @click="scrollToSection('app_screens_section')">
+                {{ $t('NAV.screen') }}
+              </button>
             </li>
 
             <li class="footer_route">
-              <button @click="scrollToSection('download_app_section')"> {{ $t("nav.download") }} </button>
+              <button @click="scrollToSection('download_app_section')">
+                {{ $t('NAV.download') }}
+              </button>
             </li>
             <li class="footer_route">
-              <button @click="scrollToSection('contact_us_section')"> {{ $t("nav.contact") }} </button>
+              <button @click="scrollToSection('contact_us_section')">
+                {{ $t('NAV.contact') }}
+              </button>
             </li>
           </ul>
         </div>
         <!-- End:: Routes Wrapper -->
 
         <!-- Start:: Contact Info Wrapper -->
-        <div class="col-lg-6 col-xl-5 d-flex justify-content-between flex-column flex-lg-row my-3">
+        <div
+          class="col-lg-6 col-xl-5 d-flex justify-content-between flex-column flex-lg-row my-3"
+        >
           <ul class="contact_info_list">
             <li class="contact_info_item">
               <span class="icon">
                 <i class="fa-solid fa-phone"></i>
               </span>
 
-              <a href="tel:0536666345"><span class="value"> 0536666345 </span></a>
+              <a href="tel:0536666345"
+                ><span class="value"> 0536666345 </span></a
+              >
             </li>
 
             <li class="contact_info_item">
@@ -51,7 +70,9 @@
                 <i class="fa-regular fa-envelope"></i>
               </span>
 
-              <a href="mailto:info@captain1.app"><span class="value"> info@captain1.app </span></a>
+              <a href="mailto:info@captain1.app"
+                ><span class="value"> info@captain1.app </span></a
+              >
             </li>
 
             <li class="contact_info_item">
@@ -59,7 +80,9 @@
                 <i class="fa-solid fa-fax"></i>
               </span>
 
-              <a href="tel:0126111131"><span class="value"> 0126111131</span></a>
+              <a href="tel:0126111131"
+                ><span class="value"> 0126111131</span></a
+              >
             </li>
 
             <li class="contact_info_item">
@@ -67,25 +90,39 @@
                 <i class="fa-solid fa-location-dot"></i>
               </span>
 
-               <a href="https://goo.gl/maps/pyKsGuyD9gRBR2UC7" target="_blank"> <span class="value"> {{ $t('address') }} </span> </a>
+              <a href="https://goo.gl/maps/pyKsGuyD9gRBR2UC7" target="_blank">
+                <span class="value"> {{ $t('address') }} </span>
+              </a>
             </li>
           </ul>
 
           <ul class="social_links_list">
             <li class="social_links_item">
-              <a href="https://twitter.com/CaaptainOne" target="_blank" class="icon">
+              <a
+                href="https://twitter.com/CaaptainOne"
+                target="_blank"
+                class="icon"
+              >
                 <i class="fa-brands fa-twitter"></i>
               </a>
             </li>
 
             <li class="social_links_item">
-              <a href="https://www.facebook.com/Captain-one-%D9%83%D8%A7%D8%A8%D8%AA%D9%86-%D9%88%D8%A7%D9%86-100203022791919/" target="_blank" class="icon">
+              <a
+                href="https://www.facebook.com/Captain-one-%D9%83%D8%A7%D8%A8%D8%AA%D9%86-%D9%88%D8%A7%D9%86-100203022791919/"
+                target="_blank"
+                class="icon"
+              >
                 <i class="fa-brands fa-square-facebook"></i>
               </a>
             </li>
 
             <li class="social_links_item">
-              <a href="https://www.instagram.com/caaptainone/" target="_blank" class="icon">
+              <a
+                href="https://www.instagram.com/caaptainone/"
+                target="_blank"
+                class="icon"
+              >
                 <i class="fa-brands fa-instagram"></i>
               </a>
             </li>
@@ -96,23 +133,23 @@
     </div>
 
     <div class="copyrights_contet">
-      <h6> {{ $t('copyWrite') }} </h6>
+      <h6>{{ $t('copyWrite') }}</h6>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TheFooter",
+  name: 'TheFooter',
 
   methods: {
     // START:: SCROLL TO SECTION
     scrollToSection(section_id) {
-      if (this.$route.path.includes("/register")) {
-        this.$router.push("/");
+      if (this.$route.path.includes('/register')) {
+        this.$router.push('/')
       } else {
-        const selected_section = document.querySelector(`#${section_id}`);
-        selected_section.scrollIntoView();
+        const selected_section = document.querySelector(`#${section_id}`)
+        selected_section.scrollIntoView()
       }
     },
     // END:: SCROLL TO SECTION

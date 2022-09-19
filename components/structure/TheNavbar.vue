@@ -18,17 +18,11 @@
       </span>
 
       <span class="offer_time">
-        <span class="hours"> 
-          23 <span>H</span>
-        </span> 
+        <span class="hours"> 23 <span>H</span> </span>
         <span class="clock_indecator">:</span>
-        <span class="minutes"> 
-          25 <span>M</span>
-        </span>
+        <span class="minutes"> 25 <span>M</span> </span>
         <span class="clock_indecator">:</span>
-        <span class="seconds"> 
-          45 <span>S</span>
-        </span>
+        <span class="seconds"> 45 <span>S</span> </span>
       </span>
     </div>
     <!-- End:: Offer Header-->
@@ -71,8 +65,12 @@
           <!-- ********** Start:: Currency ********** -->
           <a-dropdown :trigger="['click']">
             <!-- Start:: Selected Currency -->
-            <a class="ant-dropdown-link" @click="e => e.preventDefault()">
-              <img src="~/assets/media/icons/ar.png" width="25" alt="Arabic Flag">
+            <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
+              <img
+                src="~/assets/media/icons/ar.png"
+                width="25"
+                alt="Arabic Flag"
+              />
               <span> KSA </span>
               <i class="fas fa-angle-down"></i>
             </a>
@@ -82,13 +80,21 @@
             <a-menu slot="overlay">
               <a-menu-item key="0">
                 <button>
-                  <img src="~/assets/media/icons/ar.png" width="25" alt="Arabic Flag">
+                  <img
+                    src="~/assets/media/icons/ar.png"
+                    width="25"
+                    alt="Arabic Flag"
+                  />
                   <span> KSA </span>
                 </button>
               </a-menu-item>
               <a-menu-item key="1">
                 <button>
-                  <img src="~/assets/media/icons/ar.png" width="25" alt="Arabic Flag">
+                  <img
+                    src="~/assets/media/icons/ar.png"
+                    width="25"
+                    alt="Arabic Flag"
+                  />
                   <span> KSA </span>
                 </button>
               </a-menu-item>
@@ -116,13 +122,13 @@
             <nuxt-link to="/profile">
               <img
                 src="~/assets/media/icons/ui_icons/user.svg"
-                width="28"
-                height="28"
+                width="25"
+                height="25"
                 alt="profile"
               />
             </nuxt-link>
             <template slot="title">
-              <span>{{$t("TITLES.profile")}}</span>
+              <span>{{ $t('TITLES.profile') }}</span>
             </template>
           </a-tooltip>
 
@@ -130,13 +136,13 @@
             <nuxt-link to="/profile/wishlist">
               <img
                 src="~/assets/media/icons/ui_icons/heart.svg"
-                width="28"
-                height="28"
+                width="25"
+                height="25"
                 alt="profile"
               />
             </nuxt-link>
             <template slot="title">
-              <span>{{$t("TITLES.wishlist")}}</span>
+              <span>{{ $t('TITLES.wishlist') }}</span>
             </template>
           </a-tooltip>
 
@@ -145,13 +151,13 @@
               <nuxt-link to="/cart">
                 <img
                   src="~/assets/media/icons/ui_icons/cart.svg"
-                  width="28"
-                  height="28"
+                  width="25"
+                  height="25"
                   alt="profile"
                 />
               </nuxt-link>
               <template slot="title">
-                <span>{{$t("TITLES.cart")}}</span>
+                <span>{{ $t('TITLES.cart') }}</span>
               </template>
             </a-tooltip>
           </a-badge>
@@ -170,34 +176,34 @@
 
     <!-- Start:: Nav Routes & Search Input -->
     <div class="nav_routes_and_search_input_wrapper">
-      <div class="container-xl">
+      <div class="container-xl px-0">
         <ul class="routes_list">
           <li class="navbar_route">
-            <nuxt-link to="/"> {{$t("NAV.home")}} </nuxt-link>
+            <nuxt-link to="/"> {{ $t('NAV.home') }} </nuxt-link>
           </li>
 
           <li class="navbar_route">
-            <button> Women </button>
+            <button>Women</button>
           </li>
 
           <li class="navbar_route">
-            <button> Men </button>
+            <button>Men</button>
           </li>
 
           <li class="navbar_route">
-            <button> Kids </button>
+            <button>Kids</button>
           </li>
         </ul>
 
         <form class="search_form_wrapper">
-          <input type="text" class="form-control" placeholder="Search....">
+          <input type="text" class="form-control" placeholder="Search...." />
           <button class="submit_btn">
-              <img
-                src="~/assets/media/icons/ui_icons/search_white.svg"
-                width="28"
-                height="28"
-                alt="search button"
-              />
+            <img
+              src="~/assets/media/icons/ui_icons/search_white.svg"
+              width="28"
+              height="28"
+              alt="search button"
+            />
           </button>
         </form>
       </div>
@@ -221,37 +227,37 @@
             :class="$route.path == localePath('/') ? 'active' : ''"
             @click="scrollToSection('hero_section')"
           >
-            {{ $t('nav.home') }}
+            {{ $t('NAV.home') }}
           </button>
         </li>
 
         <li class="links_list_item" @click="toggleSamllScreensNavbarDrawer">
           <button @click="scrollToSection('about_section')">
-            {{ $t('nav.about') }}
+            {{ $t('NAV.about') }}
           </button>
         </li>
 
         <li class="links_list_item" @click="toggleSamllScreensNavbarDrawer">
           <button @click="scrollToSection('app_screens_section')">
-            {{ $t('nav.screen') }}
+            {{ $t('NAV.screen') }}
           </button>
         </li>
 
         <li class="links_list_item" @click="toggleSamllScreensNavbarDrawer">
           <button @click="scrollToSection('download_app_section')">
-            {{ $t('nav.download') }}
+            {{ $t('NAV.download') }}
           </button>
         </li>
 
         <li class="links_list_item" @click="toggleSamllScreensNavbarDrawer">
           <button @click="scrollToSection('contact_us_section')">
-            {{ $t('nav.contact') }}
+            {{ $t('NAV.contact') }}
           </button>
         </li>
 
         <li class="links_list_item" @click="toggleSamllScreensNavbarDrawer">
           <nuxt-link :to="localePath('/terms')">
-            {{ $t('nav.terms') }}
+            {{ $t('NAV.terms') }}
           </nuxt-link>
         </li>
 
@@ -288,16 +294,6 @@ export default {
         location.reload()
       }, 1000)
     },
-    // START:: SCROLL TO SECTION
-    scrollToSection(section_id) {
-      if (this.$route.path != this.localePath('/')) {
-        this.$router.push(this.localePath('/'))
-      } else {
-        const selected_section = document.querySelector(`#${section_id}`)
-        selected_section.scrollIntoView()
-      }
-    },
-    // END:: SCROLL TO SECTION
 
     toggleSamllScreensNavbarDrawer() {
       this.smallScreensMenuIsOpen = !this.smallScreensMenuIsOpen
@@ -305,8 +301,10 @@ export default {
 
     // START:: HANDLING STICKY HEADER
     updateScroll() {
-      this.scrollPosition = window.scrollY;
-      window.scrollY > this.navHeight ? (document.body.style.paddingTop = '85px') : (document.body.style.paddingTop = '0');
+      this.scrollPosition = window.scrollY
+      window.scrollY > this.navHeight
+        ? (document.body.style.paddingTop = '85px')
+        : (document.body.style.paddingTop = '0')
     },
     // END:: HANDLING STICKY HEADER
   },
@@ -320,7 +318,7 @@ export default {
   },
   mounted() {
     // START:: FIRE METHODS
-    this.navHeight = document.getElementById("navbar").clientHeight;
+    this.navHeight = document.getElementById('navbar').clientHeight
 
     window.addEventListener('scroll', this.updateScroll, { passive: true })
     // END:: FIRE METHODS

@@ -12,7 +12,7 @@
         >
           <div class="section_text_wrapper">
             <h2 class="section_title">
-              {{ $t('nav.download') }}
+              {{ $t('NAV.download') }}
             </h2>
 
             <p class="section_desc">

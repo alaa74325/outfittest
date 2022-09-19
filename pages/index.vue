@@ -4,24 +4,12 @@
 
     <div class="home_page_content_wrapper">
       <!-- Start:: Hero Carousel -->
-      <HeroCarousel />
+      <HeroSection />
       <!-- End:: Hero Carousel -->
 
       <!-- Start:: Services Section -->
       <ServicesSection />
       <!-- End:: Services Section -->
-
-      <!-- Start:: About Section -->
-      <AboutSection />
-      <!-- End:: About Section -->
-
-      <!-- Start:: App Screens Section -->
-      <AppScreensSection />
-      <!-- End:: App Screens Section -->
-
-      <!-- Start:: Download App Section -->
-      <DownloadApp />
-      <!-- End:: Download App Section -->
 
       <!-- Start:: Testimonials Section -->
       <TestimonialsCarousel />
@@ -34,11 +22,8 @@
 import MainLoader from "~/components/ui/MainLoader.vue";
 
 // Start:: Importing Home Page Components
-import HeroCarousel from "~/components/carousels/HeroCarousel.vue";
+import HeroSection from "~/components/general/HeroSection.vue";
 import ServicesSection from "~/components/general/ServicesSection.vue";
-import AboutSection from "~/components/general/AboutSection.vue";
-import AppScreensSection from "~/components/general/AppScreensSection.vue";
-import DownloadApp from "~/components/general/DownloadApp.vue";
 import TestimonialsCarousel from "~/components/carousels/TestimonialsCarousel.vue";
 import BaseInput from "~/components/FormInputs/BaseInput.vue";
 // End:: Importing Home Page Components
@@ -80,11 +65,8 @@ export default {
 
   components: {
     MainLoader,
-    HeroCarousel,
+    HeroSection,
     ServicesSection,
-    AboutSection,
-    AppScreensSection,
-    DownloadApp,
     TestimonialsCarousel,
     BaseInput,
   },

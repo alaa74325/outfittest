@@ -21,7 +21,7 @@
             width="20"
             height="20"
           />
-          <span class="route_text">{{ $t('nav.backToHome') }}</span>
+          <span class="route_text">{{ $t('NAV.backToHome') }}</span>
         </nuxt-link>
       </div>
       <!-- End:: Navbar Buttons -->

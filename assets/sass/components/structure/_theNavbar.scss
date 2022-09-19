@@ -3,6 +3,7 @@
 	background-color: var(--white_clr);
   z-index: 5;
   transition: all 0.5s linear;
+	@include simpleShadow;
   &.sticky {
     animation: fixedAnimation 0.5s forwards;
 		.offer_header {
@@ -118,8 +119,8 @@
 	}
 
 	.nav_routes_and_search_input_wrapper {
-		&>div {
 		background-color: var(--lighter_gray_clr);	
+		&>div {
 			@include flexSpaceBetweenAlignment;
 			align-items: stretch;
 			.routes_list {
@@ -147,7 +148,7 @@
 			.search_form_wrapper {
 				@include flexStartAlignment;
 				align-items: stretch;
-				min-width: 250px;
+				min-width: 300px;
 				border-radius: 10px;
 				border: 1px solid var(--border_clr);
 				background-color: var(--white_clr);
@@ -158,13 +159,11 @@
 					outline: none;
 					box-shadow: none;
 					background-color: transparent;
-					// height: 60px;
 					color: var(--light_gray_clr);
 				}
 				.submit_btn {
 					background-color: var(--main_theme_clr);
-					width: 60px;
-					// height: 60px;
+					min-width: 55px;
 					border-radius: 10px;
 					@include flexCenterAlignment;
 				}
