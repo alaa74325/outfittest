@@ -168,8 +168,8 @@
     </div>
     <!-- End:: Nav Mid -->
 
-    <!-- Start:: Nav Routes -->
-    <div class="nav_routes_wrapper">
+    <!-- Start:: Nav Routes & Search Input -->
+    <div class="nav_routes_and_search_input_wrapper">
       <div class="container-xl">
         <ul class="routes_list">
           <li class="navbar_route">
@@ -177,20 +177,32 @@
           </li>
 
           <li class="navbar_route">
-            <nuxt-link to="/category/women"> Women </nuxt-link>
+            <button> Women </button>
           </li>
 
           <li class="navbar_route">
-            <nuxt-link to="/category/women"> Men </nuxt-link>
+            <button> Men </button>
           </li>
 
           <li class="navbar_route">
-            <nuxt-link to="/category/women"> Kids </nuxt-link>
+            <button> Kids </button>
           </li>
         </ul>
+
+        <form class="search_form_wrapper">
+          <input type="text" class="form-control" placeholder="Search....">
+          <button class="submit_btn">
+              <img
+                src="~/assets/media/icons/ui_icons/search_white.svg"
+                width="28"
+                height="28"
+                alt="search button"
+              />
+          </button>
+        </form>
       </div>
     </div>
-    <!-- End:: Nav Routes -->
+    <!-- End:: Nav Routes & Search Input -->
 
     <!-- Start:: Small Screens Nav Drawer -->
     <div

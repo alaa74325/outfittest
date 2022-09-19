@@ -6,27 +6,26 @@
   &.sticky {
     animation: fixedAnimation 0.5s forwards;
 		.offer_header {
-			padding: 12px 20px;
-			.offer_content {
-				span {
-					font-size: 14px;
-				}
-			}
-			.offer_time {
-				.hours,
-				.minutes ,
-				.seconds {
-					font-size: 14px;
-				}
-				.clock_indecator {
-					font-size: 18px;
+			display: none;
+		}
+		.nav_mid {
+			padding-block: 4px;
+		}
+		.nav_routes_wrapper {
+			.routes_list {
+				.navbar_route {
+					& > button,
+					& > a {
+						padding-block: 15px;
+						font-size: 16px;
+					}
 				}
 			}
 		}
   }
 
 	.offer_header {
-		padding: 18px 20px;
+		padding: 10px 20px;
 		background-color: var(--main_theme_clr);	
 		@include flexCenterAlignment;
 		column-gap: 40px;
@@ -62,7 +61,7 @@
 	}
 
 	.nav_mid {
-		padding-block: 10px;
+		padding-block: 8px;
 		@include flexSpaceBetweenAlignment;
 		.lang_and_currency {
 			@include flexCenterAlignment;
@@ -118,25 +117,56 @@
 		}
 	}
 
-	.nav_routes_wrapper {
-		background-color: #F9FAFB;	
-		.routes_list {
-			@include flexStartAlignment;
-			column-gap: 45px;
-			.navbar_route {
-				& > button,
-				& > a {
-					display: inline-block;
-					padding-block: 25px;
-					color: var(--dark_gray_clr);
-					font-size: 18px;
-					font-family: $regular_font;
-					@include transitioning(0.3s);
-					&.nuxt-link-exact-active,
-					&.active,
-					&:hover {
-						color: var(--main_theme_clr);
+	.nav_routes_and_search_input_wrapper {
+		&>div {
+		background-color: var(--lighter_gray_clr);	
+			@include flexSpaceBetweenAlignment;
+			align-items: stretch;
+			.routes_list {
+				@include flexStartAlignment;
+				column-gap: 30px;
+				.navbar_route {
+					& > button,
+					& > a {
+						display: inline-block;
+						padding-block: 15px;
+						padding-inline: 15px;
+						color: var(--dark_gray_clr);
+						font-size: 18px;
+						font-family: $regular_font;
+						@include transitioning(0.3s);
+						&.nuxt-link-exact-active,
+						&.active,
+						&:hover {
+							background-color: var(--white_clr);
+							color: var(--main_theme_clr);
+						}
 					}
+				}
+			}
+			.search_form_wrapper {
+				@include flexStartAlignment;
+				align-items: stretch;
+				min-width: 250px;
+				border-radius: 10px;
+				border: 1px solid var(--border_clr);
+				background-color: var(--white_clr);
+				overflow: hidden;
+				input {
+					padding-block: 0;
+					border: none;
+					outline: none;
+					box-shadow: none;
+					background-color: transparent;
+					// height: 60px;
+					color: var(--light_gray_clr);
+				}
+				.submit_btn {
+					background-color: var(--main_theme_clr);
+					width: 60px;
+					// height: 60px;
+					border-radius: 10px;
+					@include flexCenterAlignment;
 				}
 			}
 		}
