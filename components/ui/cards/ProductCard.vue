@@ -51,10 +51,10 @@
       <!-- ********** Start:: Product Colors ********** -->
       <div class="product_colors_wrapper">
         <div class="radio_input_wrapper">
-          <input 
-            id="color_1" 
-            class="radio_input" 
-            type="radio" 
+          <input
+            id="color_1"
+            class="radio_input"
+            type="radio"
             name="product_colors"
             value="#D1CAB1"
             v-model="selectedColor"
@@ -63,10 +63,10 @@
         </div>
 
         <div class="radio_input_wrapper">
-          <input 
-            id="color_2" 
-            class="radio_input" 
-            type="radio" 
+          <input
+            id="color_2"
+            class="radio_input"
+            type="radio"
             name="product_colors"
             value="#BFA3B6"
             v-model="selectedColor"
@@ -75,10 +75,10 @@
         </div>
 
         <div class="radio_input_wrapper">
-          <input 
-            id="color_3" 
-            class="radio_input" 
-            type="radio" 
+          <input
+            id="color_3"
+            class="radio_input"
+            type="radio"
             name="product_colors"
             value="#4273B2"
             v-model="selectedColor"
@@ -104,7 +104,7 @@ export default {
 }
 </script>
 
-<style lang="scss"> 
+<style lang="scss">
 .product_card_wrapper {
   // ********** Start:: Product Image **********
   .card_image_wrapper {

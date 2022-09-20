@@ -11,20 +11,20 @@
           </nuxt-link>
           <img
             :src="
-              $i18n.locale == 'en' ? 
-              require('~/assets/media/icons/ui_icons/normalArrowRight.svg') : 
+              $i18n.locale == 'en' ?
+              require('~/assets/media/icons/ui_icons/normalArrowRight.svg') :
               require('~/assets/media/icons/ui_icons/normalArrowLeft.svg')
             "
             alt="Arrow"
             width="20"
             height="20"
           />
-        </div>  
+        </div>
       </div>
 
       <div class="row">
-        <div 
-          class="col-md-4 col-xl-3"
+        <div
+          class="col-md-4 col-lg-3"
           v-for="(item, index) in 4"
           :key="item"
           data-aos-once="false"
@@ -80,7 +80,7 @@ export default {
       @include flexStartAlignment;
       column-gap: 6px;
 
-      a { 
+      a {
         color: var(--theme_txet_clr);
         color: var(--theme_text_clr);
         font-size: 16px;

@@ -1,139 +1,167 @@
 <template>
-  <div id="contact_us_section" class="footer_content_wrapper">
+  <div class="footer_content_wrapper">
     <div class="container-xl">
       <div class="row justify-content-between">
         <!-- Start:: Logo Wrapper -->
-        <div class="col-lg-3 col-xl-2 my-3">
-          <div class="logo_wrapper focus_screen">
+        <div class="col-md-3 my-3">
+          <nuxt-link to="/" class="logo_wrapper">
             <img
-              src="~/assets/media/logo/logo.svg"
-              width="120"
-              height="120"
+              src="~/assets/media/logo/logo_black.svg"
+              width="100"
+              height="80"
               alt="Logo"
             />
+          </nuxt-link>
+
+          <div class="powered_by_content">
+            Copyright &copy; {{currentYear}} All Rights Reserved | Made With
+            <img
+              src="@/assets/media/icons/ui_icons/heart.svg"
+              alt="heart icon"
+              width='25'
+              height='25'
+            />
+            By <a href="https://alalmiyalhura.com/" target="_blank">Alalmiya Alhura</a>
           </div>
         </div>
         <!-- End:: Logo Wrapper -->
 
         <!-- Start:: Routes Wrapper -->
-        <div class="col-lg-3 col-xl-2 d-flex justify-content-center my-3">
-          <ul class="footer_routes_list">
-            <li class="footer_route">
-              <button class="active" @click="scrollToSection('hero_section')">
-                {{ $t('NAV.home') }}
-              </button>
-            </li>
+        <div class="col-md-5 d-flex justify-content-around">
+          <div class="routes_wrapper">
+            <h5 class="routes_title">{{$t("TITLES.companyInfo")}}</h5>
+            <ul class="footer_routes_list">
+              <li class="footer_route">
+                <nuxt-link to="/about">
+                  {{ $t('NAV.about') }}
+                </nuxt-link>
+              </li>
 
-            <li class="footer_route">
-              <button @click="scrollToSection('about_section')">
-                {{ $t('NAV.about') }}
-              </button>
-            </li>
+              <li class="footer_route">
+                <nuxt-link to="/how-to-shop">
+                  {{ $t('NAV.howToShop') }}
+                </nuxt-link>
+              </li>
 
-            <li class="footer_route">
-              <button @click="scrollToSection('app_screens_section')">
-                {{ $t('NAV.screen') }}
-              </button>
-            </li>
+              <li class="footer_route">
+                <nuxt-link to="/faqs">
+                  {{ $t('NAV.faqs') }}
+                </nuxt-link>
+              </li>
 
-            <li class="footer_route">
-              <button @click="scrollToSection('download_app_section')">
-                {{ $t('NAV.download') }}
-              </button>
-            </li>
-            <li class="footer_route">
-              <button @click="scrollToSection('contact_us_section')">
-                {{ $t('NAV.contact') }}
-              </button>
-            </li>
-          </ul>
+              <li class="footer_route">
+                <nuxt-link to="/terms">
+                  {{ $t('NAV.terms') }}
+                </nuxt-link>
+              </li>
+            </ul>
+          </div>
+
+          <div class="routes_wrapper">
+            <h5 class="routes_title">{{$t("TITLES.helpAndSupport")}}</h5>
+            <ul class="footer_routes_list">
+              <li class="footer_route">
+                <nuxt-link to="/terms">
+                  {{ $t('NAV.terms') }}
+                </nuxt-link>
+              </li>
+
+              <li class="footer_route">
+                <nuxt-link to="/contact">
+                  {{ $t('NAV.contact') }}
+                </nuxt-link>
+              </li>
+
+              <li class="footer_route">
+                <nuxt-link to="/size-guide">
+                  {{ $t('NAV.sizeGuide') }}
+                </nuxt-link>
+              </li>
+
+              <li class="footer_route">
+                <nuxt-link to="/returns-policy">
+                  {{ $t('NAV.returnsPolicy') }}
+                </nuxt-link>
+              </li>
+            </ul>
+          </div>
         </div>
         <!-- End:: Routes Wrapper -->
 
-        <!-- Start:: Contact Info Wrapper -->
+        <!-- Start:: Subscribe & Download -->
         <div
-          class="col-lg-6 col-xl-5 d-flex justify-content-between flex-column flex-lg-row my-3"
+          class="col-md-4"
         >
-          <ul class="contact_info_list">
-            <li class="contact_info_item">
-              <span class="icon">
-                <i class="fa-solid fa-phone"></i>
-              </span>
+            <div class="subscribe_form">
+              <div class="form_title">
+                {{$t("TITLES.news")}}
+              </div>
+              <form class="subscribe_form_wrapper">
+                <input type="text" class="form-control" placeholder="Search...." />
+                <button class="submit_btn">
+                  {{$t("BUTTONS.subscribe")}}
+                </button>
+              </form>
+            </div>
 
-              <a href="tel:0536666345"
-                ><span class="value"> 0536666345 </span></a
-              >
-            </li>
+            <div class="download_app_section_wrapper">
+              <div class="download_section_title">
+                {{$t("TITLES.downloadApp")}}
+              </div>
 
-            <li class="contact_info_item">
-              <span class="icon">
-                <i class="fa-regular fa-envelope"></i>
-              </span>
+              <div class="download_links_wrapper">
+                <a href="#" target="_blank">
+                  <img
+                    src="~/assets/media/icons/ui_icons/apple.svg"
+                    width="40"
+                    height="40"
+                    alt="Logo"
+                  />
+                </a>
 
-              <a href="mailto:info@captain1.app"
-                ><span class="value"> info@captain1.app </span></a
-              >
-            </li>
-
-            <li class="contact_info_item">
-              <span class="icon">
-                <i class="fa-solid fa-fax"></i>
-              </span>
-
-              <a href="tel:0126111131"
-                ><span class="value"> 0126111131</span></a
-              >
-            </li>
-
-            <li class="contact_info_item">
-              <span class="icon">
-                <i class="fa-solid fa-location-dot"></i>
-              </span>
-
-              <a href="https://goo.gl/maps/pyKsGuyD9gRBR2UC7" target="_blank">
-                <span class="value"> {{ $t('address') }} </span>
-              </a>
-            </li>
-          </ul>
-
-          <ul class="social_links_list">
-            <li class="social_links_item">
-              <a
-                href="https://twitter.com/CaaptainOne"
-                target="_blank"
-                class="icon"
-              >
-                <i class="fa-brands fa-twitter"></i>
-              </a>
-            </li>
-
-            <li class="social_links_item">
-              <a
-                href="https://www.facebook.com/Captain-one-%D9%83%D8%A7%D8%A8%D8%AA%D9%86-%D9%88%D8%A7%D9%86-100203022791919/"
-                target="_blank"
-                class="icon"
-              >
-                <i class="fa-brands fa-square-facebook"></i>
-              </a>
-            </li>
-
-            <li class="social_links_item">
-              <a
-                href="https://www.instagram.com/caaptainone/"
-                target="_blank"
-                class="icon"
-              >
-                <i class="fa-brands fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
+                <a href="#" target="_blank">
+                  <img
+                    src="~/assets/media/icons/ui_icons/android.svg"
+                    width="40"
+                    height="40"
+                    alt="Logo"
+                  />
+                </a>
+              </div>
+            </div>
         </div>
-        <!-- End:: Contact Info Wrapper -->
+        <!-- End:: Subscribe & Download -->
       </div>
-    </div>
 
-    <div class="copyrights_contet">
-      <h6>{{ $t('copyWrite') }}</h6>
+      <div class="social_platforms_links_wrapper">
+        <a class="social_media_link" href="#" target="_blank">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <a class="social_media_link" href="#" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a class="social_media_link" href="#" target="_blank">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+
+        <a class="social_media_link" href="#" target="_blank">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a class="social_media_link" href="#" target="_blank">
+          <i class="fa-brands fa-pinterest"></i>
+        </a>
+
+        <a class="social_media_link" href="#" target="_blank">
+          <i class="fa-brands fa-snapchat"></i>
+        </a>
+
+        <a class="social_media_link" href="#" target="_blank">
+          <i class="fa-brands fa-tiktok"></i>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -141,6 +169,14 @@
 <script>
 export default {
   name: 'TheFooter',
+
+  data() {
+    return {
+      // Start:: Current Year
+      currentYear: new Date().getFullYear(),
+      // End:: Current Year
+    }
+  },
 
   methods: {
     // START:: SCROLL TO SECTION

@@ -2,13 +2,15 @@ export default {
   lang: 'ltr',
 
   NAV: {
-    home: 'HOME',
-    about: 'ABOUT APP',
-    screen: 'APP SCREENS',
-    download: 'DOWNLOAD NOW',
-    contact: 'CONTACT US',
-    terms: 'TERMS & CONDITIONS',
-    backToHome: 'BACK TO HOME',
+    home: 'Home',
+    about: 'About Us',
+    howToShop: 'How To Shop',
+    faqs: 'Faqs',
+    terms: 'Terms of Service',
+    returns: 'Returns',
+    contact: 'Contact Us',
+    sizeGuide: 'Size Guide',
+    returnsPolicy: 'Returns Policy',
     lang: 'ع',
   },
 
@@ -22,86 +24,22 @@ export default {
     sold: "Sold",
     topRated: "Top Rated",
     mostOrdered: "Most Ordered",
-    newArrivals: "New Arrivals"
+    newArrivals: "New Arrivals",
+    companyInfo: "Company Info",
+    helpAndSupport: "Help And Support",
+    news: "Newsletter",
+    downloadApp: "Download The App",
+    login: "Login"
   },
 
 	BUTTONS: {
 		ShopNow: "Shop Now",
-    showAll: "All {sectionName}"
+    showAll: "All {sectionName}",
+    subscribe: "Subscribe"
 	},
 
-	form: {
-    title: 'Create a new driver account',
-    desc: 'Easy steps to register, fill in the following information',
-    steps: {
-      one: 'Personal Info',
-      two: 'Car Data',
-      three: 'Subscription',
-    },
-    button: 'next',
-    finish: 'Done',
-    inputs: {
-      driverImg: 'Driver Image',
-      userName: 'User Name',
-      mobileNum: 'Mobile Number',
-      email: 'Email',
-      city: 'city',
-      idNum: 'ID Number',
-      dateBirth: 'Date Of Birth',
-      dateBirthHigri: 'Hijri Date Of Birth',
-      driverNeed: 'Driver Is With Special Needs',
-      driverproblem: 'Driver Has Health Problems',
-      healthCertificate: 'Health Certificate',
-      Password: 'Password',
-      confirmPassword: 'Confirm Password',
-      carInsurance: 'Car Insurance',
-      carForm: 'Car Form',
-      drivingLicense: 'Driving License',
-      carBack: 'Car Back',
-      carFront: 'Car Front',
-      carClassification: 'Car Classification',
-      carBrand: 'Car Brand',
-      carModel: 'Car Model',
-      plateLetters: 'Plate Letters',
-      plateNumbers: 'Plate Numbers',
-      fullPlate: 'Full Plate',
-      plateType: 'Plate Type',
-      manufacturingYear: 'Manufacturing Year',
-      carLicenseSerialNumber: 'Car License Serial Number',
-      chooseMethods: 'Choose Your Available Delivery Methods',
-      trips: 'Trips',
-      cityToCity: 'From City To City',
-      delivery: 'Delivery',
-      recivePackages: 'Available To Recive Packages',
-      cities: 'Cities',
-    },
-    validation: {
-      driverImg: 'User Image Field Cant Be Empty',
-      userName: 'Username Field Cant Be Empty',
-      mobileNum: 'Mobile Number Field Cant Be Empty',
-      email: 'Email Field Cant Be Empty',
-      city: 'City Field Cant Be Empty',
-      cities: 'Cities Field Cant Be Empty',
-      idNum: 'National ID Field Cant Be Empty',
-      dateBirth: 'Date Of Birth Field Cant Be Empty',
-      dateBirthHigri: 'Hijri Date Of Birth',
-      healthCertificate: 'Health Certificate Field Cant Be Empty',
-      Password: 'Password Field Cant Be Empty',
-      confirmPassword: 'Passwords Dont Match',
-      carInsurance: 'Car Insurance Field Cant Be Empty',
-      carForm: 'Car Form Field Cant Be Empty',
-      drivingLicense: 'Driving License Field Cant Be Empty',
-      carBack: 'Car Back Field Cant Be Empty',
-      carFront: 'Car Front Field Cant Be Empty',
-      carClassification: 'Car Classification Field Cant Be Empty',
-      carBrand: 'Car Brand Field Cant Be Empty',
-      carModel: 'Car Model Field Cant Be Empty',
-      plateLetters: 'Plate Letters Field Cant Be Empty',
-      plateNumbers: 'Plate Numbers Field Cant Be Empty',
-      fullPlate: 'Full Plate Field Cant Be Empty',
-      manufacturingYear: 'Manufacturing Year Field Cant Be Empty',
-      carLicenseSerialNumber: 'License SerialNumber Field Cant Be Empty',
-    },
+  PLACEHOLDERS: {
+    "yourEmailHere": "Your Email Here",
   },
 
 
@@ -134,7 +72,7 @@ export default {
 
 
 
-	
+
 
 
   registerLink: 'REGISTER AS DRIVER',

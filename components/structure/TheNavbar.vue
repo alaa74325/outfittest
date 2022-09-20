@@ -162,6 +162,20 @@
             </a-tooltip>
           </a-badge>
 
+          <a-tooltip placement="bottom">
+            <nuxt-link to="/auth/login">
+              <img
+                src="~/assets/media/icons/ui_icons/login.svg"
+                width="25"
+                height="25"
+                alt="login"
+              />
+            </nuxt-link>
+            <template slot="title">
+              <span>{{ $t('TITLES.login') }}</span>
+            </template>
+          </a-tooltip>
+
           <button
             class="small_screens_menu"
             @click="toggleSamllScreensNavbarDrawer"
@@ -234,18 +248,6 @@
         <li class="links_list_item" @click="toggleSamllScreensNavbarDrawer">
           <button @click="scrollToSection('about_section')">
             {{ $t('NAV.about') }}
-          </button>
-        </li>
-
-        <li class="links_list_item" @click="toggleSamllScreensNavbarDrawer">
-          <button @click="scrollToSection('app_screens_section')">
-            {{ $t('NAV.screen') }}
-          </button>
-        </li>
-
-        <li class="links_list_item" @click="toggleSamllScreensNavbarDrawer">
-          <button @click="scrollToSection('download_app_section')">
-            {{ $t('NAV.download') }}
           </button>
         </li>
 

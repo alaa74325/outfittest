@@ -23,12 +23,12 @@
               <span class="seconds"> 45 S</span>
             </span>
           </nuxt-link>
-        </div>  
+        </div>
       </div>
 
       <div class="row">
-        <div 
-          class="col-md-4 col-xl-3"
+        <div
+          class="col-md-4 col-lg-3"
           v-for="(item, index) in 4"
           :key="item"
           data-aos-once="false"
@@ -79,7 +79,7 @@ export default {
     }
 
     .section_route_wrapper {
-      a { 
+      a {
         color: var(--theme_txet_clr);
         @include flexStartAlignment;
         column-gap: 10px;
@@ -98,7 +98,7 @@ export default {
             font-size: 16px;
             padding: 8px;
             border-radius: 6px;
-            span {	
+            span {
               color: var(--theme_txet_clr)
             }
           }
