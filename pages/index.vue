@@ -44,6 +44,13 @@
       </div>
       <!-- End:: Offer Pannels Section -->
 
+      <!-- Start:: Top Rated Products Section -->
+      <ProductsSection
+        :section_title="$t('TITLES.topRated')"
+        section_route="/top-rated"
+      />
+      <!-- End:: Top Rated Products Section -->
+
       <!-- Start:: Offer Pannels Section --> 
       <div class="container-xl py-5">
         <LargeOfferPannel
@@ -56,6 +63,13 @@
       </div>
       <!-- End:: Offer Pannels Section --> 
 
+      <!-- Start:: Most Ordered Products Section -->
+      <ProductsSection
+        :section_title="$t('TITLES.mostOrdered')"
+        section_route="/most-ordered"
+      />
+      <!-- End:: Most Ordered Products Section -->
+
       <!-- Start:: Offer Pannels Section --> 
       <div class="container-xl py-5">
         <LargeOfferPannel
@@ -67,6 +81,13 @@
         />
       </div>
       <!-- End:: Offer Pannels Section --> 
+
+      <!-- Start:: New Arrival Products Section -->
+      <ProductsSection
+        :section_title="$t('TITLES.newArrivals')"
+        section_route="/new-arrivals"
+      />
+      <!-- End:: New Arrival Products Section -->
     </div>
   </div>
 </template>
@@ -80,6 +101,7 @@ import CategoriesSection from "~/components/general/CategoriesSection.vue";
 import FlashSalesSection from "~/components/general/FlashSalesSection.vue";
 import SmallOfferPannel from "~/components/ui/pannels/SmallOfferPannel.vue";
 import LargeOfferPannel from "~/components/ui/pannels/LargeOfferPannel.vue";
+import ProductsSection from "~/components/general/ProductsSection.vue";
 // End:: Importing Home Page Components
 
 export default {
@@ -124,6 +146,7 @@ export default {
     FlashSalesSection,
     SmallOfferPannel,
     LargeOfferPannel,
+    ProductsSection,
   },
 
   data() {

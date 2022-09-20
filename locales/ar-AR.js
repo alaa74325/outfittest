@@ -18,12 +18,17 @@ export default {
 		categories: "الأقسام",
 		salesOfTheDay: "عروض اليوم",
 		flashSales: "عروض مفاجأة",
-    sold: "تم بيع"
+    sold: "تم بيع",
+    topRated: "الأعلي تقييماً",
+    mostOrdered: "الأكثر طلباً",
+    newArrivals: "الأحدث وصولاً"
   },
 
 	BUTTONS: {
-		ShopNow: "تسوق الآن"
+		ShopNow: "تسوق الآن",
+    showAll: "{sectionName}كل"
 	},
+
 
 	form: {
     title: 'إنشاء حساب سائق جديد',

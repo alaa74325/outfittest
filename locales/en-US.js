@@ -19,11 +19,15 @@ export default {
 		categories: 'Shop By Category',
 		salesOfTheDay: "Deals Of The Day",
 		flashSales: "Flash Sales",
-    sold: "Sold"
+    sold: "Sold",
+    topRated: "Top Rated",
+    mostOrdered: "Most Ordered",
+    newArrivals: "New Arrivals"
   },
 
 	BUTTONS: {
-		ShopNow: "Shop Now"
+		ShopNow: "Shop Now",
+    showAll: "All {sectionName}"
 	},
 
 	form: {

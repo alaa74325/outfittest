@@ -70,7 +70,7 @@ export default {
   }
 
   .list_title_wrapper {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     @include flexSpaceBetweenAlignment;
     .list_title {
       color: var(--theme_text_clr);
