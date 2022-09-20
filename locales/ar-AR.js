@@ -17,7 +17,8 @@ export default {
     cart: 'عربة التسوق',
 		categories: "الأقسام",
 		salesOfTheDay: "عروض اليوم",
-		flashSales: "عروض مفاجأة"
+		flashSales: "عروض مفاجأة",
+    sold: "تم بيع"
   },
 
 	BUTTONS: {

@@ -63,9 +63,9 @@
           <!-- ********** End:: Language ********** -->
 
           <!-- ********** Start:: Currency ********** -->
-          <a-dropdown :trigger="['click']">
+          <!-- <a-dropdown :trigger="['click']"> -->
             <!-- Start:: Selected Currency -->
-            <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
+            <!-- <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
               <img
                 src="~/assets/media/icons/ar.png"
                 width="25"
@@ -73,11 +73,11 @@
               />
               <span> KSA </span>
               <i class="fas fa-angle-down"></i>
-            </a>
+            </a> -->
             <!-- End:: Selected Currency -->
 
             <!-- Start:: Currencies List -->
-            <a-menu slot="overlay">
+            <!-- <a-menu slot="overlay">
               <a-menu-item key="0">
                 <button>
                   <img
@@ -98,9 +98,9 @@
                   <span> KSA </span>
                 </button>
               </a-menu-item>
-            </a-menu>
+            </a-menu> -->
             <!-- End:: Currencies List -->
-          </a-dropdown>
+          <!-- </a-dropdown> -->
           <!-- ********** End:: Currency ********** -->
         </div>
         <!-- End:: Lang & Currency -->

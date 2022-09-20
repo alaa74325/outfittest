@@ -111,7 +111,8 @@ export default {
 
 <style lang="scss" scoped>
 .categories_section_content_wrapper {
-  padding-block: 50px;
+  padding-block: 80px;
+  padding-inline: 40px;
   .section_title_wrapper {
     margin-bottom: 30px;
     .section_title {
@@ -125,6 +126,7 @@ export default {
 @media (max-width: 850px) {
   .services_section_content_wrapper {
     padding-block: 20px;
+    padding-inline: 15px;
   }
 }
 </style>

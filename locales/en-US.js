@@ -18,7 +18,8 @@ export default {
     cart: 'Cart',
 		categories: 'Shop By Category',
 		salesOfTheDay: "Deals Of The Day",
-		flashSales: "Flash Sales"
+		flashSales: "Flash Sales",
+    sold: "Sold"
   },
 
 	BUTTONS: {
