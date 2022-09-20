@@ -15,7 +15,7 @@
           :key="item.id"
           data-aos-once="false"
           data-aos="fade"
-          :data-aos-delay="'300' * (index + 1)"
+          :data-aos-delay="300 * (index + 1)"
           data-aos-duration="1000"
         >
           <CategoryCard 

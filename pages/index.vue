@@ -14,6 +14,59 @@
       <!-- Start:: Flash Sales Section -->
       <FlashSalesSection />
       <!-- End:: Flash Sales Section -->
+
+      <!-- Start:: Offer Pannels Section -->
+      <div class="container-xl py-5">
+        <div class="row">
+          <div 
+            class="col-md-6"
+            data-aos-once="false"
+            :data-aos="$i18n.locale == 'ar' ? 'fade-left' : 'fade-right'"
+            data-aos-delay="500"
+            data-aos-duration="1500"
+          >
+            <SmallOfferPannel 
+              :offerData="firstOffer"
+            />
+          </div>
+          <div 
+            class="col-md-6"
+            data-aos-once="false"
+            :data-aos="$i18n.locale == 'ar' ? 'fade-right' : 'fade-left'"
+            data-aos-delay="500"
+            data-aos-duration="1500"
+          >
+            <SmallOfferPannel 
+              :offerData="secondOffer"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- End:: Offer Pannels Section -->
+
+      <!-- Start:: Offer Pannels Section --> 
+      <div class="container-xl py-5">
+        <LargeOfferPannel
+          data-aos-once="false"
+          data-aos="flip-up"
+          data-aos-delay="500"
+          data-aos-duration="1500"
+          :offerData="thirdOffer"
+        />
+      </div>
+      <!-- End:: Offer Pannels Section --> 
+
+      <!-- Start:: Offer Pannels Section --> 
+      <div class="container-xl py-5">
+        <LargeOfferPannel
+          data-aos-once="false"
+          data-aos="flip-up"
+          data-aos-delay="500"
+          data-aos-duration="1500"
+          :offerData="fourthOffer"
+        />
+      </div>
+      <!-- End:: Offer Pannels Section --> 
     </div>
   </div>
 </template>
@@ -25,6 +78,8 @@ import MainLoader from "~/components/ui/MainLoader.vue";
 import HeroSection from "~/components/general/HeroSection.vue";
 import CategoriesSection from "~/components/general/CategoriesSection.vue";
 import FlashSalesSection from "~/components/general/FlashSalesSection.vue";
+import SmallOfferPannel from "~/components/ui/pannels/SmallOfferPannel.vue";
+import LargeOfferPannel from "~/components/ui/pannels/LargeOfferPannel.vue";
 // End:: Importing Home Page Components
 
 export default {
@@ -67,11 +122,40 @@ export default {
     HeroSection,
     CategoriesSection,
     FlashSalesSection,
+    SmallOfferPannel,
+    LargeOfferPannel,
   },
 
   data() {
     return {
       isLoading: true,
+
+      // Start:: Dummy Data
+      firstOffer: {
+        image: require("@/assets/media/images/offerPannel.png"),
+        title: "Get Jeweled",
+        route_text: "show your jewelry now",
+        route: "",
+      },
+      secondOffer: {
+        image: require("@/assets/media/images/offerPannel2.png"),
+        title: "End Of Summer",
+        route_text: "show from here",
+        route: "",
+      },
+      thirdOffer: {
+        image: require("@/assets/media/images/largeOfferPannel.png"),
+        title: "Fall 2022 Collection",
+        desc: "The Astest Fashion For Everyone",
+        route: "",
+      },
+      fourthOffer: {
+        image: require("@/assets/media/images/largeOfferPannel2.png"),
+        title: "Fall 2022 Collection",
+        desc: "The Astest Fashion For Everyone",
+        route: "",
+      },
+      // End:: Dummy Data
     };
   },
 
