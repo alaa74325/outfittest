@@ -9,17 +9,16 @@
 
       <!-- Start:: Categories -->
       <div class="row justify-content-center">
-        <div 
-          class="col-md-3 col-xl-2" 
-          v-for="(item,index) in dummyCats" 
+        <div
+          class="col-md-3 col-xl-2"
+          v-for="(item,index) in dummyCats"
           :key="item.id"
           data-aos-once="false"
           data-aos="fade"
-          :data-aos-delay="300 * (index + 1)"
-          data-aos-duration="1000"
+          :data-aos-delay="200 * (index + 1)"
+          data-aos-duration="2000"
         >
-          {{300 * (index + 1)}}
-          <CategoryCard 
+          <CategoryCard
             :categoryData="item"
           />
         </div>

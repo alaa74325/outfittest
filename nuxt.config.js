@@ -48,6 +48,7 @@ export default {
     // ****** Start:: Importing Vue-DateTime File ****** //
     '@/plugins/vue-datetime.js',
     // ****** End:: Importing Vue-DateTime File ****** //
+
     // "@/plugins/izi-toast.js",
 
     // ****** Start:: Importing AOS File ****** //

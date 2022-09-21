@@ -15,3 +15,76 @@
     border-radius: 15px;
   }
 }
+
+
+.ant-notification {
+  span {
+    .ant-notification-notice {
+      margin-block: 5px;
+      padding: 10px 10px;
+      border-radius: 6px;
+      .ant-notification-notice-content {
+        .ant-notification-notice-with-icon {
+          .ant-notification-notice-icon {
+            top: 50%;
+            transform: translateY(-50%);
+          }
+          .ant-notification-notice-message {
+            margin-inline-start: 48px;
+            margin-bottom: 0;
+            font-size: 15px;
+          }
+        }
+      }
+      .ant-notification-notice-close {
+        top: 5px;
+        right: 12px;
+      }
+      &.error_toast {
+        background: var(--soft_red_clr);
+        border: 1px solid var(--mid_red_clr);
+        box-shadow: 0 0 12px rgba(255, 87, 87, 0.233);
+        .ant-notification-notice-content {
+          .ant-notification-notice-with-icon {
+            .ant-notification-notice-icon {
+              color: var(--mid_red_clr);
+            }
+            .ant-notification-notice-message {
+              color: var(--mid_red_clr);
+            }
+          }
+        }
+      }
+      &.success_toast {
+        background: var(--soft_green_clr);
+        border: 1px solid var(--mid_green_clr);
+        box-shadow: 0 0 12px rgba(87, 255, 137, 0.233);
+        .ant-notification-notice-content {
+          .ant-notification-notice-with-icon {
+            .ant-notification-notice-icon {
+              color: var(--mid_green_clr);
+            }
+            .ant-notification-notice-message {
+              color: var(--mid_green_clr);
+            }
+          }
+        }
+      }
+      &.warning_toast {
+        background: var(--soft_yellow_clr);
+        border: 1px solid var(--mid_yellow_clr);
+        box-shadow: 0 0 12px rgba(255, 244, 87, 0.233);
+        .ant-notification-notice-content {
+          .ant-notification-notice-with-icon {
+            .ant-notification-notice-icon {
+              color: var(--mid_yellow_clr);
+            }
+            .ant-notification-notice-message {
+              color: var(--mid_yellow_clr);
+            }
+          }
+        }
+      }
+    }
+  }
+}

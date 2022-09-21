@@ -13,7 +13,12 @@
 
         <div class="section_route_wrapper">
           <nuxt-link to="/flash-sales">
-            <span class="timer_text"> Endes In </span>
+            <span class="timer_text"> Ends In </span>
+
+            <!-- <a-statistic-countdown
+              :value="Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30"
+              style="margin-right: 50px"
+            /> -->
 
             <span class="offer_time">
               <span class="hours"> 23 H</span>

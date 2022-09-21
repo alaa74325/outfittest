@@ -22,9 +22,9 @@
           v-model="data.password"
         />
         <!-- End:: Password Input -->
-        
+
         <!-- Start:: Forget Password Route -->
-        <nuxt-link to="/auth/phone-to-reset-password" class="forget_password_route">  
+        <nuxt-link to="/auth/phone-to-reset-password" class="forget_password_route">
           {{$t("BUTTONS.forgetPassword")}}
         </nuxt-link>
         <!-- End:: Forget Password Route -->
@@ -34,13 +34,14 @@
         <base-button
           :btnText="$t('BUTTONS.singIn')"
           :isLoading="isWaitingRequest"
+          @click="testIzI"
         />
       </div>
 
       <!-- Start:: Auth Route Wrapper -->
       <div class="auth_route_wrapper">
-        <nuxt-link 
-          to="/auth/register" 
+        <nuxt-link
+          to="/auth/register"
           v-html="$t('BUTTONS.registerRoute')"
         ></nuxt-link>
       </div>
@@ -69,8 +70,23 @@ export default {
       data: {
         emailOrPhone: null,
         password: null,
-      }
+      },
     }
+  },
+
+  methods: {
+    validateFormInputs() {
+      this.$notification.open({
+        class: 'error_toast',
+        duration: '2',
+        message: 'Notification Title',
+        icon: <i class="fa-solid fa-ban"></i>,
+        placement: 'bottomRight',
+        onClick: () => {
+          this.$notification.destroy()
+        },
+      });
+    },
   },
 }
 </script>
