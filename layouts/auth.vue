@@ -1,58 +1,52 @@
 <template>
   <v-app :class="[{ rtl: $i18n.locale == 'ar' }, { ltr: $i18n.locale == 'en' }]">
-    <div class="auth_forms_wrapper">
-    <!-- Start:: Layout Navbar -->
-    <AuthNavbar/>
-    <!-- End:: Layout Navbar -->
-
+    <div class="auth_layout">
     <Nuxt />
-
-    <!-- Start:: Illustration Shape -->
-    <img
-      class="illustration"
-      src="~/assets/media/illustrations/authSvg.svg"
-      width="300"
-      height="300"
-      alt="shape"
-    />
-    <!-- End:: Illustration Shape -->
     </div>
   </v-app>
 </template>
 
 <script>
-import AuthNavbar from "~/components/structure/AuthNavbar";
 
 export default {
   name: 'AuthLayout',
 
   head() {
     return {
-      titleTemplate: "Captain One - %s",
+      titleTemplate: "Outfit - %s",
       meta: [
         {
-          hid: 'description',
-          name: 'description',
-          content: 'Driver Register Description'
-        }
+          hid: "title",
+          name: "title",
+          content: 'Auth Description'
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: 'Auth Description'
+        },
+        {
+          hid: "description",
+          name: "description",
+          content: 'Auth Description'
+        },
+        {
+          hid: "og:description",
+          name: "og:description",
+          content: 'Auth Description'
+        },
       ],
     }
   },
 
-  components: {
-    AuthNavbar,
-  },
 }
 </script>
 
 <style lang="scss" scoped>
-.auth_forms_wrapper {
+.auth_layout {
   position: relative;
   height: 100vh;
-  background: linear-gradient(to bottom, #0C4384, #4B86DD);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexCenterAlignment;
 
   &::before,
   &::after {
@@ -79,12 +73,6 @@ export default {
     animation: horizontal_movement 2s linear infinite;
     animation-direction: alternate;
   }
-
-  .illustration {
-    position: absolute;
-    left: 30px;
-    bottom: 10px;
-  }
 }
 
 // START:: ANIMATIONS
@@ -108,7 +96,7 @@ export default {
 };
 
 @media (max-width: 850px) {
-  .auth_forms_wrapper {
+  .auth_layout {
   position: relative;
   height: 100vh;
   background: linear-gradient(to bottom, #0C4384, #4B86DD);
@@ -130,10 +118,6 @@ export default {
     &::after {
     bottom: 0;
     right: 50px;
-  }
-
-  .illustration {
-    display: none;
   }
 }
 }

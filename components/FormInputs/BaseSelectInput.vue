@@ -1,30 +1,31 @@
 <template>
   <div :class="col ? `col-md-${col}` : ''">
-    <div class="input_wrapper autoComplete">
-      <!-- <label
-        >{{ label }}<span v-if="required" class="requiredAstric">*</span></label
-      > -->
-      <div class="_input">
-        <v-autocomplete
-          :label="label"
-          :deletable-chips="multiple"
-          item-text="name"
-          item-value="id"
-          :return-object="returnObject"
-          :items="isStatic ? _staticItems : items"
-          :disabled="disabled"
-          :value="value"
-          :multiple="multiple"
-          @blur="validateInput(value)"
-          @input="updateValue($event)"
-        ></v-autocomplete>
-      </div>
+    <!-- Start:: Select Input -->
+    <div class="input_wrapper select">
+      <v-autocomplete
+        :disabled="disabled"
+        :chips="multiple"
+        :deletable-chips="multiple"
+        :small-chips="multiple"
+        :multiple="multiple"
+        :items="isStatic ? _staticItems : items"
+        item-text="name"
+        item-value="id"
+        :return-object="returnObject"
+        :value="value"
+        :label="placeholder"
+        @blur="validateInput(value)"
+        @input="updateValue($event)"
+        :required="required"
+      ></v-autocomplete>
+      <span class="spinnerIcon">
+        <i v-if="isStatic && loading" class="fas fa-spinner"></i>
+      </span>
       <transition name="fadeIn">
-        <v-alert v-if="showAlert" dense border="left" type="error">{{
-          validationMessage
-        }}</v-alert>
+        <p class="validationErr" v-if="showAlert">{{ validationMessage }}</p>
       </transition>
     </div>
+    <!-- End:: Select Input -->
   </div>
 </template>
 
@@ -33,19 +34,23 @@ export default {
   name: "BaseSelectInput",
 
   props: {
+    loading: {
+      type: Boolean,
+      default: false,
+    },
     staticItems: {
       required: false,
       type: Array,
-    },
-    static: {
-      required: false,
-      type: Boolean,
-      default: false,
     },
     returnObject: {
       required: false,
       type: Boolean,
       default: true,
+    },
+    static: {
+      required: false,
+      type: Boolean,
+      default: false,
     },
     getUrl: {
       required: false,
@@ -54,14 +59,13 @@ export default {
     value: {
       required: true,
     },
-    label: {
+    placeholder: {
       required: true,
       type: String,
     },
     col: {
       required: false,
       type: String,
-      default: '12',
     },
     required: {
       required: false,
@@ -82,11 +86,10 @@ export default {
 
   data() {
     return {
-      // ========== Validation Alert
+      // Validation Alert
       showAlert: false,
       validationMessage: "errer",
 
-      // ========== Select Items
       items: [],
     };
   },
@@ -121,6 +124,8 @@ export default {
 
     getSelectItems() {
       if (this.static) {
+        // this.items = [...this._staticItems];
+
         return;
       }
 
@@ -151,3 +156,5 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss"></style>

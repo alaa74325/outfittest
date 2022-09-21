@@ -35,11 +35,16 @@ export default {
 	BUTTONS: {
 		ShopNow: "تسوق الآن",
     showAll: "{sectionName}كل",
-    subscribe: "إشترك"
+    subscribe: "إشترك",
+    singIn: "تسجيل دخول",
+    forgetPassword: "هل نسيت كلمة المرور؟",
+    registerRoute: "لست عضو؟ <span> سجل الآن </span>"
 	},
 
   PLACEHOLDERS: {
-    "yourEmailHere": "ادخل بريدك الإلكتروني",
+    yourEmailHere: "ادخل بريدك الإلكتروني",
+    emailOrPhone: "البريد الإلكتروني او رقم الهاتف",
+    password: "الرقم السري"
   },
 
 

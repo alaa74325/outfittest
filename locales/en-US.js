@@ -35,11 +35,16 @@ export default {
 	BUTTONS: {
 		ShopNow: "Shop Now",
     showAll: "All {sectionName}",
-    subscribe: "Subscribe"
+    subscribe: "Subscribe",
+    singIn: "Sing In",
+    forgetPassword: "Forget Password?",
+    registerRoute: "Not A Member? <span> Join Now </span>"
 	},
 
   PLACEHOLDERS: {
-    "yourEmailHere": "Your Email Here",
+    yourEmailHere: "Your Email Here",
+    emailOrPhone: "Email Or Phone Number",
+    password: "Password"
   },
 
 

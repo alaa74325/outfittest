@@ -1,515 +1,469 @@
-.input_wrapper {
-  text-align: start;
-  margin-block: 15px;
-  width: 100%;
-  label {
-    display: block;
-    margin: 2px 0;
-    font-size: 18px;
-    span.requiredAstric {
-      color: red;
-    }
+.form {
+  margin: 20px 0;
+}
+
+label {
+  color: var(--main_theme_clr);
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0);
   }
-  ._input {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+label.outside_lable {
+  margin: 5px auto !important;
+  width: fit-content !important;
+  display: block !important;
+}
+
+.input_wrapper {
+  margin-block: 12px;
+  position: relative;
+  .validationErr {
+    color: #ff5252;
+    position: absolute;
+    font-size: 13px;
+  }
+  &.picker,
+  &.select {
     position: relative;
-    height: 50px;
-    margin-bottom: 2px;
-    input,
-    textarea {
-      // height: inherit;
-      padding-block: 15px;
-      padding-inline: 10px;
-      width: 100%;
-      font-size: 16px;
-      background: #fff;
-      border-radius: 10px;
-      &::placeholder {
-        font-size: 16px;
-        font-weight: 300;
-        color: #a2a2a2;
-      }
-      &:focus {
-        border-color: #a2a2a2;
-        outline: none;
-      }
-    }
-    .icon {
+    .closeIcon {
       position: absolute;
       top: 50%;
+      left: 10px;
       transform: translateY(-50%);
-      right: 15px; // RTL
-      cursor: pointer;
-      i {
+      display: none;
+      &.show {
+        display: block;
       }
-      img {
-      }
+    }
+    .spinnerIcon {
+      position: absolute;
+      transform: translateY(-50%);
+      top: 17%;
+      left: 43px;
+      animation: rotation 1.5s linear infinite;
     }
   }
-  &.upload_file_text_preview {
-    // padding-block: 15px;
-    // padding-inline: 10px;
-    width: 100%;
-    background: #fff;
-    border-radius: 10px;
-    @include flexSpaceBetweenAlignment;
-    .input_file_label {
-      border: none;
-      width: 100%;
-      height: 45px;
-      padding: 12px;
-      font-size: 16px;
-      color: var(--theme_text_clr);
-      background-color: transparent;
-      @include borderRadius(8px);
-      span {
-        font-size: 15px;
-        &.file_name {
-          @include flexSpaceBetweenAlignment;
-          max-width: 100%;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        .remove_preview {
-          width: 22px;
-          height: 22px;
-          background-color: var(--mid_red_clr);
-          @include flexCenterAlignment;
-          @include borderRadius(50%);
-        }
-      }
+}
+
+.v-input {
+  padding: 0;
+  margin: 0;
+  &.v-input--switch {
+    .v-input__slot {
+      background-color: unset !important;
+      border: unset !important;
+      justify-content: center;
     }
-    a {
-      margin-bottom: 0;
-      font-family: $regular_font;
-      color: var(--main_theme_clr);
-      opacity: 0.8;
-      max-width: 100%;
-      &.file_preview_text {
-        @include textEllipsis;
-        padding: 12px;
-        font-size: 15px;
+  }
+  .v-input__control {
+    .v-input__slot {
+      margin: 0;
+      margin-bottom: 5px;
+      padding: 10px;
+      border: 1px solid #dddddd;
+      border-radius: 10px;
+      transition: all 0.4s ease-in-out;
+      &::after,
+      &::before {
+        display: none;
       }
-      &.file_preview_link,
-      &.file_download {
-        padding-inline: 8px;
-        svg,
-        i {
-          font-size: 18px;
+      .v-text-field__slot {
+        .v-label {
+          top: 6px;
+          color: var(--light_gray_clr);
+          transition: all 0.4s ease-in-out;
+          &.v-label--active,
+          &.primary--text {
+            padding-inline: 5px;
+            top: 0;
+            background-color: var(--white_clr) !important;
+          }
+        }
+        input {
+          opacity: 0;
+          color: var(--theme_text_clr);
+        }
+      }
+      .v-select__slot {
+        .v-label {
+          top: 6px;
           color: var(--main_theme_clr);
+          transition: all 0.4s ease-in-out;
+          &.v-label--active,
+          &.primary--text {
+            padding-inline: 5px;
+            top: 0;
+            background-color: var(--white_clr) !important;
+          }
+        }
+        .v-select__selections {
+          margin-top: 5px;
+          .v-chip--select {
+            background: var(--main_theme_clr) !important;
+            color: var(--white_clr) !important;
+            .v-chip__content {
+              .v-icon {
+                color: var(--white_clr) !important;
+              }
+            }
+          }
+          input {
+            padding: 0;
+            opacity: 0;
+            color: var(--theme_text_clr);
+          }
         }
       }
     }
-    input[type='file'] {
+    .v-text-field__details {
       display: none;
     }
-  }
-  .v-alert {
-    transition: 0.2s linear;
-  }
-  // ========== textarea
-  &.textarea {
-    ._input {
-      height: auto;
-      textarea {
-        height: auto;
-        resize: none;
-      }
+    .v-input__append-inner {
+      padding: 0;
+      margin-top: 5px;
     }
   }
-  // ========== otp Input
-  .otp_label {
-    text-align: center;
-    color: var(--white_clr);
-    font-size: 14px;
-  }
-  .v-otp-input {
-    justify-content: center;
-    .v-input {
+  &.v-input--has-state {
+    &.error--text {
       .v-input__control {
         .v-input__slot {
-          margin: 0;
-          fieldset {
-            border: none;
-          }
-        }
-      }
-    }
-    // .v-input {
-    //   width: 75px;
-    //   flex: unset;
-    //   .v-text-field__slot {
-    //     border-bottom: 5px solid var(--main) !important;
-    //   }
-    // }
-  }
-  // ========== Search
-  &.search {
-    ._input {
-      height: 70px;
-      input {
-        background: #fff;
-        border-radius: 20px;
-      }
-      .icon {
-      }
-    }
-    .keywords {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      span {
-        margin-inline: 7px;
-        font-size: 15px;
-      }
-      .main {
-        color: #fff;
-        font-size: 17px;
-      }
-      .colored {
-        color: #dee2e6;
-        cursor: pointer;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-  // ========== Vutify Inputs
-  &.picker,
-  &.radio {
-    ._input {
-      .v-input {
-        height: 50px;
-        padding: 0;
-        margin: 0;
-        .v-input__control {
-          height: inherit;
-          .v-input__slot {
-            height: inherit;
-            margin: 0;
-            &::after,
-            &::before {
-              display: none !important;
-            }
-            .v-text-field__slot {
-              height: inherit;
-              label.v-label {
-                left: 20px !important;
-                top: 50%;
-                transform: translateY(-50%);
-                &.v-label--active {
-                  display: none;
-                }
-              }
-              .v-label {
-                font-size: 16px;
-                font-weight: 300;
-                color: #a2a2a2;
-              }
-              input {
-                height: inherit;
-                max-height: inherit;
-                padding-block: 15px;
-                padding-inline: 10px;
-                width: 100%;
-                font-size: 16px;
-                background: #fff;
-                &::placeholder {
-                  font-size: 16px;
-                  font-weight: 300;
-                  color: #a2a2a2;
-                }
-                &:focus {
-                  border-color: #a2a2a2;
-                  outline: none;
-                }
-              }
-            }
-          }
-          .v-text-field__details {
-            display: none;
-          }
-        }
-      }
-    }
-    .v-input--radio-group__input {
-      .v-radio {
-        .v-input--selection-controls__input {
-          .v-icon {
-            color: #fff !important;
-          }
-        }
-        .v-label {
-          color: #fff !important;
-        }
-      }
-    }
-  }
-  &.autoComplete {
-    ._input {
-      .v-input {
-        padding: 0;
-        margin: 0;
-        .v-input__control {
-          .v-input__slot {
-            &::before,
-            &::after {
-              display: none;
-            }
-            .v-select__slot {
-              background: #fff;
-              border-radius: 10px;
-              .v-label {
-                left: 10px !important; // rtl
-                top: 15px;
-                font-size: 16px;
-                font-weight: 300;
-                color: #a2a2a2;
-                z-index: 1;
-                &.v-label--active {
-                  display: none;
-                }
-              }
-              input {
-                padding-block: 25px;
-                padding-inline: 10px;
-                width: 100%;
-                font-size: 16px;
-              }
-              .v-select__selections {
-                input {
-                  padding-block: 35px;
-                  padding-inline: 10px;
-                  width: 100%;
-                  font-size: 16px;
-                }
-              }
-              .v-input__append-inner {
-                display: none;
-              }
-            }
-          }
-          .v-text-field__details {
-            display: none;
+          border: 1px solid #ff5252;
+          input {
+            opacity: 1;
           }
         }
       }
     }
   }
-  &.radio {
-    .v-input__control {
-      justify-content: center;
-    }
-    .v-input--radio-group__input {
-      flex-direction: row !important;
-      align-items: center !important;
-      justify-content: space-around !important;
-    }
-    .v-messages {
-      display: none;
-    }
-  }
-  &.checkbox {
-    .v-input {
-      &.primary--text {
-        color: var(--white_clr) !important;
-        caret-color: var(--white_clr) !important;
-      }
-    }
+  &.v-input--is-label-active {
     .v-input__control {
       .v-input__slot {
-        .v-input--selection-controls__input {
-          margin-top: 0;
-          .v-input--selection-controls__ripple {
-            &.primary--text {
-              color: var(--white_clr) !important;
-              caret-color: var(--white_clr) !important;
+        .v-text-field__slot {
+          .v-label {
+            color: var(--main_theme_clr);
+            font-family: $medium_font;
+          }
+          input {
+            opacity: 1;
+          }
+        }
+        .v-select__slot {
+          .v-label {
+            color: var(--main_theme_clr);
+            font-family: $medium_font;
+          }
+          .v-select__selections {
+            input {
+              opacity: 1;
             }
           }
-          .v-icon {
-            color: var(--white_clr) !important;
-          }
-          .primary--text {
-            color: var(--white_clr) !important;
-          }
         }
-        .v-label {
-          color: var(--white_clr);
-          font-size: 14px;
-        }
-      }
-    }
-    .v-messages {
-      display: none;
-    }
-  }
-  // ========== Light
-  &.light {
-    label {
-      color: #fff;
-    }
-    ._input {
-      input {
       }
     }
   }
-  // Uplode Image
-  &.uplodeImage {
-    margin-block: 20px;
-    .chooseImage {
-      position: relative;
-      text-align: center;
-      cursor: pointer;
-      margin: 10px auto;
-      width: 300px;
-      border-radius: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &:hover {
-        .overlay {
-          opacity: 1;
-          i {
-            transform: scale(5);
+  &.v-input--is-focused {
+    .v-input__control {
+      .v-input__slot {
+        .v-text-field__slot {
+          .v-label {
+            &.primary--text {
+              color: var(--main_theme_clr) !important;
+            }
+            font-family: $medium_font;
+          }
+          input {
+            opacity: 1;
+          }
+        }
+        .v-select__slot {
+          .v-label {
+            color: var(--main_theme_clr);
+            font-family: $medium_font;
+          }
+          .v-select__selections {
+            input {
+              opacity: 1;
+            }
           }
         }
       }
-      img {
-        position: relative;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        width: 100%;
-        height: 150px;
-        display: inline-block;
-        font-size: 15px;
-        text-transform: uppercase;
-        cursor: pointer;
-        border-radius: 20px;
-      }
-      .placholder {
-        position: relative;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        width: 100%;
-        height: 150px;
-        padding: 6px 0;
-        display: inline-block;
-        font-size: 15px;
-        text-transform: uppercase;
-        border-radius: 20px;
-        background: #eee;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        span {
-          color: #333;
-          display: block;
-        }
-        .icons {
-          display: flex;
-          justify-content: space-between;
-          i {
-            display: block;
-            margin-inline: 5px;
+    }
+  }
+  &.v-file-input {
+    .v-input__control {
+      .v-input__slot {
+        .v-input__append-inner {
+          .v-input__icon {
+            .v-icon {
+              font-size: 17px;
+              margin-top: 4px;
+              &::before {
+                color: #ff5252;
+              }
+            }
           }
         }
       }
-      .file_input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        display: inline-block;
-        opacity: 0;
-        cursor: pointer;
+    }
+  }
+  &.v-input--radio-group--column,
+  &.v-input--checkbox {
+    .v-input__slot {
+      background: transparent;
+      border: unset;
+    }
+  }
+}
+
+.v-input--radio-group--row {
+  .v-input__slot {
+    background: transparent !important;
+    border: none !important;
+  }
+}
+
+.v-otp-input {
+  column-gap: 10px;
+  .v-input {
+    padding: 0;
+    .v-input__control {
+      .v-input__slot {
+        padding: 0;
+        background: var(--inputBg) !important;
+        fieldset {
+          padding-right: 0 !important;
+          color: var(--border_clr) !important;
+          background: var(--inputBg);
+          border-width: 1px;
+          transition: all 0.4s linear;
+        }
+        .v-text-field__slot {
+          input {
+            color: var(--theme_text_clr);
+          }
+        }
       }
-      .overlay {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.2s linear;
-        opacity: 0;
-        i {
-          display: block;
-          margin-inline: 35px;
-          color: #eee;
-          font-size: 15px;
-          transition: all 0.2s linear;
-          transform: scale(0);
+    }
+    &.v-input--is-focused {
+      fieldset {
+        border: 1px solid var(--main_theme_clr);
+      }
+    }
+  }
+}
+
+.input_wrapper {
+  margin-block: 12px;
+  &.color_picker {
+    position: relative;
+    margin: 0;
+    padding: 21px 10px 8px;
+    background-color: var(--inputBg);
+    border: 1px solid var(--inputBg);
+    border-radius: 10px;
+    .custom_color_preview {
+      display: block;
+      padding-block: 10px;
+      width: 100%;
+      border-radius: 10px;
+    }
+    .custom_input_label {
+      position: absolute;
+      top: 3px;
+      right: 12px;
+      color: var(--main_theme_clr);
+      font-size: 12px;
+      line-height: 12px;
+      font-family: $medium_font;
+    }
+    input[type="color"] {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      width: 100%;
+      max-height: 0;
+    }
+  }
+  &.text_editor {
+    position: relative;
+    margin: 0;
+    padding: 21px 0 0;
+    background-color: var(--inputBg);
+    border: 1px solid var(--inputBg);
+    border-radius: 10px;
+    overflow: hidden;
+    .custom_input_label {
+      position: absolute;
+      top: 7px;
+      right: 12px;
+      color: var(--main_theme_clr);
+      font-size: 12px;
+      line-height: 12px;
+      font-family: $medium_font;
+    }
+    .cke {
+      border: none !important;
+      .cke_inner {
+        .cke_top {
+          border-bottom: 1px solid var(--border_clr);
+          background: transparent;
+          padding: 5px 2px;
+        }
+        .cke_bottom {
+          border-top: 1px solid var(--border_clr);
+          background: transparent;
         }
       }
     }
   }
 }
 
-.single_image_input_wrapper {
-  margin-block: 10px;
-  @include flexCenterAlignment;
-  flex-direction: column;
-  .custom_placeholder {
-    color: var(--border_clr);
-    font-size: 15px;
-    text-align: center;
+.v-menu__content {
+  &.v-autocomplete__content {
+    background-color: var(--inputBg) !important;
+    border-radius: 10px !important;
+    @include simpleShadow;
+    .v-list {
+      .v-list-item {
+        .v-list-item__content {
+          .v-list-item__title {
+            color: var(--theme_text_clr) !important;
+          }
+        }
+      }
+    }
   }
-  .wrapper {
-    position: relative;
-    width: 115px;
-    height: 130px;
-    @include borderRadius(6px);
-    @include flexCenterAlignment;
-    label {
-      cursor: pointer;
-      position: absolute;
-      inset: 0;
-      @include borderRadius(6px);
-      @include flexCenterAlignment;
-      @include transitioning(0.4s);
-      z-index: 2;
-      img {
-        width: 130px;
-        height: 130px;
+}
+
+.v-dialog__content {
+  .v-dialog {
+    .v-picker {
+      .v-picker__title {
+        width: 100%;
+        &.primary {
+          background-color: var(--main_theme_clr) !important;
+          border-color: var(--main_theme_clr) !important;
+        }
       }
-      &:hover {
-        opacity: 1;
+      .v-picker__body {
+        background: var(--lightBg) !important;
+        width: 100%;
+        & > div {
+          .v-date-picker-header {
+            .v-date-picker-header__value {
+              .accent--text {
+                button {
+                  color: var(--theme_text_clr) !important;
+                }
+              }
+            }
+            .v-btn {
+              .v-btn__content {
+                .v-icon {
+                  color: var(--theme_text_clr) !important;
+                }
+              }
+            }
+          }
+          .v-date-picker-table {
+            table {
+              thead {
+                tr {
+                  th {
+                    color: var(--main_theme_clr);
+                  }
+                }
+              }
+              tbody {
+                tr {
+                  td {
+                    .v-btn {
+                      .v-btn__content {
+                        color: var(--theme_text_clr);
+                      }
+                      &.v-date-picker-table__current {
+                        &.accent--text {
+                          color: var(--main_theme_clr) !important;
+                          caret-color: var(--main_theme_clr) !important;
+                          .v-btn__content {
+                            color: var(--main_theme_clr) !important;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .v-time-picker-clock__container {
+          .v-time-picker-clock__ampm {
+            &.primary--text {
+              color: var(--main_theme_clr) !important;
+              caret-color: var(--main_theme_clr) !important;
+            }
+          }
+          .v-time-picker-clock {
+            background-color: var(--mainBg);
+            .v-time-picker-clock__inner {
+              .v-time-picker-clock__hand {
+                background-color: var(--lightBg) !important;
+                &::after {
+                  border-color: var(--lightBg) !important;
+                }
+                &.accent {
+                  background-color: var(--main_theme_clr) !important;
+                  border-color: var(--main_theme_clr) !important;
+                  &::after {
+                    border-color: var(--main_theme_clr) !important;
+                  }
+                }
+              }
+              .v-time-picker-clock__item {
+                span {
+                  color: var(--theme_text_clr);
+                }
+                &.v-time-picker-clock__item--active {
+                  background-color: var(--lightBg) !important;
+                  &.accent {
+                    background-color: var(--main_theme_clr) !important;
+                    border-color: var(--main_theme_clr) !important;
+                    span {
+                      color: var(--white_clr);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
-    }
-    img {
-      width: 100%;
-    }
-    .upload_img_icon {
-      color: var(--border_clr);
-      font-size: 50px;
-    }
-    .image_uploaded {
-      position: absolute;
-      width: 100%;
-      height: 135px;
-      object-fit: cover;
-      @include borderRadius(6px);
-      z-index: 1;
-    }
-    input[type='file'] {
-      display: none;
+      .v-picker__actions {
+        padding: 0 !important;
+        background: var(--main_theme_clr);
+        button {
+          &.primary--text {
+            color: var(--white_clr) !important;
+          }
+        }
+      }
     }
   }
 }
 
 .flagged_phone_content_wrapper {
   @include flexStartAlignment;
-  align-items: center;
+  align-items: flex-start;
   column-gap: 8px;
   .selected_flag_wrapper {
     @include flexEndAlignment;
@@ -517,13 +471,15 @@
     column-gap: 5px;
     width: 90px;
     height: 100%;
-    padding: 15px 8px;
-    background-color: var(--white_clr);
+    padding: 13px 5px;
+    background-color: var(--inputBg);
+    border: 1px solid var(--main_theme_clr);
     border-radius: 10px;
     .selected_country_key {
       direction: ltr;
-      color: var(--light_gray_clr);
+      color: var(--lightGray);
       font-size: 15px;
+      font-family: $medium_font;
     }
     .selected_country_flg {
       border-radius: 4px;
@@ -531,15 +487,15 @@
     }
   }
   .keys_and_flags_list {
-    padding: 0 !important;
-    margin: 0 !important;
     position: absolute;
     top: 110%;
     left: 0;
+    direction: ltr;
     width: calc(100px - 10px);
-    background-color: var(--white_clr);
-    border: 1px solid var(--white_clr);
+    background-color: var(--inputBg);
+    border: 1px solid var(--inputBg);
     border-radius: 10px;
+    @include midShadow;
     overflow: hidden;
     z-index: 10;
     max-height: 300px;
@@ -551,12 +507,13 @@
       transition: all 0.4s linear;
       &:hover {
         cursor: pointer;
-        background-color: var(--main_theme_clr);
+        background-color: var(--soft_main_theme_clr);
       }
       .country_key {
         direction: ltr;
-        color: var(--light_gray_clr);
+        color: var(--lightGray);
         font-size: 12px;
+        font-family: $medium_font;
       }
       .country_flg {
         border-radius: 4px;
@@ -569,81 +526,31 @@
   }
 }
 
-// ===================== Start:: Date && Time Dialog =====================
-.v-dialog__content {
-  width: 500px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  .v-dialog {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0;
-    .v-picker {
-      padding-top: 0 !important;
-      .v-picker__title {
-        display: flex;
-        justify-content: center;
-        & > div {
-          width: fit-content;
-          justify-content: center;
-        }
-      }
-    }
-  }
-  @media (max-width: 600px) {
-    width: 98vw !important;
+.theme--light {
+  .v-icon {
+    color: var(--main_theme_clr);
   }
 }
 
-// ===================== End:: Date && Time Dialog =====================
-.v-menu__content {
-  background: #fff !important;
-  border-radius: 10px !important;
+.input-title {
+  h4 {
+    font-size: 15px;
+    color: var(--theme_text_clr);
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
 }
 
-#app.rtl {
-  .input_wrapper {
-    ._input {
-      .icon {
-        right: unset;
-        left: 15px;
-      }
-    }
+.v-input--radio-group.v-input--radio-group--row .v-radio {
+  margin-right: 0;
+}
 
-		&.picker,
-		&.radio {
-			._input {
-				.v-input {
-					.v-input__control {
-						.v-input__slot {
-							.v-text-field__slot {
-								height: inherit;
-								label.v-label {
-									left: auto !important;
-									right: 15px !important;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+.v-input--checkbox.v-input .v-input__control .v-input__slot,
+.v-input--radio-group.v-input .v-input__control .v-input__slot {
+  padding: 15px 0px 2px;
+}
 
-    &.autoComplete {
-      ._input {
-        .v-input {
-          .v-input__control {
-            .v-input__slot {
-              .v-select__slot {
-                .v-label {
-                  left: auto !important;
-                  right: 10px !important;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+.v-input--selection-controls .v-input__slot > .v-label,
+.v-input--selection-controls .v-radio > .v-label {
+  margin-left: 20px;
 }

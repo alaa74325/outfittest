@@ -97,7 +97,7 @@
                 {{$t("TITLES.news")}}
               </div>
               <form class="subscribe_form_wrapper">
-                <input type="text" class="form-control" placeholder="Search...." />
+                <input type="text" class="form-control" :placeholder="$t('PLACEHOLDERS.yourEmailHere')" />
                 <button class="submit_btn">
                   {{$t("BUTTONS.subscribe")}}
                 </button>

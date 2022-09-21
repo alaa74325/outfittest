@@ -18,6 +18,7 @@
           :data-aos-delay="300 * (index + 1)"
           data-aos-duration="1000"
         >
+          {{300 * (index + 1)}}
           <CategoryCard 
             :categoryData="item"
           />

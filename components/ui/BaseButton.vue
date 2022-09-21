@@ -31,7 +31,7 @@ button {
   display: inline-block;
   width: 150px;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 8px 20px;
   font-size: 18px;
   color: var(--white_clr);
@@ -39,11 +39,11 @@ button {
   background-image: linear-gradient(
     90deg,
     transparent 50%,
-    var(--dark_secondary_theme_clr) 50%
+    var(--main_theme_clr) 50%
   );
   background-position: 100%;
   background-size: 400%;
-  border: 1px solid var(--dark_secondary_theme_clr);
+  border: 1px solid var(--main_theme_clr);
   @include transitioning(0.6s);
   .btn_loader {
     position: absolute;
@@ -61,9 +61,9 @@ button {
   }
   &:hover {
     background-position: 0;
-    color: var(--dark_secondary_theme_clr);
+    color: var(--main_theme_clr);
     .btn_loader {
-      border: 3px dotted var(--dark_secondary_theme_clr);
+      border: 3px dotted var(--main_theme_clr);
     }
   }
 }
