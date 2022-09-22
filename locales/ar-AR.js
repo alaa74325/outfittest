@@ -36,6 +36,7 @@ export default {
     verificationCode: "رمز التحقق",
     verificationCodeSentTo: "تم إرسال رمز التحقق إلي",
     editPhone: 'تعديل رقم الهاتف',
+    resetPassword: "إعادة تعيين كلمة المرور"
   },
 
   BUTTONS: {
@@ -47,6 +48,7 @@ export default {
     registerRoute: 'لست عضو؟ <span> سجل الآن </span>',
     loginRoute: 'لديك حساب بالفعل؟ <span> تسجيل دخول </span>',
     send: 'إرسال',
+    save: 'حفظ',
     editPhone: 'تعديل رقم الهاتف',
     verify: 'تحقق'
   },
@@ -56,12 +58,19 @@ export default {
       yourEmailHere: 'ادخل بريدك الإلكتروني',
       emailOrPhone: 'البريد الإلكتروني او رقم الهاتف',
       password: 'كلمة المرور',
+      confirmPassword: 'تأكيد كلمة المرور',
       phone: 'رقم الهاتف'
     },
     Validation: {
       emailOrPhone: "حقل البريد الإلكتروني او رقم الهاتف مطلوب",
       phone: "حقل رقم الهاتف مطلوب",
-      password: "حقل كلمة المرور"
+      password: "حقل كلمة المرور",
+      passwordLength: "حقل كلمة المرور يجب ان يكون 6 خانات علي الأقل",
+      confirmPassword: "حقل تأكيد كلمة المرور",
+      confirmPasswordLength: "حقل تأكيد كلمة المرور يجب ان يكون 6 خانات علي الأقل",
+      notEqualPasswords: "كلمات المرور غير متطابقة",
+      verificationCode: "حقل كود التحقق",
+      verificationCodeLength: "يجب ملئ جميع خانات حقل كود التحقق"
     },
   },
 

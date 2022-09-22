@@ -1,20 +1,12 @@
 <template>
   <div class="auth_form_wrapper">
     <!-- Start:: Form Title -->
-    <h2 class="form_title">{{ $t('TITLES.welcomeBack') }}</h2>
+    <h2 class="form_title">{{ $t('TITLES.resetPassword') }}</h2>
     <!-- End:: Form Title -->
 
     <!-- Start:: Form -->
     <form @submit.prevent="validateFormInputs">
       <div class="row justify-content-center">
-        <!-- Start:: Email Or Phone Input -->
-        <base-input
-          type="text"
-          :placeholder="$t('FORMS.Placeholders.emailOrPhone')"
-          v-model="data.emailOrPhone"
-        />
-        <!-- End:: Email Or Phone Input -->
-
         <!-- Start:: Password Input -->
         <base-input
           type="password"
@@ -23,21 +15,18 @@
         />
         <!-- End:: Password Input -->
 
-        <!-- Start:: Forget Password Route -->
-        <div class="forget_password_route_wrapper">
-          <nuxt-link
-            to="/auth/phone-to-reset-password"
-            class="forget_password_route"
-          >
-            {{ $t('BUTTONS.forgetPassword') }}
-          </nuxt-link>
-        </div>
-        <!-- End:: Forget Password Route -->
+        <!-- Start:: Confirm Password Input -->
+        <base-input
+          type="password"
+          :placeholder="$t('FORMS.Placeholders.confirmPassword')"
+          v-model="data.confirmPassword"
+        />
+        <!-- End:: Confirm Password Input -->
       </div>
 
       <div class="btn_wrapper mb-3">
         <base-button
-          :btnText="$t('BUTTONS.singIn')"
+          :btnText="$t('BUTTONS.save')"
           :isLoading="isWaitingRequest"
         />
       </div>
@@ -57,7 +46,7 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'ResetPassword',
 
   transition: {
     name: 'fadeInUp',
@@ -66,7 +55,7 @@ export default {
 
   head() {
     return {
-      title: 'Login',
+      title: 'Reset Password',
     }
   },
 
@@ -78,8 +67,8 @@ export default {
 
       // Start:: Requist Data
       data: {
-        emailOrPhone: null,
         password: null,
+        confirmPassword: null,
       },
       // End:: Requist Data
     }
@@ -88,12 +77,7 @@ export default {
   methods: {
     // Start:: Validate Form
     validateFormInputs() {
-      if (!this.data.emailOrPhone) {
-        this.$izitoast.error({
-          message: this.$t('FORMS.Validation.emailOrPhone'),
-        })
-        return
-      } else if (!this.data.password) {
+      if (!this.data.password) {
         this.$izitoast.error({
           message: this.$t('FORMS.Validation.password'),
         })
@@ -101,6 +85,21 @@ export default {
       } else if (this.data.password.length < 6) {
         this.$izitoast.error({
           message: this.$t('FORMS.Validation.passwordLength'),
+        })
+        return;
+      } else if (!this.data.confirmPassword) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.confirmPassword'),
+        })
+        return;
+      } else if (this.data.confirmPassword.length < 6) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.confirmPasswordLength'),
+        })
+        return;
+      } else if (this.data.password != this.data.confirmPassword) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.notEqualPasswords'),
         })
         return;
       } else {

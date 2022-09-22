@@ -36,6 +36,7 @@ export default {
     verificationCode: "Verification Code",
     verificationCodeSentTo: "Verificatio Code Has Been Sent To",
     editPhone: 'Edit Phone Number',
+    resetPassword: "Reset Password"
   },
 
   BUTTONS: {
@@ -47,6 +48,7 @@ export default {
     registerRoute: 'Not A Member? <span> Join Now </span>',
     loginRoute: 'Alredy Have An Account? <span> Login </span>',
     send: 'Send',
+    save: 'Save',
     editPhone: 'Edit Phone Number',
     verify: 'Verify'
   },
@@ -56,12 +58,19 @@ export default {
       yourEmailHere: 'Your Email Here',
       emailOrPhone: 'Email Or Phone Number',
       password: 'Password',
+      confirmPassword: 'Confirm Password',
       phone: 'Phone Number'
     },
     Validation: {
       emailOrPhone: "Email Or Phone Input Is Required",
-      phone: " Phone Number Input Is Required",
-      password: "Password Input Is Required"
+      phone: "Phone Number Input Is Required",
+      password: "Password Input Is Required",
+      passwordLength: "Password Must Be Al Least 6 Digits",
+      confirmPassword: "Confirm Password Input Is Required",
+      confirmPasswordLength: "Confirm Password Must Be Al Least 6 Digits",
+      notEqualPasswords: "Passwords Are Not The Same",
+      verificationCode: "Verification Code Input Is Required",
+      verificationCodeLength: "Verification Code Inputs Must Be Filled"
     },
   },
 

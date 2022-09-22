@@ -82,9 +82,14 @@ export default {
   methods: {
     // Start:: Validate Form
     validateFormInputs() {
-      if (!this.data.phone) {
+      if (!this.data.verificationCode) {
         this.$izitoast.error({
-          message: this.$t('FORMS.Validation.phone'),
+          message: this.$t('FORMS.Validation.verificationCode'),
+        })
+        return
+      }if (this.data.verificationCode.length < 4) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.verificationCodeLength'),
         })
         return
       } else {
@@ -97,7 +102,9 @@ export default {
     submitForm() {
       this.isWaitingRequest = true;
       setTimeout(() => {
-        this.$router.replace("/");
+        if (this.verificationType == "verify-contact-method") {
+          this.$router.replace("/auth/reset-password");
+        }
       }, 1500);
     },
     // End:: Submit Form
