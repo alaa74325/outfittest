@@ -4,6 +4,8 @@
     <h2 class="form_title">{{ $t('TITLES.welcomeBack') }}</h2>
     <!-- End:: Form Title -->
 
+    <h2> TOKEN:: {{userToken}} </h2>
+
     <!-- Start:: Form -->
     <form @submit.prevent="validateFormInputs">
       <div class="row justify-content-center">
@@ -56,6 +58,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Login',
 
@@ -76,13 +80,19 @@ export default {
       isWaitingRequest: false,
       // End:: Loader Contrle Data
 
-      // Start:: Requist Data
+      // Start:: Request Data
       data: {
         emailOrPhone: null,
         password: null,
       },
-      // End:: Requist Data
+      // End:: Request Data
     }
+  },
+
+  computed: {
+    ...mapGetters({
+      userToken: 'auth/testToken',
+    }),
   },
 
   methods: {
@@ -110,11 +120,42 @@ export default {
     // End:: Validate Form
 
     // Start:: Submit Form
-    submitForm() {
+    async submitForm() {
       this.isWaitingRequest = true;
-      setTimeout(() => {
-        this.$router.replace("/");
-      }, 1500);
+      // Start:: Append Request Data
+      const REQUEST_DATA = new FormData()
+      // ********** Start:: Static Data
+      REQUEST_DATA.append('device_token', 'static_token');
+      REQUEST_DATA.append('type', 'ios');
+      // ********** End:: Static Data
+      REQUEST_DATA.append('country_id', 1);
+      REQUEST_DATA.append('phone', this.data.emailOrPhone);
+      REQUEST_DATA.append('password', this.data.password);
+      // Start:: Append Request Data
+
+      try {
+        let res = await this.$axios.post('login', REQUEST_DATA);
+        // console.log("RES::", res);
+      } catch(err) {
+        this.isWaitingRequest = false;
+        // console.log("ERROR::", err.response.data);
+        this.$izitoast.error({
+          message: err.response.data.message,
+        });
+
+        // ********** Start:: Redirect To Verify Account ********** //
+        if(!err.response.data.is_active) {
+          this.$router.replace('/auth/verification-code/verify-account');
+        }
+        // ********** End:: Redirect To Verify Account ********** //
+      }
+
+
+
+      // this.isWaitingRequest = true;
+      // setTimeout(() => {
+      //   this.$router.replace("/");
+      // }, 1500);
     },
     // End:: Submit Form
   },

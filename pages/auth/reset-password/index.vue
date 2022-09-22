@@ -65,12 +65,12 @@ export default {
       isWaitingRequest: false,
       // End:: Loader Contrle Data
 
-      // Start:: Requist Data
+      // Start:: Request Data
       data: {
         password: null,
         confirmPassword: null,
       },
-      // End:: Requist Data
+      // End:: Request Data
     }
   },
 

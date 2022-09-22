@@ -89,7 +89,6 @@ export default {
     },
     preSelectedPhoneCode: {
       required: false,
-      type: String,
     },
     required: {
       required: false,
@@ -102,7 +101,7 @@ export default {
     return {
       // Validation Alert
       showAlert: false,
-      validationMessage: "errer",
+      validationMessage: "error",
 
       countriesKeys: [],
 
@@ -137,7 +136,8 @@ export default {
 
     // Start:: Update Selected Country Key Value
     updateSelectedCountryKeyValue() {
-      this.$emit("changeKey", this.selectedCountry.key);
+      // this.$emit("changeKey", this.selectedCountry.key);
+      this.$emit("changeKey", this.selectedCountry);
     },
     // End:: Update Selected Country Key Value
 
@@ -160,7 +160,7 @@ export default {
       this.showAlert = !valid;
     },
 
-    getCountryeKeys() {
+    getCountryKeys() {
       this.$axios({
         method: "GET",
         url: `countries`,
@@ -194,7 +194,7 @@ export default {
 
   created() {
     // Start:: Fire Methods
-    this.getCountryeKeys();
+    this.getCountryKeys();
     if(process.client) {
       window.addEventListener("click", () => {
           this.countriesKeysMenuIsOpen = false;

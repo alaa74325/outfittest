@@ -46,7 +46,7 @@ export default {
     name: 'fadeInUp',
     mode: 'out-in'
   },
-  
+
   head() {
     return {
       title: 'Phone To Recive Verification Code',
@@ -59,12 +59,12 @@ export default {
       isWaitingRequest: false,
       // End:: Loader Contrle Data
 
-      // Start:: Requist Data
+      // Start:: Request Data
       data: {
         phoneCode: null,
         phone: null,
       },
-      // End:: Requist Data
+      // End:: Request Data
     }
   },
 

@@ -63,26 +63,26 @@
 
 <script>
 export default {
-  name: "Register",
+  name: 'Register',
 
   transition: {
     name: 'fadeInUp',
-    mode: 'out-in'
+    mode: 'out-in',
   },
 
   head() {
     return {
-      title: "Register",
-    };
+      title: 'Register',
+    }
   },
 
-    data() {
+  data() {
     return {
       // Start:: Loader Contrle Data
       isWaitingRequest: false,
       // End:: Loader Contrle Data
 
-      // Start:: Requist Data
+      // Start:: Request Data
       data: {
         name: null,
         email: null,
@@ -90,14 +90,14 @@ export default {
         phone: null,
         password: null,
       },
-      // End:: Requist Data
+      // End:: Request Data
     }
   },
 
   methods: {
     // Start:: Change Selected Phonecode
     phonecodeChanged(data) {
-      this.data.phoneCode = data;
+      this.data.phoneCode = data
     },
     // End:: Change Selected Phonecode
 
@@ -122,24 +122,55 @@ export default {
         this.$izitoast.error({
           message: this.$t('FORMS.Validation.password'),
         })
-        return;
+        return
       } else if (this.data.password.length < 6) {
         this.$izitoast.error({
           message: this.$t('FORMS.Validation.passwordLength'),
         })
-        return;
+        return
       } else {
-        this.submitForm();
+        this.submitForm()
       }
     },
     // End:: Validate Form
 
     // Start:: Submit Form
-    submitForm() {
+    async submitForm() {
       this.isWaitingRequest = true;
-      setTimeout(() => {
-        this.$router.replace("/auth/verification-code/verify-account");
-      }, 1500);
+      // Start:: Append Request Data
+      const REQUEST_DATA = new FormData()
+      REQUEST_DATA.append('fullname', this.data.name);
+      REQUEST_DATA.append('email', this.data.email);
+      REQUEST_DATA.append('country_id', this.data.phoneCode.id);
+      REQUEST_DATA.append('phone', this.data.phone);
+      REQUEST_DATA.append('password', this.data.password);
+      // Start:: Append Request Data
+
+      // DATA  WILL BE REMOVED
+      REQUEST_DATA.append('lat', '33.354154');
+      REQUEST_DATA.append('lng', '31.354154');
+      REQUEST_DATA.append('location_description', 'test');
+      // DATA  WILL BE REMOVED
+
+      try {
+        // console.log("SUCCESS::", res.data);
+        // ********** Start:: Implement Request ********** //
+        await this.$axios.post('register', REQUEST_DATA);
+        this.isWaitingRequest = false;
+        this.$izitoast.success({
+          message: this.$t('MESSAGES.registeredSuccessfully'),
+        });
+        // ********** End:: Implement Request ********** //
+
+        // ********** Start:: Redirect To Verify Account ********** //
+        this.$router.replace('/auth/verification-code/verify-account');
+        // ********** End:: Redirect To Verify Account ********** //
+      } catch (err) {
+        this.isWaitingRequest = false;
+        this.$izitoast.error({
+          message: err.response.data.message,
+        });
+      }
     },
     // End:: Submit Form
   },

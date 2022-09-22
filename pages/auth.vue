@@ -1,9 +1,9 @@
 <template>
   <div class="auth_forms_wrapper">
-    
+
     <!-- Start:: Logo Wrapper -->
-    <nuxt-link 
-      to="/" 
+    <nuxt-link
+      to="/"
       class="logo_wrapper"
     >
       <img
@@ -20,7 +20,11 @@
       <div class="inner_content_wrapper">
         <div class="forms_card_image_wrapper">
           <img
-            src="../assets/media/images/authImage1.png"
+            :src="
+              routePath.includes('register') ?
+              require('@/assets/media/images/authImage2.png') :
+              require('@/assets/media/images/authImage1.png')
+            "
             width="550"
             height="600"
           />
@@ -44,6 +48,14 @@ export default {
   transition: {
     name: 'fadeInUp',
     mode: 'out-in'
+  },
+
+  computed: {
+    // Start:: Route Path
+    routePath() {
+      return this.$route.path;
+    },
+    // End:: Route Path
   },
 }
 </script>

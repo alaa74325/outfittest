@@ -18,25 +18,25 @@
       <!-- Start:: Offer Pannels Section -->
       <div class="container-xl py-5">
         <div class="row">
-          <div 
+          <div
             class="col-md-6"
             data-aos-once="false"
             :data-aos="$i18n.locale == 'ar' ? 'fade-left' : 'fade-right'"
             data-aos-delay="500"
             data-aos-duration="1500"
           >
-            <SmallOfferPannel 
+            <SmallOfferPannel
               :offerData="firstOffer"
             />
           </div>
-          <div 
+          <div
             class="col-md-6"
             data-aos-once="false"
             :data-aos="$i18n.locale == 'ar' ? 'fade-right' : 'fade-left'"
             data-aos-delay="500"
             data-aos-duration="1500"
           >
-            <SmallOfferPannel 
+            <SmallOfferPannel
               :offerData="secondOffer"
             />
           </div>
@@ -51,7 +51,7 @@
       />
       <!-- End:: Top Rated Products Section -->
 
-      <!-- Start:: Offer Pannels Section --> 
+      <!-- Start:: Offer Pannels Section -->
       <div class="container-xl py-5">
         <LargeOfferPannel
           data-aos-once="false"
@@ -61,7 +61,7 @@
           :offerData="thirdOffer"
         />
       </div>
-      <!-- End:: Offer Pannels Section --> 
+      <!-- End:: Offer Pannels Section -->
 
       <!-- Start:: Most Ordered Products Section -->
       <ProductsSection
@@ -70,7 +70,7 @@
       />
       <!-- End:: Most Ordered Products Section -->
 
-      <!-- Start:: Offer Pannels Section --> 
+      <!-- Start:: Offer Pannels Section -->
       <div class="container-xl py-5">
         <LargeOfferPannel
           data-aos-once="false"
@@ -80,7 +80,7 @@
           :offerData="fourthOffer"
         />
       </div>
-      <!-- End:: Offer Pannels Section --> 
+      <!-- End:: Offer Pannels Section -->
 
       <!-- Start:: New Arrival Products Section -->
       <ProductsSection
@@ -109,27 +109,17 @@ export default {
 
   head() {
     return {
-      title: this.$t("meta.home"),
+      title: "Home",
       meta: [
         {
           hid: "title",
           name: "title",
-          content: this.$t("meta.home"),
+          content: "Home",
         },
         {
           hid: "og:title",
           property: "og:title",
-          content: this.$t("meta.home"),
-        },
-        {
-          hid: "description",
-          name: "description",
-          content: this.$t("meta.desc"),
-        },
-        {
-          hid: "og:description",
-          name: "og:description",
-          content: this.$t("meta.desc"),
+          content: "Home",
         },
       ],
     };

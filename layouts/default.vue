@@ -36,5 +36,11 @@ export default {
     TheNavbar,
     TheFooter,
   },
+
+  mounted() {
+    // Start:: Fire Mutation Update Store Token Value To Fix SSR Bug
+    this.$store.commit('auth/updateStateToken', window.localStorage.getItem("outfit_website_user_token"));
+    // End:: Fire Mutation Update Store Token Value To Fix SSR Bug
+  },
 }
 </script>

@@ -4,6 +4,7 @@
     <h2 class="form_title">{{ $t('TITLES.verificationCode') }}</h2>
     <h4 class="form_subtitle">
       {{ $t('TITLES.verificationCodeSentTo') }}
+      <br/>
       +20 1018930494
     </h4>
     <div class="edit_phone_route_wrapper">
@@ -49,8 +50,8 @@ export default {
   transition: {
     name: 'fadeInUp',
     mode: 'out-in'
-  },  
-  
+  },
+
   head() {
     return {
       title: 'Verification Code',
@@ -63,20 +64,20 @@ export default {
       isWaitingRequest: false,
       // End:: Loader Contrle Data
 
-      // Start:: Requist Data
+      // Start:: Request Data
       data: {
         verificationCode: null,
       },
-      // End:: Requist Data
+      // End:: Request Data
     }
   },
 
   computed: {
-    // Start:: Verificatio Type
+    // Start:: Verification Type
     verificationType() {
       return this.$route.params.type;
     },
-    // End:: Verificatio Type
+    // End:: Verification Type
   },
 
   methods: {
