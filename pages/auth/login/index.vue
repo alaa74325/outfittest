@@ -4,7 +4,7 @@
     <h2 class="form_title">{{ $t('TITLES.welcomeBack') }}</h2>
     <!-- End:: Form Title -->
 
-    <h2> TOKEN:: {{userToken}} </h2>
+    <h2> TOKEN:: {{authedUserData.token}} </h2>
 
     <!-- Start:: Form -->
     <form @submit.prevent="validateFormInputs">
@@ -91,7 +91,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      userToken: 'auth/testToken',
+      authedUserData: 'auth/authedUserData',
     }),
   },
 

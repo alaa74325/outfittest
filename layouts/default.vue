@@ -38,9 +38,11 @@ export default {
   },
 
   mounted() {
-    // Start:: Fire Mutation Update Store Token Value To Fix SSR Bug
-    this.$store.commit('auth/updateStateToken', window.localStorage.getItem("outfit_website_user_token"));
-    // End:: Fire Mutation Update Store Token Value To Fix SSR Bug
+    // Start:: Fire Mutation Update Store Auth Values To Fix SSR Bug
+    this.$store.commit('auth/updateStateAuthValues', {
+      token: window.localStorage.getItem("outfit_website_user_token"),
+    });
+    // End:: Fire Mutation Update Store Auth Values To Fix SSR Bug
   },
 }
 </script>
