@@ -36,7 +36,8 @@ export default {
     verificationCode: "رمز التحقق",
     verificationCodeSentTo: "تم إرسال رمز التحقق إلي",
     editPhone: 'تعديل رقم الهاتف',
-    resetPassword: "إعادة تعيين كلمة المرور"
+    resetPassword: "إعادة تعيين كلمة المرور",
+    createAccount: "إنشاء حساب جديد"
   },
 
   BUTTONS: {
@@ -44,6 +45,7 @@ export default {
     showAll: '{sectionName}كل',
     subscribe: 'إشترك',
     singIn: 'تسجيل دخول',
+    register: 'إنشاء حساب',
     forgetPassword: 'هل نسيت كلمة المرور؟',
     registerRoute: 'لست عضو؟ <span> سجل الآن </span>',
     loginRoute: 'لديك حساب بالفعل؟ <span> تسجيل دخول </span>',
@@ -59,10 +61,14 @@ export default {
       emailOrPhone: 'البريد الإلكتروني او رقم الهاتف',
       password: 'كلمة المرور',
       confirmPassword: 'تأكيد كلمة المرور',
-      phone: 'رقم الهاتف'
+      phone: 'رقم الهاتف',
+      email: "البريد الإلكتروني",
+      fullName: "الإسم بالكامل",
     },
     Validation: {
       emailOrPhone: "حقل البريد الإلكتروني او رقم الهاتف مطلوب",
+      email: "حقل البريد الإلكتروني مطلوب",
+      name: "حقل الإسم الإلكتروني مطلوب",
       phone: "حقل رقم الهاتف مطلوب",
       password: "حقل كلمة المرور",
       passwordLength: "حقل كلمة المرور يجب ان يكون 6 خانات علي الأقل",

@@ -104,6 +104,8 @@ export default {
       setTimeout(() => {
         if (this.verificationType == "verify-contact-method") {
           this.$router.replace("/auth/reset-password");
+        } else if (this.verificationType == "verify-account") {
+          this.$router.replace("/");
         }
       }, 1500);
     },
