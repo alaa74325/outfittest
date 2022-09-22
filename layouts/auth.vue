@@ -47,32 +47,6 @@ export default {
   position: relative;
   height: 100vh;
   @include flexCenterAlignment;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 90px;
-    height: 180px;
-    background-image: url("../assets/media/shapes/dottedPattern.svg");
-    background-size: 100%;
-  }
-
-  &::before {
-    top: 80px;
-    left: 65px;
-    animation: vertical_movement 1.7s linear infinite;
-    animation-direction: alternate;
-  }
-
-    &::after {
-    bottom: 20px;
-    right: 150px;
-    transform: translateY(0);
-    animation: horizontal_movement 2s linear infinite;
-    animation-direction: alternate;
-  }
 }
 
 // START:: ANIMATIONS
@@ -95,30 +69,4 @@ export default {
   }
 };
 
-@media (max-width: 850px) {
-  .auth_layout {
-  position: relative;
-  height: 100vh;
-  background: linear-gradient(to bottom, #0C4384, #4B86DD);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &::before,
-  &::after {
-    width: 60px;
-    height: 120px;
-  }
-
-  &::before {
-    top: 70px;
-    left: 50px;
-  }
-
-    &::after {
-    bottom: 0;
-    right: 50px;
-  }
-}
-}
 </style>

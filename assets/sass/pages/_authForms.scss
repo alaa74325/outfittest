@@ -53,3 +53,43 @@
     }
   }
 }
+
+@media (max-width: 850px) {
+  .auth_form_wrapper {
+    .form_title {
+      font-size: 28px;
+    }
+    
+    .form_subtitle {
+      color: var(--light_gray_clr);
+      font-size: 18px;
+      text-align: center;
+    }
+  
+    .edit_phone_route_wrapper {
+      @include flexCenterAlignment;
+      a {
+        color: var(--main_theme_clr);
+        font-size: 16px;
+        text-decoration: underline;
+      }
+    }
+  
+    form {
+      margin-top: 30px;
+      .forget_password_route_wrapper {
+        @include flexEndAlignment;
+        .forget_password_route {
+          margin-block: 10px 20px;
+          color: var(--theme_text_clr);
+          font-size: 16px;
+        }
+      }
+      .auth_route_wrapper {
+        a {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

@@ -40,6 +40,11 @@ export default {
   name: "Authentication",
 
   layout: "auth",
+
+  transition: {
+    name: 'fadeInUp',
+    mode: 'out-in'
+  },
 }
 </script>
 
@@ -99,6 +104,31 @@ export default {
         width: 50%;
         height: 100%;
         @include flexCenterAlignment;
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .auth_forms_wrapper {
+    width: 95%;
+    .logo_wrapper {
+      margin-bottom: 15px;
+      img {
+        width: 60%;
+      }
+    }
+
+    .forms_card_wrapper {
+      min-height: 550px;
+      .inner_content_wrapper {
+        .forms_card_image_wrapper {
+          display: none;
+        }
+        .forms_content {
+          width: 100%;
+          padding: 10px 15px;
+        }
       }
     }
   }
