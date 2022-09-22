@@ -90,6 +90,8 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
 
+    'nuxt-izitoast',
+
     // ===== END:: PROJECT MODULES
     [
       'nuxt-i18n',
@@ -128,6 +130,13 @@ export default {
       '@/assets/sass/abstracts/_mixins.scss',
       '@/assets/sass/abstracts/_variables.scss',
     ],
+  },
+
+  izitoast: {
+    position: 'bottomCenter',
+    transitionIn: 'bounceInTop',
+    transitionOut: 'fadeOutBottom',
+    timeout: 2000,
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

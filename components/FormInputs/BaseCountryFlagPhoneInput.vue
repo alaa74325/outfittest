@@ -1,6 +1,6 @@
 <template>
   <div :class="col ? `col-md-${col}` : ''">
-    <div class="flagged_phone_content_wrapper">
+    <div class="flagged_phone_content_wrapper" v-if="selectedCountry">
       <!-- Start:: Flag & Country Key -->
       <div class="wrapper position-relative">
         <!-- ********** Start:: Selected Flag & Key ********** -->
@@ -8,7 +8,6 @@
           type="button"
           class="selected_flag_wrapper"
           @click.stop="toggleCountriesKeysMenu"
-          v-if="selectedCountry"
         >
           <span class="selected_country_key">
             {{ selectedCountry.key }}
@@ -25,16 +24,13 @@
 
         <!-- ********** Start:: Flags & Keys List ********** -->
         <transition name="fadeInUp">
-          <ul class="keys_and_flags_list" v-if="countriesKeysMenuIsOpen">
+          <ul class="keys_and_flags_list p-0" v-if="countriesKeysMenuIsOpen">
             <li
               v-for="item in countriesKeys"
               :key="item.id"
               @click.stop="selectKey(item)"
               class="list_item"
             >
-              <span class="country_key">
-                {{ item.key }}
-              </span>
               <img
                 class="country_flg"
                 :src="item.flag"
@@ -42,6 +38,9 @@
                 width="30"
                 height="22"
               />
+              <span class="country_key">
+                {{ item.key }}
+              </span>
             </li>
           </ul>
         </transition>
@@ -164,14 +163,14 @@ export default {
     getCountryeKeys() {
       this.$axios({
         method: "GET",
-        url: `countries_without_pagination`,
+        url: `countries`,
       })
         .then((res) => {
           this.countriesKeys = res.data.data.map((item) => {
             return {
               id: item.id,
-              flag: item.icon,
-              key: item.phone_code,
+              flag: item.flag,
+              key: item.key,
             };
           });
 
@@ -196,9 +195,11 @@ export default {
   created() {
     // Start:: Fire Methods
     this.getCountryeKeys();
-    window.addEventListener("click", () => {
-        this.countriesKeysMenuIsOpen = false;
-    });
+    if(process.client) {
+      window.addEventListener("click", () => {
+          this.countriesKeysMenuIsOpen = false;
+      });
+    }
     // End:: Fire Methods
   },
 };

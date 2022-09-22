@@ -22,7 +22,7 @@ label.outside_lable {
 }
 
 .input_wrapper {
-  margin-block: 12px;
+  margin-block: 10px;
   position: relative;
   .validationErr {
     color: #ff5252;
@@ -53,8 +53,8 @@ label.outside_lable {
 }
 
 .v-input {
-  padding: 0;
-  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
   &.v-input--switch {
     .v-input__slot {
       background-color: unset !important;
@@ -182,6 +182,13 @@ label.outside_lable {
             opacity: 1;
           }
         }
+        .v-input__append-inner {
+          .v-input__icon {
+            .v-icon {
+              color: var(--main_theme_clr) !important;
+            }
+          }
+        }
         .v-select__slot {
           .v-label {
             color: var(--main_theme_clr);
@@ -260,7 +267,7 @@ label.outside_lable {
 }
 
 .input_wrapper {
-  margin-block: 12px;
+  margin-block: 10px;
   &.color_picker {
     position: relative;
     margin: 0;
@@ -463,7 +470,6 @@ label.outside_lable {
 
 .flagged_phone_content_wrapper {
   @include flexStartAlignment;
-  align-items: flex-start;
   column-gap: 8px;
   .selected_flag_wrapper {
     @include flexEndAlignment;
@@ -471,13 +477,14 @@ label.outside_lable {
     column-gap: 5px;
     width: 90px;
     height: 100%;
-    padding: 13px 5px;
-    background-color: var(--inputBg);
-    border: 1px solid var(--main_theme_clr);
+    padding: 15px 5px;
+    margin-bottom: 5px;
+    background-color: var(--white_clr);
+    border: 1px solid var(--border_clr);
     border-radius: 10px;
     .selected_country_key {
       direction: ltr;
-      color: var(--lightGray);
+      color: var(--light_gray_clr);
       font-size: 15px;
       font-family: $medium_font;
     }
@@ -492,16 +499,19 @@ label.outside_lable {
     left: 0;
     direction: ltr;
     width: calc(100px - 10px);
-    background-color: var(--inputBg);
-    border: 1px solid var(--inputBg);
-    border-radius: 10px;
-    @include midShadow;
+    background-color: var(--white_clr);
+    border: 1px solid var(--border_clr);
+    border-radius: 6px;
+    @include simpleShadow;
     overflow: hidden;
     z-index: 10;
     max-height: 300px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
     .list_item {
-      @include flexEndAlignment;
+      @include flexStartAlignment;
       column-gap: 5px;
       padding: 10px 6px;
       transition: all 0.4s linear;

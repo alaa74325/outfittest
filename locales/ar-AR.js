@@ -18,39 +18,47 @@ export default {
     profile: 'الملف الشخصي',
     wishlist: 'المفضلة',
     cart: 'عربة التسوق',
-		categories: "الأقسام",
-		salesOfTheDay: "عروض اليوم",
-		flashSales: "عروض مفاجأة",
-    sold: "تم بيع",
-    topRated: "الأعلي تقييماً",
-    mostOrdered: "الأكثر طلباً",
-    newArrivals: "الأحدث وصولاً",
-    companyInfo: "معلومات عن الشركة",
-    helpAndSupport: "المساعدة و الدعم",
-    news: "احدث الأخبار",
-    downloadApp: "حمل التطبيق الآن",
-    login: "تسجيل دخول"
+    categories: 'الأقسام',
+    salesOfTheDay: 'عروض اليوم',
+    flashSales: 'عروض مفاجأة',
+    sold: 'تم بيع',
+    topRated: 'الأعلي تقييماً',
+    mostOrdered: 'الأكثر طلباً',
+    newArrivals: 'الأحدث وصولاً',
+    companyInfo: 'معلومات عن الشركة',
+    helpAndSupport: 'المساعدة و الدعم',
+    news: 'احدث الأخبار',
+    downloadApp: 'حمل التطبيق الآن',
+    login: 'تسجيل دخول',
+    welcomeBack: 'مرحبا بعودتك',
+    passwordReset: "إعادة تعيين كلمة المرور",
+    enterYourPhoneNumber: "رجاء ادخال رقم هاتفك لإعادة تعيين كلمة المرور"
   },
 
-	BUTTONS: {
-		ShopNow: "تسوق الآن",
-    showAll: "{sectionName}كل",
-    subscribe: "إشترك",
-    singIn: "تسجيل دخول",
-    forgetPassword: "هل نسيت كلمة المرور؟",
-    registerRoute: "لست عضو؟ <span> سجل الآن </span>"
-	},
-
-  PLACEHOLDERS: {
-    yourEmailHere: "ادخل بريدك الإلكتروني",
-    emailOrPhone: "البريد الإلكتروني او رقم الهاتف",
-    password: "الرقم السري"
+  BUTTONS: {
+    ShopNow: 'تسوق الآن',
+    showAll: '{sectionName}كل',
+    subscribe: 'إشترك',
+    singIn: 'تسجيل دخول',
+    forgetPassword: 'هل نسيت كلمة المرور؟',
+    registerRoute: 'لست عضو؟ <span> سجل الآن </span>',
+    loginRoute: 'لديك حساب بالفعل؟ <span> تسجيل دخول </span>',
+    send: 'إرسال'
   },
 
-
-
-
-
+  FORMS: {
+    Placeholders: {
+      yourEmailHere: 'ادخل بريدك الإلكتروني',
+      emailOrPhone: 'البريد الإلكتروني او رقم الهاتف',
+      password: 'كلمة المرور',
+      phone: 'رقم الهاتف'
+    },
+    Validation: {
+      emailOrPhone: "حقل البريد الإلكتروني او رقم الهاتف مطلوب",
+      phone: "حقل رقم الهاتف مطلوب",
+      password: "حقل كلمة المرور"
+    },
+  },
 
 
 

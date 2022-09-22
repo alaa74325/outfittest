@@ -14,14 +14,17 @@
           </nuxt-link>
 
           <div class="powered_by_content">
-            Copyright &copy; {{currentYear}} All Rights Reserved | Made With
+            Copyright &copy; {{ currentYear }} All Rights Reserved | Made With
             <img
               src="@/assets/media/icons/ui_icons/heart.svg"
               alt="heart icon"
-              width='25'
-              height='25'
+              width="25"
+              height="25"
             />
-            By <a href="https://alalmiyalhura.com/" target="_blank">Alalmiya Alhura</a>
+            By
+            <a href="https://alalmiyalhura.com/" target="_blank"
+              >Alalmiya Alhura</a
+            >
           </div>
         </div>
         <!-- End:: Logo Wrapper -->
@@ -29,7 +32,7 @@
         <!-- Start:: Routes Wrapper -->
         <div class="col-md-5 d-flex justify-content-around">
           <div class="routes_wrapper">
-            <h5 class="routes_title">{{$t("TITLES.companyInfo")}}</h5>
+            <h5 class="routes_title">{{ $t('TITLES.companyInfo') }}</h5>
             <ul class="footer_routes_list">
               <li class="footer_route">
                 <nuxt-link to="/about">
@@ -58,7 +61,7 @@
           </div>
 
           <div class="routes_wrapper">
-            <h5 class="routes_title">{{$t("TITLES.helpAndSupport")}}</h5>
+            <h5 class="routes_title">{{ $t('TITLES.helpAndSupport') }}</h5>
             <ul class="footer_routes_list">
               <li class="footer_route">
                 <nuxt-link to="/terms">
@@ -89,46 +92,48 @@
         <!-- End:: Routes Wrapper -->
 
         <!-- Start:: Subscribe & Download -->
-        <div
-          class="col-md-4"
-        >
-            <div class="subscribe_form">
-              <div class="form_title">
-                {{$t("TITLES.news")}}
-              </div>
-              <form class="subscribe_form_wrapper">
-                <input type="text" class="form-control" :placeholder="$t('PLACEHOLDERS.yourEmailHere')" />
-                <button class="submit_btn">
-                  {{$t("BUTTONS.subscribe")}}
-                </button>
-              </form>
+        <div class="col-md-4">
+          <div class="subscribe_form">
+            <div class="form_title">
+              {{ $t('TITLES.news') }}
+            </div>
+            <form class="subscribe_form_wrapper">
+              <input
+                type="text"
+                class="form-control"
+                :placeholder="$t('FORMS.Placeholders.yourEmailHere')"
+              />
+              <button class="submit_btn">
+                {{ $t('BUTTONS.subscribe') }}
+              </button>
+            </form>
+          </div>
+
+          <div class="download_app_section_wrapper">
+            <div class="download_section_title">
+              {{ $t('TITLES.downloadApp') }}
             </div>
 
-            <div class="download_app_section_wrapper">
-              <div class="download_section_title">
-                {{$t("TITLES.downloadApp")}}
-              </div>
+            <div class="download_links_wrapper">
+              <a href="#" target="_blank">
+                <img
+                  src="~/assets/media/icons/ui_icons/apple.svg"
+                  width="40"
+                  height="40"
+                  alt="Logo"
+                />
+              </a>
 
-              <div class="download_links_wrapper">
-                <a href="#" target="_blank">
-                  <img
-                    src="~/assets/media/icons/ui_icons/apple.svg"
-                    width="40"
-                    height="40"
-                    alt="Logo"
-                  />
-                </a>
-
-                <a href="#" target="_blank">
-                  <img
-                    src="~/assets/media/icons/ui_icons/android.svg"
-                    width="40"
-                    height="40"
-                    alt="Logo"
-                  />
-                </a>
-              </div>
+              <a href="#" target="_blank">
+                <img
+                  src="~/assets/media/icons/ui_icons/android.svg"
+                  width="40"
+                  height="40"
+                  alt="Logo"
+                />
+              </a>
             </div>
+          </div>
         </div>
         <!-- End:: Subscribe & Download -->
       </div>

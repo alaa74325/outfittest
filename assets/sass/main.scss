@@ -7,22 +7,29 @@
 @import "./base/global";
 @import "./base/typography";
 // End:: Importing Base Style Files
+
 // Start:: Importing Components Style Files
 // ********** Start:: Importing Structure Components Styles ********** //
 @import "./components/structure/theNavbar";
 @import "./components/structure/theFooter";
 @import "./components/FormInputs/input_wrapper";
 // ********** End:: Importing Structure Components Styles ********** //
+
 // ********** Start:: Importing Carousels Components Styles ********** //
 @import "./components/carousels/heroCarousel";
 // ********** End:: Importing Carousels Components Styles ********** //
 // End:: Importing Components Style Files
+
 // Start:: Importing Layouts Style Files
 // End:: Importing Layouts Style Files
+
 // Start:: Importing Pages Style Files
+@import "./pages/authForms";
 // End:: Importing Pages Style Files
+
 // Start:: Importing Themes Style Files
 // End:: Importing Themes Style Files
+
 // Start:: Importing Vendors Style Files
 @import "./vendors/bootstrap";
 @import "./mainRtl.scss";

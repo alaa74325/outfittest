@@ -1,16 +1,16 @@
 <template>
-  <div class="login_form_wrapper">
+  <div class="auth_form_wrapper">
     <!-- Start:: Form Title -->
-    <h2 class="form_title"> Welcome Back! </h2>
+    <h2 class="form_title">{{ $t('TITLES.welcomeBack') }}</h2>
     <!-- End:: Form Title -->
 
     <!-- Start:: Form -->
-    <form class="mt-5" @submit.prevent="validateFormInputs">
+    <form @submit.prevent="validateFormInputs">
       <div class="row justify-content-center">
         <!-- Start:: Email Or Phone Input -->
         <base-input
           type="text"
-          :placeholder="$t('PLACEHOLDERS.emailOrPhone')"
+          :placeholder="$t('FORMS.Placeholders.emailOrPhone')"
           v-model="data.emailOrPhone"
         />
         <!-- End:: Email Or Phone Input -->
@@ -18,23 +18,27 @@
         <!-- Start:: Password Input -->
         <base-input
           type="password"
-          :placeholder="$t('PLACEHOLDERS.password')"
+          :placeholder="$t('FORMS.Placeholders.password')"
           v-model="data.password"
         />
         <!-- End:: Password Input -->
 
         <!-- Start:: Forget Password Route -->
-        <nuxt-link to="/auth/phone-to-reset-password" class="forget_password_route">
-          {{$t("BUTTONS.forgetPassword")}}
-        </nuxt-link>
+        <div class="forget_password_route_wrapper">
+          <nuxt-link
+            to="/auth/phone-to-reset-password"
+            class="forget_password_route"
+          >
+            {{ $t('BUTTONS.forgetPassword') }}
+          </nuxt-link>
+        </div>
         <!-- End:: Forget Password Route -->
       </div>
 
-      <div class="btn_wrapper mb-3 d-flex justify-content-center">
+      <div class="btn_wrapper mb-3">
         <base-button
           :btnText="$t('BUTTONS.singIn')"
           :isLoading="isWaitingRequest"
-          @click="testIzI"
         />
       </div>
 
@@ -53,12 +57,12 @@
 
 <script>
 export default {
-  name: "login",
+  name: 'login',
 
   head() {
     return {
-      title: "Login",
-    };
+      title: 'Login',
+    }
   },
 
   data() {
@@ -67,60 +71,42 @@ export default {
       isWaitingRequest: false,
       // End:: Loader Contrle Data
 
+      // Start:: Requist Data
       data: {
         emailOrPhone: null,
         password: null,
       },
+      // End:: Requist Data
     }
   },
 
   methods: {
+    // Start:: Validate Form
     validateFormInputs() {
-      this.$notification.open({
-        class: 'error_toast',
-        duration: '2',
-        message: 'Notification Title',
-        icon: <i class="fa-solid fa-ban"></i>,
-        placement: 'bottomRight',
-        onClick: () => {
-          this.$notification.destroy()
-        },
-      });
+      if (!this.data.emailOrPhone) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.emailOrPhone'),
+        })
+        return
+      } else if (!this.data.password) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.password'),
+        })
+        return;
+      } else {
+        this.submitForm();
+      }
     },
+    // End:: Validate Form
+
+    // Start:: Submit Form
+    submitForm() {
+      this.isWaitingRequest = true;
+      setTimeout(() => {
+        this.$router.replace("/");
+      }, 1500);
+    },
+    // End:: Submit Form
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.login_form_wrapper {
-  .form_title {
-    text-align: center;
-    color: var(--theme_text_clr);
-    font-style: italic;
-    font-size: 40px;
-    font-family: $medium_font;
-  }
-
-  form {
-    .forget_password_route {
-      margin-block: 10px 20px;
-      color: var(--theme_text_clr);
-      font-size: 16px;
-      text-align: end;
-    }
-    .auth_route_wrapper {
-      margin-block: 20px;
-      @include flexCenterAlignment;
-      a {
-        @include flexCenterAlignment;
-        column-gap: 10px;
-        color: var(--light_gray_clr);
-        font-size: 18px;
-        span {
-          color: var(--main_theme_clr);
-        }
-      }
-    }
-  }
-}
-</style>

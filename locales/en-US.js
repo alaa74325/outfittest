@@ -18,48 +18,47 @@ export default {
     profile: 'Profile',
     wishlist: 'Wishlist',
     cart: 'Cart',
-		categories: 'Shop By Category',
-		salesOfTheDay: "Deals Of The Day",
-		flashSales: "Flash Sales",
-    sold: "Sold",
-    topRated: "Top Rated",
-    mostOrdered: "Most Ordered",
-    newArrivals: "New Arrivals",
-    companyInfo: "Company Info",
-    helpAndSupport: "Help And Support",
-    news: "Newsletter",
-    downloadApp: "Download The App",
-    login: "Login"
+    categories: 'Shop By Category',
+    salesOfTheDay: 'Deals Of The Day',
+    flashSales: 'Flash Sales',
+    sold: 'Sold',
+    topRated: 'Top Rated',
+    mostOrdered: 'Most Ordered',
+    newArrivals: 'New Arrivals',
+    companyInfo: 'Company Info',
+    helpAndSupport: 'Help And Support',
+    news: 'Newsletter',
+    downloadApp: 'Download The App',
+    login: 'Login',
+    welcomeBack: 'Welcome Back!',
+    passwordReset: "Reset Password",
+    enterYourPhoneNumber: "Please Enter Your Phone Number Below To Recovery Your Password."
   },
 
-	BUTTONS: {
-		ShopNow: "Shop Now",
-    showAll: "All {sectionName}",
-    subscribe: "Subscribe",
-    singIn: "Sing In",
-    forgetPassword: "Forget Password?",
-    registerRoute: "Not A Member? <span> Join Now </span>"
-	},
-
-  PLACEHOLDERS: {
-    yourEmailHere: "Your Email Here",
-    emailOrPhone: "Email Or Phone Number",
-    password: "Password"
+  BUTTONS: {
+    ShopNow: 'Shop Now',
+    showAll: 'All {sectionName}',
+    subscribe: 'Subscribe',
+    singIn: 'Sing In',
+    forgetPassword: 'Forget Password?',
+    registerRoute: 'Not A Member? <span> Join Now </span>',
+    loginRoute: 'Alredy Have An Account? <span> Login </span>',
+    send: 'Send'
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  FORMS: {
+    Placeholders: {
+      yourEmailHere: 'Your Email Here',
+      emailOrPhone: 'Email Or Phone Number',
+      password: 'Password',
+      phone: 'Phone Number'
+    },
+    Validation: {
+      emailOrPhone: "Email Or Phone Input Is Required",
+      phone: " Phone Number Input Is Required",
+      password: "Password Input Is Required"
+    },
+  },
 
 
 
