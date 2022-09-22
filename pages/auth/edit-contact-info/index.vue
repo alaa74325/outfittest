@@ -1,43 +1,26 @@
 <template>
-  <div class="auth_form_wrapper">
+    <div class="auth_form_wrapper">
     <!-- Start:: Form Title -->
-    <h2 class="form_title">{{ $t('TITLES.welcomeBack') }}</h2>
+    <h2 class="form_title">{{ $t('TITLES.editPhone') }}</h2>
+    <h4 class="form_subtitle">{{ $t('TITLES.enterYourPhoneNumber') }}</h4>
     <!-- End:: Form Title -->
 
     <!-- Start:: Form -->
     <form @submit.prevent="validateFormInputs">
       <div class="row justify-content-center">
-        <!-- Start:: Email Or Phone Input -->
-        <base-input
-          type="text"
-          :placeholder="$t('FORMS.Placeholders.emailOrPhone')"
-          v-model="data.emailOrPhone"
+        <!-- Start Phone -->
+        <base-country-flag-phone-input
+          @changeKey="phonecodeChanged"
+          :placeholder="$t('FORMS.Placeholders.phone')"
+          :preSelectedPhoneCode="data.phoneCode"
+          v-model="data.phone"
         />
-        <!-- End:: Email Or Phone Input -->
-
-        <!-- Start:: Password Input -->
-        <base-input
-          type="password"
-          :placeholder="$t('FORMS.Placeholders.password')"
-          v-model="data.password"
-        />
-        <!-- End:: Password Input -->
-
-        <!-- Start:: Forget Password Route -->
-        <div class="forget_password_route_wrapper">
-          <nuxt-link
-            to="/auth/phone-to-reset-password"
-            class="forget_password_route"
-          >
-            {{ $t('BUTTONS.forgetPassword') }}
-          </nuxt-link>
-        </div>
-        <!-- End:: Forget Password Route -->
+        <!-- End Phone -->
       </div>
 
       <div class="btn_wrapper mb-3">
         <base-button
-          :btnText="$t('BUTTONS.singIn')"
+          :btnText="$t('BUTTONS.send')"
           :isLoading="isWaitingRequest"
         />
       </div>
@@ -57,20 +40,20 @@
 
 <script>
 export default {
-  name: 'login',
+  name: "EditContactInfo",
 
   transition: {
     name: 'fadeInUp',
     mode: 'out-in'
   },
-
+  
   head() {
     return {
-      title: 'Login',
+      title: 'Edit Phone Number',
     }
   },
 
-  data() {
+    data() {
     return {
       // Start:: Loader Contrle Data
       isWaitingRequest: false,
@@ -78,26 +61,27 @@ export default {
 
       // Start:: Requist Data
       data: {
-        emailOrPhone: null,
-        password: null,
+        phoneCode: null,
+        phone: null,
       },
       // End:: Requist Data
     }
   },
 
   methods: {
+    // Start:: Change Selected Phonecode
+    phonecodeChanged(data) {
+      this.data.phoneCode = data;
+    },
+    // End:: Change Selected Phonecode
+
     // Start:: Validate Form
     validateFormInputs() {
-      if (!this.data.emailOrPhone) {
+      if (!this.data.phone) {
         this.$izitoast.error({
-          message: this.$t('FORMS.Validation.emailOrPhone'),
+          message: this.$t('FORMS.Validation.phone'),
         })
         return
-      } else if (!this.data.password) {
-        this.$izitoast.error({
-          message: this.$t('FORMS.Validation.password'),
-        })
-        return;
       } else {
         this.submitForm();
       }
@@ -108,7 +92,7 @@ export default {
     submitForm() {
       this.isWaitingRequest = true;
       setTimeout(() => {
-        this.$router.replace("/");
+        this.$router.replace("/auth/verification-code/verify-contact-method");
       }, 1500);
     },
     // End:: Submit Form

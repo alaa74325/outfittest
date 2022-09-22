@@ -32,7 +32,10 @@ export default {
     login: 'تسجيل دخول',
     welcomeBack: 'مرحبا بعودتك',
     passwordReset: "إعادة تعيين كلمة المرور",
-    enterYourPhoneNumber: "رجاء ادخال رقم هاتفك لإعادة تعيين كلمة المرور"
+    enterYourPhoneNumber: "رجاء ادخال رقم هاتفك لإعادة تعيين كلمة المرور",
+    verificationCode: "رمز التحقق",
+    verificationCodeSentTo: "تم إرسال رمز التحقق إلي",
+    editPhone: 'تعديل رقم الهاتف',
   },
 
   BUTTONS: {
@@ -43,7 +46,9 @@ export default {
     forgetPassword: 'هل نسيت كلمة المرور؟',
     registerRoute: 'لست عضو؟ <span> سجل الآن </span>',
     loginRoute: 'لديك حساب بالفعل؟ <span> تسجيل دخول </span>',
-    send: 'إرسال'
+    send: 'إرسال',
+    editPhone: 'تعديل رقم الهاتف',
+    verify: 'تحقق'
   },
 
   FORMS: {

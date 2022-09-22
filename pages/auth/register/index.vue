@@ -8,6 +8,11 @@
 export default {
   name: "Register",
 
+  transition: {
+    name: 'fadeInUp',
+    mode: 'out-in'
+  },
+
   head() {
     return {
       title: "Register",

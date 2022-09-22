@@ -32,7 +32,10 @@ export default {
     login: 'Login',
     welcomeBack: 'Welcome Back!',
     passwordReset: "Reset Password",
-    enterYourPhoneNumber: "Please Enter Your Phone Number Below To Recovery Your Password."
+    enterYourPhoneNumber: "Please Enter Your Phone Number Below To Recovery Your Password.",
+    verificationCode: "Verification Code",
+    verificationCodeSentTo: "Verificatio Code Has Been Sent To",
+    editPhone: 'Edit Phone Number',
   },
 
   BUTTONS: {
@@ -43,7 +46,9 @@ export default {
     forgetPassword: 'Forget Password?',
     registerRoute: 'Not A Member? <span> Join Now </span>',
     loginRoute: 'Alredy Have An Account? <span> Login </span>',
-    send: 'Send'
+    send: 'Send',
+    editPhone: 'Edit Phone Number',
+    verify: 'Verify'
   },
 
   FORMS: {

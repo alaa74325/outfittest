@@ -10,12 +10,11 @@
       <div class="row justify-content-center">
         <!-- Start Phone -->
         <base-country-flag-phone-input
-          @changeKey="phoneKeyChanged"
+          @changeKey="phonecodeChanged"
           :placeholder="$t('FORMS.Placeholders.phone')"
           :preSelectedPhoneCode="data.phoneCode"
           v-model="data.phone"
-        >
-        </base-country-flag-phone-input>
+        />
         <!-- End Phone -->
       </div>
 
@@ -42,6 +41,11 @@
 <script>
 export default {
   name: "PhoneToResetPasswprd",
+
+  transition: {
+    name: 'fadeInUp',
+    mode: 'out-in'
+  },
   
   head() {
     return {
@@ -65,9 +69,11 @@ export default {
   },
 
   methods: {
-    phoneKeyChanged(data) {
+    // Start:: Change Selected Phonecode
+    phonecodeChanged(data) {
       this.data.phoneCode = data;
     },
+    // End:: Change Selected Phonecode
 
     // Start:: Validate Form
     validateFormInputs() {
@@ -86,7 +92,7 @@ export default {
     submitForm() {
       this.isWaitingRequest = true;
       setTimeout(() => {
-        this.$router.replace("/");
+        this.$router.replace("/auth/verification-code/verify-contact-method");
       }, 1500);
     },
     // End:: Submit Form

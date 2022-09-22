@@ -1,43 +1,30 @@
 <template>
-  <div class="auth_form_wrapper">
+    <div class="auth_form_wrapper">
     <!-- Start:: Form Title -->
-    <h2 class="form_title">{{ $t('TITLES.welcomeBack') }}</h2>
+    <h2 class="form_title">{{ $t('TITLES.verificationCode') }}</h2>
+    <h4 class="form_subtitle">
+      {{ $t('TITLES.verificationCodeSentTo') }}
+      +20 1018930494
+    </h4>
+    <div class="edit_phone_route_wrapper">
+      <nuxt-link to="/auth/edit-contact-info"> {{$t("BUTTONS.editPhone")}} </nuxt-link>
+    </div>
     <!-- End:: Form Title -->
 
     <!-- Start:: Form -->
     <form @submit.prevent="validateFormInputs">
       <div class="row justify-content-center">
-        <!-- Start:: Email Or Phone Input -->
-        <base-input
-          type="text"
-          :placeholder="$t('FORMS.Placeholders.emailOrPhone')"
-          v-model="data.emailOrPhone"
+        <!-- Start:: Verification Code -->
+        <base-otp-input
+          otpLength="4"
+          v-model="data.verificationCode"
         />
-        <!-- End:: Email Or Phone Input -->
-
-        <!-- Start:: Password Input -->
-        <base-input
-          type="password"
-          :placeholder="$t('FORMS.Placeholders.password')"
-          v-model="data.password"
-        />
-        <!-- End:: Password Input -->
-
-        <!-- Start:: Forget Password Route -->
-        <div class="forget_password_route_wrapper">
-          <nuxt-link
-            to="/auth/phone-to-reset-password"
-            class="forget_password_route"
-          >
-            {{ $t('BUTTONS.forgetPassword') }}
-          </nuxt-link>
-        </div>
-        <!-- End:: Forget Password Route -->
+        <!-- End:: Verification Code -->
       </div>
 
       <div class="btn_wrapper mb-3">
         <base-button
-          :btnText="$t('BUTTONS.singIn')"
+          :btnText="$t('BUTTONS.verify')"
           :isLoading="isWaitingRequest"
         />
       </div>
@@ -57,16 +44,16 @@
 
 <script>
 export default {
-  name: 'login',
+  name: "VerificationCode",
 
   transition: {
     name: 'fadeInUp',
     mode: 'out-in'
-  },
-
+  },  
+  
   head() {
     return {
-      title: 'Login',
+      title: 'Verification Code',
     }
   },
 
@@ -78,26 +65,28 @@ export default {
 
       // Start:: Requist Data
       data: {
-        emailOrPhone: null,
-        password: null,
+        verificationCode: null,
       },
       // End:: Requist Data
     }
   },
 
+  computed: {
+    // Start:: Verificatio Type
+    verificationType() {
+      return this.$route.params.type;
+    },
+    // End:: Verificatio Type
+  },
+
   methods: {
     // Start:: Validate Form
     validateFormInputs() {
-      if (!this.data.emailOrPhone) {
+      if (!this.data.phone) {
         this.$izitoast.error({
-          message: this.$t('FORMS.Validation.emailOrPhone'),
+          message: this.$t('FORMS.Validation.phone'),
         })
         return
-      } else if (!this.data.password) {
-        this.$izitoast.error({
-          message: this.$t('FORMS.Validation.password'),
-        })
-        return;
       } else {
         this.submitForm();
       }

@@ -65,7 +65,7 @@ export default {
       display: block;
       width: 250%;
       height: 250%;
-      background-image: conic-gradient(transparent, transparent, var(--main_theme_clr));
+      background-image: conic-gradient(transparent, transparent, transparent, var(--main_theme_clr));
       animation: borderAnimation 4s linear infinite both;
     }
     &::after {
@@ -74,7 +74,7 @@ export default {
       display: block;
       width: 250%;
       height: 250%;
-      background-image: conic-gradient(transparent, transparent, var(--secondary_theme_clr));
+      background-image: conic-gradient(transparent, transparent, transparent, var(--secondary_theme_clr));
       animation: borderAnimation 4s linear infinite both;
       animation-delay: -2s;
     }

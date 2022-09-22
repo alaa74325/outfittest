@@ -1,6 +1,6 @@
 <template>
   <div :class="col ? `col-md-${col}` : ''">
-    <div class="input_wrapper" dir="ltr">
+    <div class="input_wrapper otp_wrapper" dir="ltr">
       <v-otp-input
         type="text"
         :length="otpLength"

@@ -9,8 +9,17 @@
   
   .form_subtitle {
     color: var(--light_gray_clr);
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
+  }
+
+  .edit_phone_route_wrapper {
+    @include flexCenterAlignment;
+    a {
+      color: var(--main_theme_clr);
+      font-size: 16px;
+      text-decoration: underline;
+    }
   }
 
   form {
