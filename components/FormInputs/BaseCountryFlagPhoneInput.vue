@@ -12,13 +12,13 @@
           <span class="selected_country_key">
             {{ selectedCountry.key }}
           </span>
-          <img
+          <!-- <img
             class="selected_country_flg"
             :src="selectedCountry.flag"
             alt="country flag"
             width="30"
             height="22"
-          />
+          /> -->
         </button>
         <!-- ********** End:: Selected Flag & Key ********** -->
 
@@ -31,13 +31,13 @@
               @click.stop="selectKey(item)"
               class="list_item"
             >
-              <img
+              <!-- <img
                 class="country_flg"
                 :src="item.flag"
                 alt="country flag"
                 width="30"
                 height="22"
-              />
+              /> -->
               <span class="country_key">
                 {{ item.key }}
               </span>
@@ -169,8 +169,8 @@ export default {
           this.countriesKeys = res.data.data.map((item) => {
             return {
               id: item.id,
-              flag: item.flag,
-              key: item.key,
+              // flag: item.flag,
+              key: item.phone_code,
             };
           });
 

@@ -483,10 +483,10 @@ label.outside_lable {
   @include flexStartAlignment;
   column-gap: 8px;
   .selected_flag_wrapper {
-    @include flexEndAlignment;
+    @include flexCenterAlignment;
     flex-direction: row-reverse;
     column-gap: 5px;
-    width: 90px;
+    width: 70px;
     height: 100%;
     padding: 15px 5px;
     margin-bottom: 5px;
@@ -509,7 +509,7 @@ label.outside_lable {
     top: 110%;
     left: 0;
     direction: ltr;
-    width: calc(100px - 10px);
+    width: 70px;
     background-color: var(--white_clr);
     border: 1px solid var(--border_clr);
     border-radius: 6px;
@@ -522,7 +522,7 @@ label.outside_lable {
       width: 0;
     }
     .list_item {
-      @include flexStartAlignment;
+      @include flexCenterAlignment;
       column-gap: 5px;
       padding: 10px 6px;
       transition: all 0.4s linear;
@@ -543,7 +543,7 @@ label.outside_lable {
     }
   }
   .input_wrapper {
-    width: calc(100% - 90px);
+    width: calc(100% - 70px);
   }
 }
 
