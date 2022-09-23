@@ -39,8 +39,8 @@ export default {
 <style lang="scss" scoped>
 .large_offer_pannel_wrapper {
   position: relative;
-  width: 600px;
-  height: 400px;
+  width: 100%;
+  height: 450px;
   border-radius: 40px;
   overflow: hidden;
 
