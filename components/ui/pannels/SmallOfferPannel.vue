@@ -35,8 +35,8 @@ export default {
 <style lang="scss" scoped>
 .small_offer_pannel_wrapper {
   position: relative;
-  width: 600;
-  height: 600;
+  width: 600px;
+  height: 600px;
   border-radius: 40px;
   overflow: hidden;
 
@@ -68,6 +68,27 @@ export default {
       font-size: 22px;
       text-decoration: underline;
       text-transform: uppercase;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .small_offer_pannel_wrapper {
+    position: relative;
+    width: 100%;
+    height: 380px;
+
+    .pannel_overlay {
+      padding: 30px 15px;
+
+      .pannel_title {
+        font-size: 40px;
+        text-align: center;
+      }
+
+      .pannel_route {
+        font-size: 18px;
+      }
     }
   }
 }

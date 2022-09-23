@@ -10,7 +10,7 @@
       <!-- Start:: Categories -->
       <div class="row justify-content-center">
         <div
-          class="col-md-3 col-xl-2"
+          class="col-6 col-md-3 col-xl-2"
           v-for="(item,index) in dummyCats"
           :key="item.id"
           data-aos-once="false"
@@ -124,8 +124,8 @@ export default {
 }
 
 @media (max-width: 850px) {
-  .services_section_content_wrapper {
-    padding-block: 20px;
+  .categories_section_content_wrapper {
+    padding-block: 25px;
     padding-inline: 15px;
   }
 }

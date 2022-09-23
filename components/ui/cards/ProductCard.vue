@@ -206,4 +206,49 @@ export default {
   }
   // ********** End:: Product Info **********
 }
+
+@media (max-width: 850px) {
+  .product_card_wrapper {
+    // ********** Start:: Product Image **********
+    .card_image_wrapper {
+      width: 100%;
+      height: 220px;
+
+      .wishlist_btn {
+        bottom: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+    // ********** End:: Product Image **********
+
+    // ********** Start:: Product Info **********
+    .product_info {
+    padding: 6px 5px;
+      .product_name {
+        font-size: 12px;
+      }
+      .product_price_and_badge_wrapper {
+        .product_price {
+          font-size: 13px;
+        }
+
+        .product_badge {
+          padding: 4px;
+          font-size: 11px;
+        }
+      }
+      .product_colors_wrapper {
+        .radio_input_wrapper {
+          .radio_label {
+            width: 17px;
+            height: 17px;
+          }
+        }
+      }
+    }
+    // ********** End:: Product Info **********
+  }
+}
 </style>

@@ -24,7 +24,7 @@
 
       <div class="row">
         <div
-          class="col-md-4 col-lg-3"
+          class="col-6 col-md-4 col-lg-3"
           v-for="(item, index) in 4"
           :key="item"
           data-aos-once="false"
@@ -81,10 +81,26 @@ export default {
       column-gap: 6px;
 
       a {
-        color: var(--theme_txet_clr);
         color: var(--theme_text_clr);
         font-size: 16px;
         font-weight: 600;
+      }
+    }
+  }
+}
+
+.products_section_wrapper {
+  padding-block: 25px;
+  .list_title_wrapper {
+    margin-bottom: 15px;
+    .list_title {
+      font-size: 18px;
+    }
+
+    .section_route_wrapper {
+      column-gap: 4px;
+      a {
+        font-size: 14px;
       }
     }
   }

@@ -33,7 +33,7 @@
 
       <div class="row">
         <div
-          class="col-md-4 col-lg-3"
+          class="col-6 col-md-4 col-lg-3"
           v-for="(item, index) in 4"
           :key="item"
           data-aos-once="false"
@@ -85,7 +85,7 @@ export default {
 
     .section_route_wrapper {
       a {
-        color: var(--theme_txet_clr);
+        color: var(--theme_text_clr);
         @include flexStartAlignment;
         column-gap: 10px;
         .timer_text {
@@ -104,14 +104,14 @@ export default {
             padding: 8px;
             border-radius: 6px;
             span {
-              color: var(--theme_txet_clr)
+              color: var(--theme_text_clr)
             }
           }
           .clock_indecator {
             display: inline-block;
             margin-inline: 5px;
             font-size: 35px;
-            color: var(--theme_txet_clr);
+            color: var(--theme_text_clr);
             @include flexCenterAlignment;
             animation: secondsAnimation 1s infinite alternate;
           }
@@ -128,6 +128,44 @@ export default {
 
   100% {
     opacity: 0.1;
+  }
+}
+
+@media (max-width: 850px) {
+  .flash_sales_section_wrapper {
+    padding-block: 25px;
+    .section_title_wrapper {
+      margin-bottom: 15px;
+      .section_title {
+        text-align: center;
+        color: var(--theme_text_clr);
+        font-style: italic;
+      }
+    }
+
+    .list_title_wrapper {
+      margin-bottom: 15px;
+      .list_title {
+        font-size: 18px;
+      }
+
+      .section_route_wrapper {
+        a {
+          column-gap: 6px;
+          .timer_text {
+            display: none;
+          }
+          .offer_time {
+            .hours,
+            .minutes ,
+            .seconds {
+              font-size: 12px;
+              padding: 5px;
+            }
+          }
+        }
+      }
+    }
   }
 }
 </style>

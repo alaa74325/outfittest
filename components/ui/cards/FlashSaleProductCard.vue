@@ -1,7 +1,7 @@
 <template>
   <div class="flash_sale_product_card_wrapper">
     <!-- Start:: Product Image -->
-    <div class="card_image_wrapper">  
+    <div class="card_image_wrapper">
       <!-- ********** Start:: Sale Badge ********** -->
       <div class="sale_badge_wrapper">
         <img
@@ -10,13 +10,13 @@
           width="25"
           height="30"
         />
-        
+
         <span class="sale_percentage">
           55%
         </span>
       </div>
       <!-- ********** End:: Sale Badge ********** -->
-      
+
       <!-- ********** Start:: Product Images ********** -->
       <img
         class="product_image"
@@ -40,7 +40,7 @@
     <div class="product_info">
       <!-- ********** Start:: Product Name & Price ********** -->
       <p class="product_name"> Single Button Flap Detail Tweed Overcoat </p>
-      <p class="product_price"> 
+      <p class="product_price">
         <span class="price_after_sale"> EGP 254 </span>
         <span class="price_before_sale"> EGP 355 </span>
       </p>
@@ -74,7 +74,7 @@ export default {
 }
 </script>
 
-<style lang="scss"> 
+<style lang="scss">
 .flash_sale_product_card_wrapper {
   // ********** Start:: Product Image **********
   .card_image_wrapper {
@@ -100,15 +100,13 @@ export default {
       top: 0;
       left: 0;
       padding: 10px 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flexCenterAlignment;
       flex-direction: column;
       row-gap: 4px;
       background-color: var(--mid_yellow_clr);
       z-index: 2;
       .sale_percentage {
-        color: var(--theme_txet_clr);
+        color: var(--theme_text_clr);
         font-weight: 600;
       }
     }
@@ -142,9 +140,7 @@ export default {
     }
     .product_price {
       margin-bottom: 8px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
+      @include flexStartAlignment;
       column-gap: 12px;
       .price_after_sale {
         color: var(--theme_text_clr);
@@ -178,5 +174,60 @@ export default {
     }
   }
   // ********** End:: Product Sold Quantity **********
+}
+
+@media (max-width: 850px) {
+  .flash_sale_product_card_wrapper {
+  // ********** Start:: Product Image **********
+  .card_image_wrapper {
+    width: 100%;
+    height: 220px;
+    .sale_badge_wrapper {
+      padding: 6px 12px;
+      z-index: 2;
+      .sale_percentage {
+        font-size: 11px;
+      }
+    }
+  }
+  // ********** End:: Product Image **********
+
+  // ********** Start:: Product Info **********
+  .product_info {
+    padding: 6px 5px;
+    .product_name {
+      font-size: 12px;
+    }
+    .product_price {
+      .price_after_sale {
+        font-size: 13px;
+      }
+      .price_before_sale {
+        font-size: 11px;
+      }
+    }
+  }
+  // ********** End:: Product Info **********
+
+  // ********** Start:: Product Sold Quantity **********
+  .sold_quantity_bar {
+    .v-progress-linear {
+      color: var(--theme_text_clr);
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 10px;
+      background-color: #ffe46b5d;
+      .v-progress-linear__determinate {
+        border-radius: 10px !important;
+      }
+      .v-progress-linear__content {
+        padding-inline: 5px;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+  }
+  // ********** End:: Product Sold Quantity **********
+}
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="hero_section_wrapper">
     <!-- Start:: Section Text -->
-    <div 
+    <div
       class="section_text_content_wrapper"
       data-aos-once="false"
       :data-aos="$i18n.locale == 'ar' ? 'fade-left' : 'fade-right'"
@@ -22,8 +22,8 @@
           {{$t("BUTTONS.ShopNow")}}
           <img
             :src="
-              $i18n.locale == 'en' ? 
-              require('~/assets/media/icons/ui_icons/arrowRight.svg') : 
+              $i18n.locale == 'en' ?
+              require('~/assets/media/icons/ui_icons/arrowRight.svg') :
               require('~/assets/media/icons/ui_icons/arrowLeft.svg')
             "
             alt="Arrow"
@@ -36,7 +36,7 @@
     <!-- End:: Section Text -->
 
     <!-- Start:: Section Image -->
-    <div 
+    <div
       class="section_image_wrapper"
       data-aos-once="false"
       :data-aos="$i18n.locale == 'ar' ? 'fade-right' : 'fade-left'"
@@ -49,7 +49,7 @@
       />
     </div>
     <!-- End:: Section Image -->
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -85,7 +85,7 @@ export default {
     flex-direction: column;
     align-items: space-between;
     justify-content: flex-start;
-    
+
     .section_title {
       color: var(--theme_text_clr);
       font-style: italic;
@@ -157,37 +157,37 @@ export default {
 
 @media (max-width: 850px) {
   .hero_section_wrapper {
-    .section_text_content_wrapper {
-      .logo_wrapper {
-        display: flex;
-        justify-content: center;
+    padding-block: 20px;
+    flex-direction: column-reverse;
+    .section_image_wrapper {
+      &::after {
+        right: -45px;
       }
-  
-      .section_subtitle {
-        margin-block: 20px 0;
-        font-size: 22px;
-        text-align: center;
-      }
-  
-      .section_title {
-        margin-block: 25px;
-        font-size: 25px;
-        width: 100%;
-        text-align: center;
-      }
-  
-      .section_desc {
-        word-break: break-word;
-        word-spacing: 2px;
-        font-size: 16px;
-        text-align: center;
-        width: 100%;
+
+      img {
+        width: 200px;
       }
     }
 
-    .section_image_wrapper {
-      img {
-        width: 90%;
+    .section_text_content_wrapper {
+      padding-block: 15px;
+      width: 100%;
+
+      .section_desc {
+        margin-block: 10px;
+        font-size: 28px;
+        text-align: center;
+      }
+
+      .btn_wrapper {
+        button {
+          font-size: 18px;
+          img {
+            &:hover {
+              transform: translateX(0);
+            }
+          }
+        }
       }
     }
   }

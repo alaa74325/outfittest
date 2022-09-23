@@ -39,8 +39,8 @@ export default {
 <style lang="scss" scoped>
 .large_offer_pannel_wrapper {
   position: relative;
-  width: 600;
-  height: 400;
+  width: 600px;
+  height: 400px;
   border-radius: 40px;
   overflow: hidden;
 
@@ -82,6 +82,35 @@ export default {
         background-position: 0;
         color: var(--white_clr);
         border: 1px solid var(--white_clr);
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .large_offer_pannel_wrapper {
+    width: 100%;
+    height: 230px;
+
+    .pannel_overlay {
+      padding: 20px;
+      justify-content: flex-end;
+      row-gap: 11px;
+
+      .pannel_title {
+        font-size: 28px;
+        width: 100%;
+      }
+
+      .pannel_desc {
+        width: 100%;
+        font-size: 18px;
+      }
+
+      .pannel_route {
+        margin-top: 0;
+        font-size: 14px;
+        width: fit-content;
       }
     }
   }
