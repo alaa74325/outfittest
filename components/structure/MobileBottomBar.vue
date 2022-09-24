@@ -20,7 +20,7 @@
       <!-- End:: Home Route -->
 
       <!-- Start:: Categories Toggler -->
-      <bottom class="categories_drawer_toggler">
+      <button class="categories_drawer_toggler">
         <img
           src="~/assets/media/icons/ui_icons/categories.svg"
           width="23"
@@ -34,7 +34,7 @@
           alt="home"
         />
         <span class="route_text"> {{$t("TITLES.footerCategories")}} </span>
-      </bottom>
+      </button>
       <!-- End:: Categories Toggler -->
 
       <!-- Start:: Wishlist Route -->

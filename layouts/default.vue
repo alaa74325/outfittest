@@ -54,7 +54,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.default_layout {
-  padding-bottom: 75px;
+@media (max-width: 850px) {
+  .default_layout {
+    padding-bottom: 75px;
+  }
 }
 </style>
