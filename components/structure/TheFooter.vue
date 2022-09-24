@@ -3,7 +3,7 @@
     <div class="container-xl">
       <div class="row justify-content-between">
         <!-- Start:: Logo Wrapper -->
-        <div class="col-md-3 my-3">
+        <div class="col-md-3">
           <nuxt-link to="/" class="logo_wrapper">
             <img
               src="~/assets/media/logo/logo_black.svg"

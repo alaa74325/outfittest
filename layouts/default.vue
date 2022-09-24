@@ -1,5 +1,5 @@
 <template>
-  <v-app :class="[{ rtl: $i18n.locale == 'ar' }, { ltr: $i18n.locale == 'en' }]">
+  <v-app class="default_layout" :class="[{ rtl: $i18n.locale == 'ar' }, { ltr: $i18n.locale == 'en' }]">
     <!-- Start:: Layout Navbar -->
     <TheNavbar/>
     <!-- End:: Layout Navbar -->
@@ -9,12 +9,17 @@
     <!-- Start:: Layout Footer -->
     <TheFooter/>
     <!-- End:: Layout Footer -->
+
+    <!-- Start:: Mobile Bottom Bar -->
+    <MobileBottomBar/>
+    <!-- End:: Mobile Bottom Bar -->
   </v-app>
 </template>
 
 <script>
 import TheNavbar from "~/components/structure/TheNavbar";
 import TheFooter from "~/components/structure/TheFooter";
+import MobileBottomBar from "~/components/structure/MobileBottomBar";
 
 export default {
   name: 'DefaultLayout',
@@ -35,6 +40,7 @@ export default {
   components: {
     TheNavbar,
     TheFooter,
+    MobileBottomBar,
   },
 
   mounted() {
@@ -46,3 +52,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.default_layout {
+  padding-bottom: 75px;
+}
+</style>

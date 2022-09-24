@@ -15,6 +15,8 @@ export default {
   },
 
   TITLES: {
+    home: 'Home',
+    footerCategories: 'Categories',
     profile: 'Profile',
     wishlist: 'Wishlist',
     cart: 'Cart',

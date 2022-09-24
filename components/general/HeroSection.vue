@@ -165,7 +165,8 @@ export default {
       }
 
       img {
-        width: 200px;
+        width: 175px;
+        height: 245px;
       }
     }
 
@@ -174,18 +175,22 @@ export default {
       width: 100%;
 
       .section_desc {
-        margin-block: 10px;
-        font-size: 28px;
+        margin-block: 5px;
+        font-size: 24px;
         text-align: center;
       }
 
       .btn_wrapper {
         button {
-          font-size: 18px;
-          img {
-            &:hover {
+          font-size: 16px;
+          &:hover {
+            img {
               transform: translateX(0);
             }
+          }
+          img {
+            width: 25px;
+            height: 15px;
           }
         }
       }

@@ -15,6 +15,8 @@ export default {
   },
 
   TITLES: {
+    home: 'الرئيسية',
+    footerCategories: 'الأقسام',
     profile: 'الملف الشخصي',
     wishlist: 'المفضلة',
     cart: 'عربة التسوق',

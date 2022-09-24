@@ -117,52 +117,44 @@
 @media (max-width: 850px) {
   .footer_content_wrapper {
     padding-top: 15px;
+
     .logo_wrapper {
+      justify-content: center;
       img {
-        width: 50%;
+        width: 45%;
       }
     }
 
-    .footer_routes_list {
-      width: 80%;
-      flex-wrap: wrap;
-      .footer_route {
-        width: 50%;
+    .powered_by_content {
+      margin-top: 15px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .routes_wrapper {
+      display: none;
+    }
+
+    .subscribe_form {
+      .form_title {
         font-size: 16px;
-        &:not(:last-child) {
-          margin-bottom: 15px;
-        }
+        text-align: center;
       }
     }
 
-    .contact_info_list {
-      .contact_info_item {
-        &:not(:last-child) {
-          margin-bottom: 15px;
-        }
-        column-gap: 15px;
+    .download_app_section_wrapper {
+      .download_section_title {
         font-size: 16px;
-        .icon  {
-          svg, i {
-            font-size: 20px;
-          }
-        }
+        text-align: center;
+      }
+      .download_links_wrapper {
+        justify-content: center;
+        column-gap: 35px;
       }
     }
 
-    .social_links_list {
-      margin-top: 25px !important;
-      @include flexCenterAlignment;
-      flex-direction: row;
-      column-gap: 35px;
-      .social_links_item {
-        .icon  {
-          svg, i {
-            color: var(--main_theme_clr);
-            font-size: 25px;
-          }
-        }
-      }
+    .social_platforms_links_wrapper {
+      display: none;
     }
   }
 }

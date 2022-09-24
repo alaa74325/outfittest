@@ -118,7 +118,7 @@
 
         <!-- Start:: Navbar Buttons -->
         <div class="navbar_btns_wrapper">
-          <a-tooltip placement="bottom">
+          <a-tooltip placement="bottom" class="profile_route">
             <nuxt-link to="/profile">
               <img
                 src="~/assets/media/icons/ui_icons/user.svg"
@@ -132,7 +132,7 @@
             </template>
           </a-tooltip>
 
-          <a-tooltip placement="bottom">
+          <a-tooltip placement="bottom" class="wishlist_route">
             <nuxt-link to="/profile/wishlist">
               <img
                 src="~/assets/media/icons/ui_icons/heart.svg"
@@ -146,7 +146,7 @@
             </template>
           </a-tooltip>
 
-          <a-badge :count="5" :overflow-count="9">
+          <a-badge :count="5" :overflow-count="9" class="cart_route">
             <a-tooltip placement="bottom">
               <nuxt-link to="/cart">
                 <img
@@ -162,7 +162,7 @@
             </a-tooltip>
           </a-badge>
 
-          <a-tooltip placement="bottom">
+          <a-tooltip placement="bottom" class="auth_route">
             <nuxt-link to="/auth/login">
               <img
                 src="~/assets/media/icons/ui_icons/login.svg"
