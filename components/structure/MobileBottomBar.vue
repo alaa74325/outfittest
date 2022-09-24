@@ -20,7 +20,7 @@
       <!-- End:: Home Route -->
 
       <!-- Start:: Categories Toggler -->
-      <button class="categories_drawer_toggler">
+      <button class="categories_drawer_toggler"  @click.stop="$emit('toggleCategoriesDrawer')">
         <img
           src="~/assets/media/icons/ui_icons/categories.svg"
           width="23"
@@ -97,7 +97,9 @@
 
 <script>
 export default {
-  name: "MobileBottomBar"
+  name: "MobileBottomBar",
+
+  emits: ["toggleCategoriesDrawer"],
 }
 </script>
 

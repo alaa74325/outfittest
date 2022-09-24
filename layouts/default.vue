@@ -1,7 +1,9 @@
 <template>
   <v-app class="default_layout" :class="[{ rtl: $i18n.locale == 'ar' }, { ltr: $i18n.locale == 'en' }]">
     <!-- Start:: Layout Navbar -->
-    <TheNavbar/>
+    <TheNavbar
+      :categoriesDrawerIsActive="categoriesDrawerIsActive"
+    />
     <!-- End:: Layout Navbar -->
 
     <Nuxt />
@@ -11,7 +13,9 @@
     <!-- End:: Layout Footer -->
 
     <!-- Start:: Mobile Bottom Bar -->
-    <MobileBottomBar/>
+    <MobileBottomBar
+      @toggleCategoriesDrawer="toggleCategoriesDrawer"
+    />
     <!-- End:: Mobile Bottom Bar -->
   </v-app>
 </template>
@@ -41,6 +45,22 @@ export default {
     TheNavbar,
     TheFooter,
     MobileBottomBar,
+  },
+
+  data() {
+    return {
+      // Start:: Drawers Controle Data
+      categoriesDrawerIsActive: false,
+      // End:: Drawers Controle Data
+    }
+  },
+
+  methods: {
+    // Start:: Toggle Categories Drawer
+    toggleCategoriesDrawer() {
+      this.categoriesDrawerIsActive = !this.categoriesDrawerIsActive;
+    },
+    // End:: Toggle Categories Drawer
   },
 
   mounted() {

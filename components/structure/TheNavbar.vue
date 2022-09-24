@@ -40,7 +40,7 @@
                 :key="i"
                 :to="switchLocalePath(locale.code)"
               >
-                <span class="icon" @click="changelang">
+                <span class="icon" @click="changeLang">
                   Ar
                   <i class="fas fa-angle-down"></i>
                 </span>
@@ -53,7 +53,7 @@
                 :key="i"
                 :to="switchLocalePath(locale.code)"
               >
-                <span class="icon" @click="changelang">
+                <span class="icon" @click="changeLang">
                   En
                   <i class="fas fa-angle-down"></i>
                 </span>
@@ -224,6 +224,100 @@
     </div>
     <!-- End:: Nav Routes & Search Input -->
 
+    <!-- Start:: Categories Drawer -->
+    <v-navigation-drawer
+      class="categories_drawer"
+      v-model="categoriesDrawerIsActive"
+      absolute
+      width="80%"
+    >
+      <h2 class="drawer_title"> Categories </h2>
+
+      <v-list
+        v-for="item in categories"
+        :key="item.id"
+      >
+      <!-- Start:: Check If Main Category Has Subcategories Or Not  -->
+        <nuxt-link
+        class="category_route"
+          to="/categories/item"
+          v-if="item.subCats.length == 0"
+        >
+          {{item.title}}
+        </nuxt-link>
+
+        <v-list-group v-else>
+          <template v-slot:activator>
+            <v-list-item-title>{{item.title}}</v-list-item-title>
+          </template>
+          <!-- ***** Start:: Main Category Route ***** -->
+          <v-list-item>
+            <nuxt-link
+                class="category_route"
+                to="/categories/men"
+              >
+              <i class="fa-solid fa-circle"></i> All {{item.title}} Items
+            </nuxt-link>
+          </v-list-item>
+          <!-- ***** End:: Main Category Route ***** -->
+
+          <!-- ***** Start:: Check If LevelOne Subcategory Has Subcategories Or Not ***** -->
+          <div
+            v-for="levelOneSubItem in item.subCats"
+            :key="levelOneSubItem.id"
+          >
+            <!-- *************** Start:: Single Route If LevelOne Subcategory Has No Sub Categories *************** -->
+            <nuxt-link
+              class="category_route"
+              to="/categories/item/levelOneSubItem"
+              v-if="levelOneSubItem.subCats.length == 0"
+            >
+              <i class="fa-solid fa-circle"></i>
+              {{levelOneSubItem.title}}
+            </nuxt-link>
+            <!-- *************** End:: Single Route If LevelOne Subcategory Has No Sub Categories *************** -->
+
+            <!-- *************** Start:: Level Two Subcategories Routes Group If LevelOne Subcategory Has Sub Categories *************** -->
+            <v-list-group
+              v-else
+              no-action
+              sub-group
+            >
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title>{{levelOneSubItem.title}}</v-list-item-title>
+                </v-list-item-content>
+              </template>
+
+              <v-list-item>
+                <nuxt-link
+                  class="category_route"
+                  to="/categories/men"
+                >
+                  <i class="fa-solid fa-circle"></i>
+                  All {{levelOneSubItem.title}}
+                </nuxt-link>
+              </v-list-item>
+
+              <v-list-item
+                v-for="levelTwoSubItem in levelOneSubItem.subCats"
+                :key="levelTwoSubItem.id"
+              >
+                <nuxt-link class="category_route" to="/categories/item/levelOneSubItem/levelTwoSubItem">
+                  <i class="fa-solid fa-circle"></i>
+                  {{levelTwoSubItem.title}}
+                </nuxt-link>
+              </v-list-item>
+            </v-list-group>
+            <!-- *************** End:: Level Two Subcategories Routes Group If LevelOne Subcategory Has Sub Categories *************** -->
+          </div>
+          <!-- ***** End:: Check If LevelOne Subcategory Has Subcategories Or Not ***** -->
+        </v-list-group>
+        <!-- End:: Check If Main Category Has Subcategories Or Not  -->
+      </v-list>
+    </v-navigation-drawer>
+    <!-- End:: Categories Drawer -->
+
     <!-- Start:: Small Screens Nav Drawer -->
     <div
       class="small_screens_nav_bar_wrapper"
@@ -282,16 +376,67 @@
 export default {
   name: 'TheNavbar',
 
+  props: {
+    categoriesDrawerIsActive: {
+      required: true,
+      type: Boolean,
+    }
+  },
+
   data() {
     return {
       smallScreensMenuIsOpen: false,
       scrollPosition: null,
       navHeight: null,
+
+      // Start:: Dummy Categories Data
+      categories: {
+        menCat: {
+          id: 1,
+          title: "Men",
+          subCats: [
+            {
+              id: 1,
+              title: "T-Shirts",
+              subCats: [],
+            },
+            {
+              id: 2,
+              title: "Jackets",
+              subCats: [
+                {
+                  id: 1,
+                  title: "Long Jacket"
+                },
+                {
+                  id: 2,
+                  title: "Short Jacket"
+                },
+              ],
+            },
+          ],
+        },
+        kidsCat: {
+          id: 2,
+          title: "Kids",
+          subCats: [],
+        }
+      },
+      // End:: Dummy Categories Data
     }
   },
 
+    computed: {
+    locales() {
+      return this.$i18n.locales.filter((i) => i.code)
+    },
+    showLocales() {
+      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+    },
+  },
+
   methods: {
-    changelang() {
+    changeLang() {
       setTimeout(() => {
         location.reload()
       }, 1000)
@@ -310,14 +455,7 @@ export default {
     },
     // END:: HANDLING STICKY HEADER
   },
-  computed: {
-    locales() {
-      return this.$i18n.locales.filter((i) => i.code)
-    },
-    showLocales() {
-      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
-    },
-  },
+
   mounted() {
     // START:: FIRE METHODS
     this.navHeight = document.getElementById('navbar').clientHeight
