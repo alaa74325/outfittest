@@ -45,6 +45,11 @@
 </template>
 
 <script>
+// Start:: Importing Vuex Helpers
+import {mapActions, mapGetters} from "vuex";
+// End:: Importing Vuex Helpers
+import AuthServices from "~/services/AuthServices";
+
 export default {
   name: 'ResetPassword',
 
@@ -74,7 +79,29 @@ export default {
     }
   },
 
+  computed: {
+    // Start:: Vuex Get Authed User Data
+    ...mapGetters({
+      authedUserData: "auth/authedUserData",
+    }),
+    // End:: Vuex Get Authed User Data
+
+    // Start:: Slice Phone Number To Remove Phonecode
+    phoneNumberWithoutPhoneCode() {
+      let phoneCode = window.localStorage.getItem("outfit_user_phonecode");
+      let phoneNumber = this.authedUserData.phone;
+      return phoneNumber.slice(phoneCode.length, phoneNumber.length);
+    },
+    // End:: Slice Phone Number To Remove Phonecode
+  },
+
   methods: {
+    // Start:: Vuex Set Authed User Data
+    ...mapActions({
+      deleteAuthedUserData: "auth/deleteAuthedUserData",
+    }),
+    // End:: Vuex Set Authed User Data
+
     // Start:: Validate Form
     validateFormInputs() {
       if (!this.data.password) {
@@ -109,11 +136,37 @@ export default {
     // End:: Validate Form
 
     // Start:: Submit Form
-    submitForm() {
+    async submitForm() {
       this.isWaitingRequest = true;
-      setTimeout(() => {
-        this.$router.replace("/");
-      }, 1500);
+
+      // Start:: Append Request Data
+      const REQUEST_DATA = new FormData();
+      REQUEST_DATA.append('country_id', localStorage.getItem('outfit_user_country_id'));
+      REQUEST_DATA.append('phone', this.phoneNumberWithoutPhoneCode);
+      REQUEST_DATA.append('code', localStorage.getItem('outfit_website_user_verification_code'));
+      REQUEST_DATA.append('password', this.data.password);
+      // Start:: Append Request Data
+
+      try {
+        await AuthServices.sendAuthData('forgot_password', REQUEST_DATA, this.$i18n.locale);
+        this.isWaitingRequest = false;
+        // Start:: Delete Cached Data From Previous Step
+        this.deleteAuthedUserData({phone: true, verificationCode: true});
+        localStorage.removeItem('outfit_user_phonecode');
+        localStorage.removeItem('outfit_user_country_id');
+        // End:: Delete Cached Data From Previous Step
+        
+        this.$izitoast.success({
+          message: this.$t('MESSAGES.codeSentSuccessfully'),
+        });
+
+        this.$router.replace("/auth/login");
+      } catch(err) {
+        this.isWaitingRequest = false;
+        this.$izitoast.error({
+          message: err.response.data.message,
+        });
+      }
     },
     // End:: Submit Form
   },

@@ -62,6 +62,11 @@
 </template>
 
 <script>
+// Start:: Importing Vuex Helpers
+import {mapActions} from "vuex";
+// End:: Importing Vuex Helpers
+import AuthServices from "~/services/AuthServices";
+
 export default {
   name: 'Register',
 
@@ -95,6 +100,12 @@ export default {
   },
 
   methods: {
+    // Start:: Vuex Set Authed User Data
+    ...mapActions({
+      setAuthedUserData: "auth/setAuthedUserData",
+    }),
+    // End:: Vuex Set Authed User Data
+
     // Start:: Change Selected Phonecode
     phonecodeChanged(data) {
       this.data.phoneCode = data
@@ -138,7 +149,7 @@ export default {
     async submitForm() {
       this.isWaitingRequest = true;
       // Start:: Append Request Data
-      const REQUEST_DATA = new FormData()
+      const REQUEST_DATA = new FormData();
       REQUEST_DATA.append('fullname', this.data.name);
       REQUEST_DATA.append('email', this.data.email);
       REQUEST_DATA.append('country_id', this.data.phoneCode.id);
@@ -146,17 +157,18 @@ export default {
       REQUEST_DATA.append('password', this.data.password);
       // Start:: Append Request Data
 
-      // DATA  WILL BE REMOVED
-      REQUEST_DATA.append('lat', '33.354154');
-      REQUEST_DATA.append('lng', '31.354154');
-      REQUEST_DATA.append('location_description', 'test');
-      // DATA  WILL BE REMOVED
-
       try {
         // console.log("SUCCESS::", res.data);
         // ********** Start:: Implement Request ********** //
-        await this.$axios.post('register', REQUEST_DATA);
+        // await this.$axios.post('register', REQUEST_DATA);
+        let res = await AuthServices.sendAuthData('register', REQUEST_DATA, this.$i18n.locale);
         this.isWaitingRequest = false;
+        window.localStorage.setItem("outfit_user_phonecode", this.data.phoneCode.key);
+        window.localStorage.setItem("outfit_user_country_id", this.data.phoneCode.id);
+        this.setAuthedUserData({
+          phone: this.data.phoneCode.key+this.data.phone,
+          verificationCode: res.data.dev_message,
+        });
         this.$izitoast.success({
           message: this.$t('MESSAGES.registeredSuccessfully'),
         });

@@ -84,5 +84,9 @@ export default {
 
   MESSAGES: {
     registeredSuccessfully: "تم التسجيل بنجاح, قم بتأكيد بياناتك",
+    logedInSuccessfully: "تم تسجيل الدخول بنجاح",
+    verifiedSuccessfully: "تم التحقق من بياناتك بنجاح",
+    sentSuccessfully: "تم الإرسال بنجاح",
+    codeSentSuccessfully: "تم الإرسال الكود بنجاح",
   },
 }

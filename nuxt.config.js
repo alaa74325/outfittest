@@ -120,9 +120,9 @@ export default {
         },
         defaultLocale: 'en',
         detectBrowserLanguage: false,
+        vueI18nLoader: true
       },
     ],
-    // "@bootstrap/dist/js/bootstrap.js",
   ],
 
   styleResources: {

@@ -84,5 +84,9 @@ export default {
 
   MESSAGES: {
     registeredSuccessfully: "Registered Successfully, Verify Your Account",
+    logedInSuccessfully: "Loged Successfully",
+    verifiedSuccessfully: "Your Data Verified Successfully",
+    sentSuccessfully: "Sent Successfully",
+    codeSentSuccessfully: "Code Sent Successfully",
   },
 }

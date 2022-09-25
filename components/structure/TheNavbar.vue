@@ -118,7 +118,7 @@
 
         <!-- Start:: Navbar Buttons -->
         <div class="navbar_btns_wrapper">
-          <a-tooltip placement="bottom" class="profile_route">
+          <a-tooltip placement="bottom" class="profile_route" v-if="authedUserData.token">
             <nuxt-link to="/profile">
               <img
                 src="~/assets/media/icons/ui_icons/user.svg"
@@ -162,7 +162,7 @@
             </a-tooltip>
           </a-badge>
 
-          <a-tooltip placement="bottom" class="auth_route">
+          <a-tooltip placement="bottom" class="auth_route" v-if="!authedUserData.token">
             <nuxt-link to="/auth/login">
               <img
                 src="~/assets/media/icons/ui_icons/login.svg"
@@ -373,6 +373,10 @@
 </template>
 
 <script>
+// Start:: Importing Vuex Helpers
+import {mapGetters} from "vuex";
+// End:: Importing Vuex Helpers
+
 export default {
   name: 'TheNavbar',
 
@@ -426,7 +430,13 @@ export default {
     }
   },
 
-    computed: {
+  computed: {
+    // Start:: Vuex Get Authed User Data
+    ...mapGetters({
+      authedUserData: "auth/authedUserData",
+    }),
+    // End:: Vuex Get Authed User Data
+
     locales() {
       return this.$i18n.locales.filter((i) => i.code)
     },

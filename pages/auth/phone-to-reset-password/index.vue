@@ -39,6 +39,11 @@
 </template>
 
 <script>
+// Start:: Importing Vuex Helpers
+import {mapActions} from 'vuex';
+// End:: Importing Vuex Helpers
+import AuthServices from "~/services/AuthServices";
+
 export default {
   name: "PhoneToResetPasswprd",
 
@@ -75,6 +80,12 @@ export default {
     },
     // End:: Change Selected Phonecode
 
+    // Start:: Vuex Set Authed User Data
+    ...mapActions({
+      setAuthedUserData: "auth/setAuthedUserData",
+    }),
+    // End:: Vuex Set Authed User Data
+
     // Start:: Validate Form
     validateFormInputs() {
       if (!this.data.phone) {
@@ -89,11 +100,37 @@ export default {
     // End:: Validate Form
 
     // Start:: Submit Form
-    submitForm() {
+    async submitForm() {
       this.isWaitingRequest = true;
-      setTimeout(() => {
+
+      // Start:: Append Request Data
+      const REQUEST_DATA = new FormData();
+      REQUEST_DATA.append('country_id', this.data.phoneCode.id);
+      REQUEST_DATA.append('phone', this.data.phone);
+      // Start:: Append Request Data
+
+      try {
+        let res = await AuthServices.sendAuthData('forgot_password', REQUEST_DATA, this.$i18n.locale);
+        this.isWaitingRequest = false;
+        // Start:: Cache Authed User Data
+        window.localStorage.setItem("outfit_user_phonecode", this.data.phoneCode.key);
+        window.localStorage.setItem("outfit_user_country_id", this.data.phoneCode.id);
+        this.setAuthedUserData({
+          phone: this.data.phoneCode.key+this.data.phone,
+          verificationCode: res.data.data.code,
+        });
+        // End:: Cache Authed User Data
+        this.$izitoast.success({
+          message: this.$t('MESSAGES.codeSentSuccessfully'),
+        });
+
         this.$router.replace("/auth/verification-code/verify-contact-method");
-      }, 1500);
+      } catch(err) {
+        this.isWaitingRequest = false;
+        this.$izitoast.error({
+          message: err.response.data.message,
+        });
+      }
     },
     // End:: Submit Form
   },

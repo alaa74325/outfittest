@@ -7,6 +7,10 @@
 </template>
 
 <script>
+// Start:: Importing Vuex Helpers
+import {mapGetters} from 'vuex';
+// End:: Importing Vuex Helpers
+
 export default {
   name: 'AuthLayout',
 
@@ -38,12 +42,25 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters({
+      authedUserData: 'auth/authedUserData',
+    }),
+  },
+
   mounted() {
     // Start:: Fire Mutation Update Store Auth Values To Fix SSR Bug
     this.$store.commit('auth/updateStateAuthValues', {
+      id: window.localStorage.getItem("outfit_website_user_id"),
       token: window.localStorage.getItem("outfit_website_user_token"),
+      phone: window.localStorage.getItem("outfit_website_user_phone"),
+      verificationCode: window.localStorage.getItem("outfit_website_user_verification_code"),
     });
     // End:: Fire Mutation Update Store Auth Values To Fix SSR Bug
+
+    if(this.authedUserData.token) {
+      this.$router.replace("/");
+    }
   },
 }
 </script>

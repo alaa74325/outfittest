@@ -4,18 +4,27 @@
     <h2 class="form_title">{{ $t('TITLES.welcomeBack') }}</h2>
     <!-- End:: Form Title -->
 
-    <h2> TOKEN:: {{authedUserData.token}} </h2>
+    <!-- <h2> TOKEN:: {{authedUserData.token}} </h2> -->
 
     <!-- Start:: Form -->
     <form @submit.prevent="validateFormInputs">
       <div class="row justify-content-center">
         <!-- Start:: Email Or Phone Input -->
-        <base-input
+        <!-- <base-input
           type="text"
           :placeholder="$t('FORMS.Placeholders.emailOrPhone')"
           v-model="data.emailOrPhone"
-        />
+        /> -->
         <!-- End:: Email Or Phone Input -->
+
+        <!-- Start Phone -->
+        <base-country-flag-phone-input
+          @changeKey="phonecodeChanged"
+          :placeholder="$t('FORMS.Placeholders.phone')"
+          :preSelectedPhoneCode="data.phoneCode"
+          v-model="data.phone"
+        />
+        <!-- End Phone -->
 
         <!-- Start:: Password Input -->
         <base-input
@@ -58,7 +67,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+// Start:: Importing Vuex Helpers
+import {mapGetters, mapActions} from 'vuex';
+// End:: Importing Vuex Helpers
+import AuthServices from "~/services/AuthServices";
 
 export default {
   name: 'Login',
@@ -82,7 +94,9 @@ export default {
 
       // Start:: Request Data
       data: {
-        emailOrPhone: null,
+        // emailOrPhone: null,
+        phoneCode: null,
+        phone: null,
         password: null,
       },
       // End:: Request Data
@@ -96,11 +110,23 @@ export default {
   },
 
   methods: {
+    // Start:: Vuex Set Authed User Data
+    ...mapActions({
+      setAuthedUserData: "auth/setAuthedUserData",
+    }),
+    // End:: Vuex Set Authed User Data
+
+    // Start:: Change Selected Phonecode
+    phonecodeChanged(data) {
+      this.data.phoneCode = data;
+    },
+    // End:: Change Selected Phonecode
+
     // Start:: Validate Form
     validateFormInputs() {
-      if (!this.data.emailOrPhone) {
+      if (!this.data.phone) {
         this.$izitoast.error({
-          message: this.$t('FORMS.Validation.emailOrPhone'),
+          message: this.$t('FORMS.Validation.phone'),
         })
         return
       } else if (!this.data.password) {
@@ -123,39 +149,44 @@ export default {
     async submitForm() {
       this.isWaitingRequest = true;
       // Start:: Append Request Data
-      const REQUEST_DATA = new FormData()
+      const REQUEST_DATA = new FormData();
       // ********** Start:: Static Data
       REQUEST_DATA.append('device_token', 'static_token');
       REQUEST_DATA.append('type', 'ios');
       // ********** End:: Static Data
-      REQUEST_DATA.append('country_id', 1);
-      REQUEST_DATA.append('phone', this.data.emailOrPhone);
+      REQUEST_DATA.append('country_id', this.data.phoneCode.id);
+      REQUEST_DATA.append('phone', this.data.phone);
       REQUEST_DATA.append('password', this.data.password);
       // Start:: Append Request Data
 
       try {
-        let res = await this.$axios.post('login', REQUEST_DATA);
-        // console.log("RES::", res);
+        // let res = await this.$axios.post('login', REQUEST_DATA);
+        let res = await AuthServices.sendAuthData('login', REQUEST_DATA, this.$i18n.locale);
+        this.isWaitingRequest = false;;
+        // Start:: Cache Authed User Data
+        this.setAuthedUserData({
+          id: res.data.data.id,
+          token: res.data.data.token,
+        });
+        // End:: Cache Authed User Data
+        
+        this.$izitoast.success({
+          message: this.$t('MESSAGES.logedInSuccessfully'),
+        });
+
+        this.$router.replace('/');
       } catch(err) {
         this.isWaitingRequest = false;
-        // console.log("ERROR::", err.response.data);
         this.$izitoast.error({
           message: err.response.data.message,
         });
 
         // ********** Start:: Redirect To Verify Account ********** //
-        if(!err.response.data.is_active) {
-          this.$router.replace('/auth/verification-code/verify-account');
-        }
+        // if(!err.response.data.is_active) {
+        //   this.$router.replace('/auth/verification-code/verify-account');
+        // }
         // ********** End:: Redirect To Verify Account ********** //
       }
-
-
-
-      // this.isWaitingRequest = true;
-      // setTimeout(() => {
-      //   this.$router.replace("/");
-      // }, 1500);
     },
     // End:: Submit Form
   },
