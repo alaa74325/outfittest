@@ -39,7 +39,9 @@ export default {
     verificationCodeSentTo: "Verification Code Has Been Sent To",
     editPhone: 'Edit Phone Number',
     resetPassword: "Reset Password",
-    createAccount: "Create A New Account"
+    createAccount: "Create A New Account",
+    terms: "Terms Of Service",
+    returnsPolicy: 'Returns Policy',
   },
 
   BUTTONS: {

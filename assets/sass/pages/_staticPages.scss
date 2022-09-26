@@ -1,0 +1,32 @@
+.static_content_wrapper {
+  min-height: 40vh;
+  padding-block: 35px;
+
+  .page_title {
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--theme_text_clr);
+    font-size: 30px;
+    letter-spacing: 5px;
+    font-style: italic;
+  }
+
+  .page_content {
+    @include textWrapper;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 850px) {
+  .static_content_wrapper {
+    padding-block: 20px;
+    .page_title {
+      font-size: 28px;
+    }
+  
+    .page_content {
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+}

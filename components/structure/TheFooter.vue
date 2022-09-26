@@ -82,7 +82,7 @@
               </li>
 
               <li class="footer_route">
-                <nuxt-link to="/returns-policy">
+                <nuxt-link to="/policy">
                   {{ $t('NAV.returnsPolicy') }}
                 </nuxt-link>
               </li>

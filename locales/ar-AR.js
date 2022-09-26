@@ -10,7 +10,7 @@ export default {
     contact: 'اتصل بنا',
     returns: 'الإسترجاع',
     sizeGuide: 'دليل الأحجام',
-    returnsPolicy: 'سياسة الخصوصية',
+    returnsPolicy: 'سياسة الإسترجاع',
     lang: 'EN',
   },
 
@@ -39,7 +39,9 @@ export default {
     verificationCodeSentTo: "تم إرسال رمز التحقق إلي",
     editPhone: 'تعديل رقم الهاتف',
     resetPassword: "إعادة تعيين كلمة المرور",
-    createAccount: "إنشاء حساب جديد"
+    createAccount: "إنشاء حساب جديد",
+    terms: "الشرط و الأحكام",
+    returnsPolicy: 'سياسة الإسترجاع',
   },
 
   BUTTONS: {
