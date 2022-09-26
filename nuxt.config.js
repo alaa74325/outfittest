@@ -92,7 +92,10 @@ export default {
 
     'nuxt-izitoast',
 
-    // ===== END:: PROJECT MODULES
+    ['nuxt-gmaps', {
+      key: 'AIzaSyC2MTR_vRbsbQQRPt5f5ZLCvvaKOpzkzlA',
+      libraries: ['places']
+    }],
     [
       'nuxt-i18n',
       {

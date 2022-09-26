@@ -169,9 +169,9 @@ export default {
           token: res.data.data.token,
         });
         // End:: Cache Authed User Data
-        
+
         this.$izitoast.success({
-          message: this.$t('MESSAGES.logedInSuccessfully'),
+          message: this.$t('MESSAGES.loggedInSuccessfully'),
         });
 
         this.$router.replace('/');

@@ -71,6 +71,7 @@ export default {
       phone: 'Phone Number',
       email: "Email",
       fullName: "Full Name",
+      howCanWeHelp: "How Can We Help ?"
     },
     Validation: {
       emailOrPhone: "Email Or Phone Input Is Required",
@@ -83,13 +84,14 @@ export default {
       confirmPasswordLength: "Confirm Password Must Be Al Least 6 Digits",
       notEqualPasswords: "Passwords Are Not The Same",
       verificationCode: "Verification Code Input Is Required",
-      verificationCodeLength: "Verification Code Inputs Must Be Filled"
+      verificationCodeLength: "Verification Code Inputs Must Be Filled",
+      message: "Message Input Is Required"
     },
   },
 
   MESSAGES: {
     registeredSuccessfully: "Registered Successfully, Verify Your Account",
-    logedInSuccessfully: "Loged Successfully",
+    loggedInSuccessfully: "Logged Successfully",
     verifiedSuccessfully: "Your Data Verified Successfully",
     sentSuccessfully: "Sent Successfully",
     codeSentSuccessfully: "Code Sent Successfully",

@@ -1,26 +1,31 @@
 <template>
   <div :class="col ? `col-md-${col}` : ''">
-    <div class="input_wrapper text_editor">
-      <label class="custom_input_label">
-        {{ placeholder }}
-      </label>
-      <textarea
+    <div class="input_wrapper">
+      <v-textarea
+        :rows="rows"
+        :label="placeholder"
         :value="value"
         @input="updateValue($event)"
         :required="required"
-      ></textarea>
+      ></v-textarea>
     </div>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: "BaseTextEditor",
+  name: "BaseTextArea",
 
   props: {
     // ====== General Inputs Props
     value: {
       required: true,
+    },
+    rows: {
+      required: false,
+      type: String,
+      default: "5"
     },
     placeholder: {
       required: true,
@@ -35,37 +40,6 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-
-  data() {
-    return {
-      editorData: null,
-      editorConfig: {
-        editorplaceholder: "Start typing here...",
-        toolbarGroups: [
-          {
-            name: "basicstyles",
-            groups: ["basicstyles"],
-          },
-          {
-            name: "links",
-            groups: ["links"],
-          },
-          {
-            name: "paragraph",
-            groups: ["list", "blocks"],
-          },
-          {
-            name: "insert",
-            groups: ["insert"],
-          },
-          {
-            name: "styles",
-            groups: ["styles"],
-          },
-        ],
-      },
-    };
   },
 
   methods: {

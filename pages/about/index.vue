@@ -1,10 +1,12 @@
 <template>
   <div class="about_content_wrapper">
     <div class="container-xl">
+      <!-- PageData::: {{pageData}} -->
+
       <!-- Start:: AboutUS Row Content -->
       <div
         class="about_content_row"
-        v-for="(item, index) in aboutPartition"
+        v-for="(item, index) in pageData"
         :key="item.id"
       >
         <div
@@ -37,6 +39,8 @@
 </template>
 
 <script>
+import StaticContentPagesServices from "~/services/StaticContentPagesServices";
+
 export default {
   name: 'AboutUs',
 
@@ -58,48 +62,59 @@ export default {
     }
   },
 
-  data() {
-    return {
-      aboutPartition: [
-        {
-          id: 1,
-          image: require('@/assets/media/images/aboutPage/about1.png'),
-          title: 'OUR STORY',
-          desc: `Outfit is the leading online shopping platform, bringing a new culture of fashion
-            to Egypt. Launched in 2018, Outfit was founded by Hilda Louca with the
-            vision to unite and promote all Egyptian designers, and revive the culture of 
-            fashion in Egypt. Now home to over 300 Egyptian designers and brands, 
-            Outfit is the largest hub of its kind to designers in Egypt.
-          `,
-        },
-        {
-          id: 2,
-          image: require('@/assets/media/images/aboutPage/about2.png'),
-          title: 'OUR DREAM',
-          desc: `Outfit extended mission is to showcase the country's top design talents in a 
-            well-curated digital platform of international standards. All the platform's 
-            resources are directed in helping the local designers flourish locally and 
-            internationally through providing them with all the latest digital tools to 
-            guarantee ultimate reach, in addition to business development support for 
-            their business aiming to become the number one online destination for 
-            Egyptian and Regional designers to retail their products worldwide.
-          `,
-        },
-        {
-          id: 3,
-          image: require('@/assets/media/images/aboutPage/about3.png'),
-          title: 'OUR APPROACH',
-          desc: `Outfit promises personal service through dedicated customer care, hassle-
-            free shipping in exclusive signature packaging, free returns, and a fully-
-            secured online platform. pieces are carefully curated an go through extensive
-            quality and authenticity checks to be featured on the platform. in addition,
-            all products are styled and offered with its extended family by our certified
-            and professional stylist.
-          `,
-        },
-      ],
+  async asyncData({i18n }) {
+    try {
+      const res = await StaticContentPagesServices.getStaticContentData( `about`, i18n.locale);
+      return {
+        pageData: res.data.data,
+      }
+    } catch(err) {
+      console.log(err.response.data.message)
     }
   },
+
+  // data() {
+  //   return {
+  //     aboutPartition: [
+  //       {
+  //         id: 1,
+  //         image: require('@/assets/media/images/aboutPage/about1.png'),
+  //         title: 'OUR STORY',
+  //         desc: `Outfit is the leading online shopping platform, bringing a new culture of fashion
+  //           to Egypt. Launched in 2018, Outfit was founded by Hilda Louca with the
+  //           vision to unite and promote all Egyptian designers, and revive the culture of
+  //           fashion in Egypt. Now home to over 300 Egyptian designers and brands,
+  //           Outfit is the largest hub of its kind to designers in Egypt.
+  //         `,
+  //       },
+  //       {
+  //         id: 2,
+  //         image: require('@/assets/media/images/aboutPage/about2.png'),
+  //         title: 'OUR DREAM',
+  //         desc: `Outfit extended mission is to showcase the country's top design talents in a
+  //           well-curated digital platform of international standards. All the platform's
+  //           resources are directed in helping the local designers flourish locally and
+  //           internationally through providing them with all the latest digital tools to
+  //           guarantee ultimate reach, in addition to business development support for
+  //           their business aiming to become the number one online destination for
+  //           Egyptian and Regional designers to retail their products worldwide.
+  //         `,
+  //       },
+  //       {
+  //         id: 3,
+  //         image: require('@/assets/media/images/aboutPage/about3.png'),
+  //         title: 'OUR APPROACH',
+  //         desc: `Outfit promises personal service through dedicated customer care, hassle-
+  //           free shipping in exclusive signature packaging, free returns, and a fully-
+  //           secured online platform. pieces are carefully curated an go through extensive
+  //           quality and authenticity checks to be featured on the platform. in addition,
+  //           all products are styled and offered with its extended family by our certified
+  //           and professional stylist.
+  //         `,
+  //       },
+  //     ],
+  //   }
+  // },
 }
 </script>
 

@@ -5,31 +5,22 @@
       <div class="page_title"> {{$t("TITLES.terms")}} </div>
       <!-- End:: Page Title -->
 
-      <div class="page_content">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere assumenda alias sequi magnam, 
-        ullam quae obcaecati! Nemo necessitatibus saepe molestiae vitae molestias, cumque, 
-        porro asperiores repudiandae voluptates amet atque, dolores ut accusamus ullam iure voluptatibus 
-        eligendi quasi officiis odio suscipit. Consequuntur deserunt, molestias dolorem id quae repellendus? 
-        Modi, reiciendis magni.
-        Nemo necessitatibus saepe molestiae vitae molestias, cumque, 
-        porro asperiores repudiandae voluptates amet atque, dolores ut accusamus ullam iure voluptatibus 
-        eligendi quasi officiis odio suscipit. Consequuntur deserunt, molestias dolorem id quae repellendus? 
-        Modi, reiciendis magni.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere assumenda alias sequi magnam, 
-        ullam quae obcaecati! Nemo necessitatibus saepe molestiae vitae molestias, cumque, 
-        porro asperiores repudiandae voluptates amet atque, dolores ut accusamus ullam iure voluptatibus 
-        eligendi quasi officiis odio suscipit. Consequuntur deserunt, molestias dolorem id quae repellendus? 
-        Modi, reiciendis magni.
-        Nemo necessitatibus saepe molestiae vitae molestias, cumque, 
-        porro asperiores repudiandae voluptates amet atque, dolores ut accusamus ullam iure voluptatibus 
-        eligendi quasi officiis odio suscipit. Consequuntur deserunt, molestias dolorem id quae repellendus? 
-        Modi, reiciendis magni.
+      <!-- PageData::: {{pageData}} -->
+
+        <div
+          class="page_content"
+          v-for="item in pageData"
+          :key="item.id"
+        >
+        {{item.desc}}
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import StaticContentPagesServices from "~/services/StaticContentPagesServices";
+
 export default {
   name: "TermsOfServices",
 
@@ -54,6 +45,17 @@ export default {
         },
       ],
     };
+  },
+
+    async asyncData({i18n }) {
+    try {
+      const res = await StaticContentPagesServices.getStaticContentData( `terms`, i18n.locale);
+      return {
+        pageData: res.data.data,
+      }
+    } catch(err) {
+      console.log(err.response.data.message)
+    }
   },
 }
 </script>

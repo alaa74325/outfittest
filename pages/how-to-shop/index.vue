@@ -5,31 +5,16 @@
       <div class="page_title"> {{$t("TITLES.howToShop")}} </div>
       <!-- End:: Page Title -->
 
-      <div class="page_content">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere assumenda alias sequi magnam, 
-        ullam quae obcaecati! Nemo necessitatibus saepe molestiae vitae molestias, cumque, 
-        porro asperiores repudiandae voluptates amet atque, dolores ut accusamus ullam iure voluptatibus 
-        eligendi quasi officiis odio suscipit. Consequuntur deserunt, molestias dolorem id quae repellendus? 
-        Modi, reiciendis magni.
-        Nemo necessitatibus saepe molestiae vitae molestias, cumque, 
-        porro asperiores repudiandae voluptates amet atque, dolores ut accusamus ullam iure voluptatibus 
-        eligendi quasi officiis odio suscipit. Consequuntur deserunt, molestias dolorem id quae repellendus? 
-        Modi, reiciendis magni.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere assumenda alias sequi magnam, 
-        ullam quae obcaecati! Nemo necessitatibus saepe molestiae vitae molestias, cumque, 
-        porro asperiores repudiandae voluptates amet atque, dolores ut accusamus ullam iure voluptatibus 
-        eligendi quasi officiis odio suscipit. Consequuntur deserunt, molestias dolorem id quae repellendus? 
-        Modi, reiciendis magni.
-        Nemo necessitatibus saepe molestiae vitae molestias, cumque, 
-        porro asperiores repudiandae voluptates amet atque, dolores ut accusamus ullam iure voluptatibus 
-        eligendi quasi officiis odio suscipit. Consequuntur deserunt, molestias dolorem id quae repellendus? 
-        Modi, reiciendis magni.
-      </div>
+      <!-- PageData::: {{pageData}} -->
+
+      <div class="page_content" v-html="PageData"> </div>
     </div>
   </div>
 </template>
 
 <script>
+import StaticContentPagesServices from "~/services/StaticContentPagesServices";
+
 export default {
   name: "HowToShop",
 
@@ -55,5 +40,32 @@ export default {
       ],
     };
   },
+
+  async asyncData({i18n }) {
+    try {
+      const res = await StaticContentPagesServices.getStaticContentData( `how_to_shop`, i18n.locale);
+      return {
+        pageData: res.data.data.how_to_shop,
+      }
+    } catch(err) {
+      console.log(err.response.data.message)
+    }
+  },
+
+  // async asyncData({$axios }) {
+  //   try {
+  //     const res = await $axios.get("how_to_shop");
+  //     return {
+  //       pageData: res.data.data.how_to_shop,
+  //     }
+  //   } catch(err) {
+  //     console.log(err.response.data.message)
+  //   }
+  // },
+
+  // async created() {
+  //     const howToShopData = await StaticContentPagesServices.getStaticContentData(`how_to_shop`, this.$i18n.locale);
+  //     console.log(howToShopData);
+  // }
 }
 </script>

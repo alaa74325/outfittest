@@ -1,9 +1,10 @@
 <template>
   <div class="contact_us_content_wrapper">
     <div class="container-xl">
+      <!-- Start:: Page Form -->
       <div class="contact_form_wrapper">
         <div class="row">
-          <!-- Start:: Contant Form Image -->
+          <!-- Start:: Contact Form Image -->
           <div class="col-md-6">
             <div class="img_wrapper">
               <img
@@ -14,11 +15,11 @@
               />
             </div>
           </div>
-          <!-- End:: Contant Form Image -->
+          <!-- End:: Contact Form Image -->
 
-          <!-- Start:: Contant Form -->
+          <!-- Start:: Contact Form -->
           <div class="col-md-6">
-            <div class="form_wrapper">  
+            <div class="form_wrapper">
               <h2 class="form_title"> {{$t("TITLES.contactUs")}} </h2>
               <form @submit.prevent="validateFormInputs">
                 <div class="row justify-content-center">
@@ -47,10 +48,11 @@
                   <!-- End Phone Input -->
 
                   <!-- Start Message Input -->
-                  <!-- <base-textare
+                  <base-textarea
+                    rows="8"
                     :placeholder="$t('FORMS.Placeholders.howCanWeHelp')"
                     v-model="data.message"
-                  /> -->
+                  />
                   <!-- End Message Input -->
                 </div>
 
@@ -64,14 +66,32 @@
               </form>
             </div>
           </div>
-          <!-- End:: Contant Form -->
+          <!-- End:: Contact Form -->
         </div>
       </div>
+      <!-- End:: Page Form -->
+
+      <!-- Start:: Page Map -->
+      <div class="page_map_wrapper">
+      <GMap
+        ref="gMap"
+        :center="mapCenter"
+        :options="{fullscreenControl: true, styles: mapStyle}"
+        :zoom="10"
+      >
+        <GMapMarker
+          :position="mapCenter"
+        ></GMapMarker>
+      </GMap>
+      </div>
+      <!-- End:: Page Map -->
     </div>
   </div>
 </template>
 
 <script>
+import ContactUsServices from "~/services/ContactUsServices";
+
 export default {
   name: "ContactUs",
 
@@ -93,11 +113,35 @@ export default {
     };
   },
 
+  async asyncData() {
+    try {
+      const contactData = await ContactUsServices.getContactUsData();
+      return {
+        mapCenter: {
+          lat:  parseFloat(contactData.data.data.lat),
+          lng:  parseFloat(contactData.data.data.lng),
+        },
+      };
+    } catch(err) {
+      console.log(err.response.data.message)
+    }
+  },
+
   data() {
     return {
       // Start:: Loader Contrle Data
       isWaitingRequest: false,
       // End:: Loader Contrle Data
+
+    // Start:: G-map Data
+    mapStyle: [
+        {
+            featureType: "all",
+            elementType: "all",
+            stylers: [{ saturation: -100 }],
+        },
+    ],
+    // End:: G-map Data
 
       // Start:: Request Data
       data: {
@@ -111,13 +155,71 @@ export default {
   },
 
   methods: {
-    // Start:: Validate Form Inputs
-    validateFormInputs() {},
-    // End:: Validate Form Inputs
+    // Start:: Validate Form
+    validateFormInputs() {
+      if (!this.data.name) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.name'),
+        })
+        return
+      } else if (!this.data.email) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.email'),
+        })
+        return
+      } else if (!this.data.phone) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.phone'),
+        })
+        return
+      } else if (!this.data.message) {
+        this.$izitoast.error({
+          message: this.$t('FORMS.Validation.message'),
+        })
+        return
+      } else {
+        this.submitForm()
+      }
+    },
+    // End:: Validate Form
 
     // Start:: Submit Form
-    submitForm() {},
+    async submitForm() {
+      this.isWaitingRequest = true;
+      // Start:: Append Request Data
+      const REQUEST_DATA = new FormData();
+      REQUEST_DATA.append('fullname', this.data.name);
+      REQUEST_DATA.append('email', this.data.email);
+      REQUEST_DATA.append('phone', this.data.phone);
+      REQUEST_DATA.append('content', this.data.message);
+      // Start:: Append Request Data
+
+      try {
+        // ********** Start:: Implement Request ********** //
+        await ContactUsServices.sendContactMessage(REQUEST_DATA, this.$i18n.locale);
+        this.isWaitingRequest = false;
+        this.$izitoast.success({
+          message: this.$t('MESSAGES.sentSuccessfully'),
+        });
+        this.clearFormInput();
+        // ********** End:: Implement Request ********** //
+      } catch (err) {
+        this.isWaitingRequest = false;
+        this.$izitoast.error({
+          message: err.response.data.message,
+        });
+      }
+    },
     // End:: Submit Form
+
+    // Start:: Clear Form Inputs
+    clearFormInput() {
+        this.data.name = null;
+        this.data.email = null;
+        this.data.phone = null;
+        this.data.message = null;
+    },
+    // End:: Clear Form Inputs
   },
 }
 </script>
@@ -136,12 +238,20 @@ export default {
     }
     .form_wrapper {
       .form_title {
+        margin-bottom: 20px;
         color: var(--theme_text_clr);
         font-style: italic;
         font-size: 28px;
         letter-spacing: 5px;
+        text-transform: uppercase;
       }
     }
+  }
+
+  .page_map_wrapper {
+    margin-top: 30px;
+    border-radius: 15px;
+    overflow: hidden;
   }
 }
 </style>

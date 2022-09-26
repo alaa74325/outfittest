@@ -40,7 +40,7 @@ export default {
     editPhone: 'تعديل رقم الهاتف',
     resetPassword: "إعادة تعيين كلمة المرور",
     createAccount: "إنشاء حساب جديد",
-    terms: "الشرط و الأحكام",
+    terms: "الشروط و الأحكام",
     returnsPolicy: 'سياسة الإسترجاع',
     howToShop: 'كيف تتسوق',
     contactUs: "تواصل معنا"
@@ -71,25 +71,27 @@ export default {
       phone: 'رقم الهاتف',
       email: "البريد الإلكتروني",
       fullName: "الإسم بالكامل",
+      howCanWeHelp: "كيف يمكننا تقديم المساعدة ؟"
     },
     Validation: {
       emailOrPhone: "حقل البريد الإلكتروني او رقم الهاتف مطلوب",
       email: "حقل البريد الإلكتروني مطلوب",
       name: "حقل الإسم الإلكتروني مطلوب",
       phone: "حقل رقم الهاتف مطلوب",
-      password: "حقل كلمة المرور",
+      password: "حقل كلمة المرور مطلوب",
       passwordLength: "حقل كلمة المرور يجب ان يكون 6 خانات علي الأقل",
       confirmPassword: "حقل تأكيد كلمة المرور",
       confirmPasswordLength: "حقل تأكيد كلمة المرور يجب ان يكون 6 خانات علي الأقل",
       notEqualPasswords: "كلمات المرور غير متطابقة",
-      verificationCode: "حقل كود التحقق",
-      verificationCodeLength: "يجب ملئ جميع خانات حقل كود التحقق"
+      verificationCode: "حقل كود التحقق مطلوب",
+      verificationCodeLength: "يجب ملئ جميع خانات حقل كود التحقق",
+      message: "حقل الرسالة مطلوب",
     },
   },
 
   MESSAGES: {
     registeredSuccessfully: "تم التسجيل بنجاح, قم بتأكيد بياناتك",
-    logedInSuccessfully: "تم تسجيل الدخول بنجاح",
+    loggedInSuccessfully: "تم تسجيل الدخول بنجاح",
     verifiedSuccessfully: "تم التحقق من بياناتك بنجاح",
     sentSuccessfully: "تم الإرسال بنجاح",
     codeSentSuccessfully: "تم الإرسال الكود بنجاح",
