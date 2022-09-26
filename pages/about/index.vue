@@ -5,7 +5,7 @@
       <div
         class="about_content_row"
         v-for="(item, index) in aboutPartition"
-        :ke="item.id"
+        :key="item.id"
       >
         <div
           class="row_img_wrapper"
