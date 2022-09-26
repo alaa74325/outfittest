@@ -45,6 +45,13 @@
                     v-model="data.phone"
                   />
                   <!-- End Phone Input -->
+
+                  <!-- Start Message Input -->
+                  <!-- <base-textare
+                    :placeholder="$t('FORMS.Placeholders.howCanWeHelp')"
+                    v-model="data.message"
+                  /> -->
+                  <!-- End Message Input -->
                 </div>
 
                 <div class="btn_wrapper mb-3">
