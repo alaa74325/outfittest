@@ -38,5 +38,22 @@ export default {
     mode: 'out-in'
   },
 
+  head() {
+    return {
+      title: "How To Shop",
+      meta: [
+        {
+          hid: "title",
+          name: "title",
+          content: "How To Shop",
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: "How To Shop",
+        },
+      ],
+    };
+  },
 }
 </script>

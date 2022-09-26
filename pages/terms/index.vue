@@ -38,5 +38,22 @@ export default {
     mode: 'out-in'
   },
 
+  head() {
+    return {
+      title: "Terms Of Service",
+      meta: [
+        {
+          hid: "title",
+          name: "title",
+          content: "Terms Of Service",
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: "Terms Of Service",
+        },
+      ],
+    };
+  },
 }
 </script>

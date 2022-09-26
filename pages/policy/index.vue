@@ -38,5 +38,22 @@ export default {
     mode: 'out-in'
   },
 
+  head() {
+    return {
+      title: "Returns Policy",
+      meta: [
+        {
+          hid: "title",
+          name: "title",
+          content: "Returns Policy",
+        },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: "Returns Policy",
+        },
+      ],
+    };
+  },
 }
 </script>

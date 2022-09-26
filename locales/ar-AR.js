@@ -43,6 +43,7 @@ export default {
     terms: "الشرط و الأحكام",
     returnsPolicy: 'سياسة الإسترجاع',
     howToShop: 'كيف تتسوق',
+    contactUs: "تواصل معنا"
   },
 
   BUTTONS: {
@@ -57,7 +58,8 @@ export default {
     send: 'إرسال',
     save: 'حفظ',
     editPhone: 'تعديل رقم الهاتف',
-    verify: 'تحقق'
+    verify: 'تحقق',
+    sendMessage: "إرسال"
   },
 
   FORMS: {

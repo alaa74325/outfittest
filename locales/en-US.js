@@ -43,6 +43,7 @@ export default {
     terms: "Terms Of Service",
     returnsPolicy: 'Returns Policy',
     howToShop: 'How To Shop',
+    contactUs: "Contact Us"
   },
 
   BUTTONS: {
@@ -57,7 +58,8 @@ export default {
     send: 'Send',
     save: 'Save',
     editPhone: 'Edit Phone Number',
-    verify: 'Verify'
+    verify: 'Verify',
+    sendMessage: "Send Message"
   },
 
   FORMS: {

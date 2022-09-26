@@ -46,11 +46,11 @@
                 </nuxt-link>
               </li>
 
-              <li class="footer_route">
+              <!-- <li class="footer_route">
                 <nuxt-link to="/faqs">
                   {{ $t('NAV.faqs') }}
                 </nuxt-link>
-              </li>
+              </li> -->
 
               <li class="footer_route">
                 <nuxt-link to="/terms">
