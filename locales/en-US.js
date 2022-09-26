@@ -42,6 +42,7 @@ export default {
     createAccount: "Create A New Account",
     terms: "Terms Of Service",
     returnsPolicy: 'Returns Policy',
+    howToShop: 'How To Shop',
   },
 
   BUTTONS: {

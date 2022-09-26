@@ -75,11 +75,11 @@
                 </nuxt-link>
               </li>
 
-              <li class="footer_route">
+              <!-- <li class="footer_route">
                 <nuxt-link to="/size-guide">
                   {{ $t('NAV.sizeGuide') }}
                 </nuxt-link>
-              </li>
+              </li> -->
 
               <li class="footer_route">
                 <nuxt-link to="/policy">

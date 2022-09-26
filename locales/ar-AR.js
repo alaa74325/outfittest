@@ -42,6 +42,7 @@ export default {
     createAccount: "إنشاء حساب جديد",
     terms: "الشرط و الأحكام",
     returnsPolicy: 'سياسة الإسترجاع',
+    howToShop: 'كيف تتسوق',
   },
 
   BUTTONS: {
