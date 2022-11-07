@@ -1,18 +1,30 @@
 <template>
   <div>
-    <MainLoader v-if="isLoading" />
+    <MainLoader v-if="!homeData" />
 
-    <div class="home_page_content_wrapper">
+    <pre>
+      HOME DATA:: {{homeData}}
+    </pre>
+
+    <div
+      class="home_page_content_wrapper"
+      v-for="item in homeData"
+      :key="item.id"
+    >
       <!-- Start:: Hero Carousel -->
       <HeroSection />
       <!-- End:: Hero Carousel -->
 
       <!-- Start:: Categories Section -->
-      <CategoriesSection />
+      <CategoriesSection
+        v-if="item.type == 'sub_category'"
+      />
       <!-- End:: Categories Section -->
 
       <!-- Start:: Flash Sales Section -->
-      <FlashSalesSection />
+      <FlashSalesSection
+        v-if="item.type == 'flash_sale'"
+      />
       <!-- End:: Flash Sales Section -->
 
       <!-- Start:: Offer Pannel Section -->
@@ -46,8 +58,10 @@
 
       <!-- Start:: Top Rated Products Section -->
       <ProductsSection
-        :section_title="$t('TITLES.topRated')"
-        section_route="/top-rated"
+        v-if="item.type == 'products'"
+        :section_title="item.text"
+        :section_route="`/cateories/${item.data.id}`"
+        :sectionItems="item.data"
       />
       <!-- End:: Top Rated Products Section -->
 
@@ -65,8 +79,10 @@
 
       <!-- Start:: Most Ordered Products Section -->
       <ProductsSection
-        :section_title="$t('TITLES.mostOrdered')"
-        section_route="/most-ordered"
+        v-if="item.type == 'products'"
+        :section_title="item.text"
+        :section_route="`/cateories/${item.data.id}`"
+        :sectionItems="item.data"
       />
       <!-- End:: Most Ordered Products Section -->
 
@@ -84,8 +100,10 @@
 
       <!-- Start:: New Arrival Products Section -->
       <ProductsSection
-        :section_title="$t('TITLES.newArrivals')"
-        section_route="/new-arrivals"
+        v-if="item.type == 'products'"
+        :section_title="item.text"
+        :section_route="`/cateories/${item.data.id}`"
+        :sectionItems="item.data"
       />
       <!-- End:: New Arrival Products Section -->
     </div>
@@ -139,6 +157,24 @@ export default {
     ProductsSection,
   },
 
+  async asyncData({$axios, i18n}) {
+    try {
+      const res = await $axios({
+        url: "home",
+        "Accept-language": i18n.locale,
+        "lang": i18n.locale,
+        params: {
+          main_category_id: 6,
+        }
+      });
+      return {
+        homeData: res.data.data,
+      }
+    } catch(err) {
+      console.log(err.response.data.message);
+    }
+  },
+
   data() {
     return {
       isLoading: true,
@@ -170,13 +206,6 @@ export default {
       },
       // End:: Dummy Data
     };
-  },
-
-  mounted() {
-    setTimeout(() => {
-      this.isLoading = false;
-      document.body.style.overflow = "unset";
-    }, 1000);
   },
 };
 </script>
