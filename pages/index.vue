@@ -15,7 +15,7 @@
       <FlashSalesSection />
       <!-- End:: Flash Sales Section -->
 
-      <!-- Start:: Offer Pannels Section -->
+      <!-- Start:: Offer Pannel Section -->
       <div class="container-xl py-5">
         <div class="row">
           <div
@@ -42,7 +42,7 @@
           </div>
         </div>
       </div>
-      <!-- End:: Offer Pannels Section -->
+      <!-- End:: Offer Pannel Section -->
 
       <!-- Start:: Top Rated Products Section -->
       <ProductsSection
@@ -51,7 +51,7 @@
       />
       <!-- End:: Top Rated Products Section -->
 
-      <!-- Start:: Offer Pannels Section -->
+      <!-- Start:: Offer Pannel Section -->
       <div class="container-xl py-5">
         <LargeOfferPannel
           data-aos-once="false"
@@ -61,7 +61,7 @@
           :offerData="thirdOffer"
         />
       </div>
-      <!-- End:: Offer Pannels Section -->
+      <!-- End:: Offer Pannel Section -->
 
       <!-- Start:: Most Ordered Products Section -->
       <ProductsSection
@@ -70,7 +70,7 @@
       />
       <!-- End:: Most Ordered Products Section -->
 
-      <!-- Start:: Offer Pannels Section -->
+      <!-- Start:: Offer Pannel Section -->
       <div class="container-xl py-5">
         <LargeOfferPannel
           data-aos-once="false"
@@ -80,7 +80,7 @@
           :offerData="fourthOffer"
         />
       </div>
-      <!-- End:: Offer Pannels Section -->
+      <!-- End:: Offer Pannel Section -->
 
       <!-- Start:: New Arrival Products Section -->
       <ProductsSection
