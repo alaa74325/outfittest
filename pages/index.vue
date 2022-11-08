@@ -157,12 +157,10 @@ export default {
     ProductsSection,
   },
 
-  async asyncData({$axios, i18n}) {
+  async asyncData({$axiosRequest}) {
     try {
-      const res = await $axios({
+      const res = await $axiosRequest({
         url: "home",
-        "Accept-language": i18n.locale,
-        "lang": i18n.locale,
         params: {
           main_category_id: 6,
         }

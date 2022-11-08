@@ -1,8 +1,3 @@
-// ****** START:: IMPORTING LOCALES FILES ****** //
-import arLocales from './locales/ar-AR.js'
-import enLocales from './locales/en-US.js'
-// ****** END:: IMPORTING LOCALES FILES ****** //
-
 // import colors from 'vuetify/es5/util/colors'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -41,6 +36,10 @@ export default {
     '@/plugins/main.js',
     // ****** End:: Importing Main Script File ****** //
 
+    // ****** Start:: Importing Axios Config File ****** //
+    '@/plugins/axios-config.js',
+    // ****** End:: Importing Axios Config File ****** //
+
     // ****** Start:: Importing Ant-Design File ****** //
     '@/plugins/antd-ui.js',
     // ****** End:: Importing Ant-Design File ****** //
@@ -49,10 +48,8 @@ export default {
     '@/plugins/vue-datetime.js',
     // ****** End:: Importing Vue-DateTime File ****** //
 
-    // "@/plugins/izi-toast.js",
-
     // ****** Start:: Importing AOS File ****** //
-    '@/plugins/aos.js',
+    { src: '@/plugins/aos.js', ssr: false },
     // ****** End:: Importing AOS File ****** //
 
     // ****** Start:: Importing Font Awesome File ****** //
@@ -92,6 +89,11 @@ export default {
 
     'nuxt-izitoast',
 
+    ['cookie-universal-nuxt', {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 7
+    }],
+
     ['nuxt-gmaps', {
       key: 'AIzaSyC2MTR_vRbsbQQRPt5f5ZLCvvaKOpzkzlA',
       libraries: ['places']
@@ -99,33 +101,32 @@ export default {
     [
       'nuxt-i18n',
       {
-        locales: [
-          {
-            name: 'عربي ',
-            code: 'ar',
-            iso: 'ar-AR',
-            file: 'ar-AR.js',
-            dir: 'rtl',
+          locales: [{
+                  name: 'عربي ',
+                  code: 'ar',
+                  iso: 'ar-AR',
+                  file: 'ar-AR.json',
+                  dir: 'rtl',
+              },
+              {
+                  name: 'English',
+                  code: 'en',
+                  iso: 'en-US',
+                  file: 'en-US.json',
+                  dir: 'ltr',
+              },
+          ],
+          lazy: true,
+          langDir: 'locales/',
+          vueI18n: {
+              locale: 'en',
+              fallbackLocale: 'en',
           },
-          {
-            name: 'English',
-            code: 'en',
-            iso: 'en-US',
-            file: 'en-US.js',
-            dir: 'ltr',
-          },
-        ],
-        lazy: true,
-        langDir: 'locales/',
-        vueI18n: {
-          locale: 'en',
-          fallbackLocale: 'en',
-        },
-        defaultLocale: 'en',
-        detectBrowserLanguage: false,
-        vueI18nLoader: true
+          defaultLocale: 'en',
+          detectBrowserLanguage: false,
+          vueI18nLoader: true
       },
-    ],
+  ],
   ],
 
   styleResources: {

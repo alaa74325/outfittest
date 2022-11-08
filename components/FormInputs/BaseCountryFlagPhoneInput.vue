@@ -161,7 +161,7 @@ export default {
     },
 
     getCountryKeys() {
-      this.$axios({
+      this.$axiosRequest({
         method: "GET",
         url: `countries`,
       })
@@ -169,8 +169,8 @@ export default {
           this.countriesKeys = res.data.data.map((item) => {
             return {
               id: item.id,
-              // flag: item.flag,
               key: item.phone_code,
+              // flag: item.flag,
             };
           });
 

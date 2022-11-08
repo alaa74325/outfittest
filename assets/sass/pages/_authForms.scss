@@ -1,4 +1,5 @@
 .auth_form_wrapper {
+  width: 100%;
   .form_title {
     text-align: center;
     color: var(--theme_text_clr);
@@ -6,7 +7,7 @@
     font-size: 33px;
     font-family: $medium_font;
   }
-  
+
   .form_subtitle {
     color: var(--light_gray_clr);
     font-size: 18px;
@@ -59,13 +60,13 @@
     .form_title {
       font-size: 28px;
     }
-    
+
     .form_subtitle {
       color: var(--light_gray_clr);
       font-size: 18px;
       text-align: center;
     }
-  
+
     .edit_phone_route_wrapper {
       @include flexCenterAlignment;
       a {
@@ -74,7 +75,7 @@
         text-decoration: underline;
       }
     }
-  
+
     form {
       margin-top: 30px;
       .forget_password_route_wrapper {
