@@ -95,5 +95,7 @@
     "verifiedSuccessfully": "تم التحقق من بياناتك بنجاح",
     "sentSuccessfully": "تم الإرسال بنجاح",
     "codeSentSuccessfully": "تم الإرسال الكود بنجاح"
-  }
+  },
+
+  "APP_CURRENCY": "جنية"
 }

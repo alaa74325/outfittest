@@ -1,13 +1,13 @@
 <template>
-  <div class="products_section_wrapper">
     <div class="container-xl">
+  <div class="products_section_wrapper" v-if="sectionItems.length > 0">
       <!-- Start:: Products List -->
       <div class="list_title_wrapper">
-        <div class="list_title">{{section_title}}</div>
+        <div class="list_title">{{sectionTitle}}</div>
 
         <div class="section_route_wrapper">
-          <nuxt-link :to="section_route">
-            {{ $t("BUTTONS.showAll", {sectionName: section_title}) }}
+          <nuxt-link :to="sectionRoute">
+            {{ $t("BUTTONS.showAll", {sectionName: sectionTitle}) }}
           </nuxt-link>
           <img
             :src="
@@ -25,14 +25,16 @@
       <div class="row">
         <div
           class="col-6 col-md-4 col-lg-3"
-          v-for="(item, index) in 4"
+          v-for="(item, index) in sectionItems"
           :key="item"
           data-aos-once="false"
           data-aos="fade-up"
           :data-aos-delay="'300' * (index + 1)"
           data-aos-duration="1000"
         >
-          <ProductCard />
+          <ProductCard
+            :productData="item"
+          />
         </div>
       </div>
       <!-- End:: Products List -->
@@ -51,15 +53,19 @@ export default {
   },
 
   props: {
-    section_title: {
+    sectionTitle: {
       type: String,
       required: true,
     },
-    section_route: {
+    sectionRoute: {
       type: String,
       required: true,
     },
-  }
+    sectionItems: {
+      type: Array,
+      required: true,
+    },
+  },
 }
 </script>
 

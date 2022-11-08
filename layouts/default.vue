@@ -21,9 +21,9 @@
 </template>
 
 <script>
-import TheNavbar from "~/components/structure/TheNavbar";
-import TheFooter from "~/components/structure/TheFooter";
-import MobileBottomBar from "~/components/structure/MobileBottomBar";
+import TheNavbar from "~/components/navigation/TheNavbar";
+import TheFooter from "~/components/navigation/TheFooter";
+import MobileBottomBar from "~/components/navigation/MobileBottomBar";
 
 export default {
   name: 'DefaultLayout',

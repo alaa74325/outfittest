@@ -5,15 +5,15 @@
       <!-- ********** Start:: Product Images ********** -->
       <img
         class="product_image"
-        src="@/assets/media/images/product_1_1.png"
-        alt="product name"
+        :src="productData.product_details[0].images[0].url"
+        :alt="productData.name"
         width='300'
         height='360'
       />
       <img
         class="product_image"
-        src="@/assets/media/images/product_1_2.png"
-        alt="product name"
+        :src="productData.product_details[0].images[1].url"
+        :alt="productData.name"
         width='300'
         height='360'
       />
@@ -22,17 +22,19 @@
       <!-- ********** Start:: Wishlist Button ********** -->
       <button class="wishlist_btn">
         <img
+          v-show="!productData.product_details[0].is_fav"
           src="@/assets/media/icons/ui_icons/heart.svg"
           alt="heart icon"
           width='30'
           height='30'
         />
-        <!-- <img
+        <img
+          v-show="productData.product_details[0].is_fav"
           src="@/assets/media/icons/ui_icons/colored_heart.svg"
           alt="heart icon"
           width='35'
           height='35'
-        /> -->
+        />
       </button>
       <!-- ********** End:: Wishlist Button ********** -->
     </div>
@@ -41,28 +43,33 @@
     <!-- Start:: Product Info -->
     <div class="product_info">
       <!-- ********** Start:: Product Name & Price ********** -->
-      <p class="product_name"> Single Button Flap Detail Tweed Overcoat </p>
+      <p class="product_name"> {{productData.name}} </p>
       <div class="product_price_and_badge_wrapper">
-        <p class="product_price"> EGP 254 </p>
-        <div class="product_badge"> Top Rated </div>
+        <p class="product_price"> {{productData.product_details[0].currency}} {{productData.product_details[0].price}} </p>
+        <!-- <div class="product_badge"> Top Rated </div> -->
       </div>
       <!-- ********** End:: Product Name & Price ********** -->
 
       <!-- ********** Start:: Product Colors ********** -->
-      <div class="product_colors_wrapper">
+      <div class="product_colors_wrapper"
+        v-for="detail in productData.product_details"
+        :key="detail.id"
+        >
         <div class="radio_input_wrapper">
           <input
-            id="color_1"
+            :id="`product_${productData.id}_color_${detail.color.id}`"
             class="radio_input"
             type="radio"
-            name="product_colors"
-            value="#D1CAB1"
-            v-model="selectedColor"
+            :name="`product_${productData.id}_colors`"
+            :value="detail.color"
+            v-model="selectedProductDetail"
           >
-          <label class="radio_label" for="color_1" style="background: #D1CAB1"></label>
+          <label class="radio_label" :for="`product_${productData.id}_color_${detail.color.id}`">
+            <span class="color_preview" :style="`background: ${detail.color.hex}`"></span>
+          </label>
         </div>
 
-        <div class="radio_input_wrapper">
+        <!-- <div class="radio_input_wrapper">
           <input
             id="color_2"
             class="radio_input"
@@ -84,7 +91,7 @@
             v-model="selectedColor"
           >
           <label class="radio_label" for="color_3" style="background: #4273B2"></label>
-        </div>
+        </div> -->
       </div>
       <!-- ********** End:: Product Colors ********** -->
     </div>
@@ -96,10 +103,27 @@
 export default {
   name: "ProductCard",
 
+  props: {
+    productData: {
+      type: Object,
+      required: true,
+    },
+  },
+
   data() {
     return {
-      selectedColor: "#BFA3B6",
+      selectedProductDetail: null,
+      selectedColor: null,
     }
+  },
+
+  mounted() {
+    console.log("PRODUCT DETAILS ==>", this.productData);
+
+    // Start:: Set Initial Product Detail
+    this.selectedProductDetail = this.productData.product_details[0];
+    this.selectedColor = this.productData.product_details[0].color;
+    // End:: Set Initial Product Detail
   },
 }
 </script>
@@ -188,7 +212,7 @@ export default {
         @include flexCenterAlignment;
         .radio_input {
           display: none;
-          &[checked="checked"] {
+          &:checked {
             & + .radio_label {
               border: 1px solid var(--theme_text_clr);
               transform: scale(1.05);
@@ -196,10 +220,18 @@ export default {
           }
         }
         .radio_label {
-          display: inline-block;
-          width: 20px;
-          height: 20px;
+          padding: 2px;
+          width: 22px;
+          height: 22px;
           border-radius: 50%;
+          border: 1px solid var(--border_clr);
+          @include flexCenterAlignment;
+          .color_preview {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+          }
         }
       }
     }

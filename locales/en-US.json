@@ -95,5 +95,7 @@
     "verifiedSuccessfully": "Your Data Verified Successfully",
     "sentSuccessfully": "Sent Successfully",
     "codeSentSuccessfully": "Code Sent Successfully"
-  }
+  },
+
+  "APP_CURRENCY": "EGP"
 }

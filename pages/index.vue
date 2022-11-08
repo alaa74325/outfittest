@@ -2,9 +2,11 @@
   <div>
     <MainLoader v-if="!homeData" />
 
-    <pre>
-      HOME DATA:: {{homeData}}
-    </pre>
+    <!-- <pre dir="ltr">
+      <code>
+        HOME DATA:: {{homeData}}
+      </code>
+    </pre> -->
 
     <div
       class="home_page_content_wrapper"
@@ -12,44 +14,35 @@
       :key="item.id"
     >
       <!-- Start:: Hero Carousel -->
-      <HeroSection />
+      <HeroSection v-if=" item.view_type == 'slider'"/>
       <!-- End:: Hero Carousel -->
 
       <!-- Start:: Categories Section -->
       <CategoriesSection
-        v-if="item.type == 'sub_category'"
+        v-if="item.view_type == 'sub_category'"
       />
       <!-- End:: Categories Section -->
 
       <!-- Start:: Flash Sales Section -->
       <FlashSalesSection
-        v-if="item.type == 'flash_sale'"
+        v-if="item.view_type == 'flash_sale' && item.data"
       />
       <!-- End:: Flash Sales Section -->
 
       <!-- Start:: Offer Pannel Section -->
-      <div class="container-xl py-5">
+      <div class="container-xl py-5" v-if="item.view_type == 'divided_slider'">
         <div class="row">
           <div
+            v-for="(pannel, index) in item.data"
+            :key="pannel.id"
             class="col-md-6"
             data-aos-once="false"
-            :data-aos="$i18n.locale == 'ar' ? 'fade-left' : 'fade-right'"
+            :data-aos="$i18n.locale === 'ar' || index === 1 ?  'fade-left' : 'fade-right'"
             data-aos-delay="500"
             data-aos-duration="1500"
           >
             <SmallOfferPannel
               :offerData="firstOffer"
-            />
-          </div>
-          <div
-            class="col-md-6"
-            data-aos-once="false"
-            :data-aos="$i18n.locale == 'ar' ? 'fade-right' : 'fade-left'"
-            data-aos-delay="500"
-            data-aos-duration="1500"
-          >
-            <SmallOfferPannel
-              :offerData="secondOffer"
             />
           </div>
         </div>
@@ -58,15 +51,15 @@
 
       <!-- Start:: Top Rated Products Section -->
       <ProductsSection
-        v-if="item.type == 'products'"
-        :section_title="item.text"
-        :section_route="`/cateories/${item.data.id}`"
+        v-if="item.view_type == 'products' && item.type == 'top_rated'"
+        :sectionTitle="item.text"
+        :sectionRoute="`/categories/${item.data.id}`"
         :sectionItems="item.data"
       />
       <!-- End:: Top Rated Products Section -->
 
       <!-- Start:: Offer Pannel Section -->
-      <div class="container-xl py-5">
+      <!-- <div class="container-xl py-5">
         <LargeOfferPannel
           data-aos-once="false"
           data-aos="flip-up"
@@ -74,21 +67,23 @@
           data-aos-duration="1500"
           :offerData="thirdOffer"
         />
-      </div>
+      </div> -->
       <!-- End:: Offer Pannel Section -->
 
       <!-- Start:: Most Ordered Products Section -->
       <ProductsSection
-        v-if="item.type == 'products'"
-        :section_title="item.text"
-        :section_route="`/cateories/${item.data.id}`"
+        v-if="item.view_type == 'products' && item.type == 'most_orders'"
+        :sectionTitle="item.text"
+        :sectionRoute="`/categories/${item.data.id}`"
         :sectionItems="item.data"
       />
       <!-- End:: Most Ordered Products Section -->
 
       <!-- Start:: Offer Pannel Section -->
-      <div class="container-xl py-5">
+      <div class="container-xl py-5" v-if="item.view_type == 'sliders'">
         <LargeOfferPannel
+          v-for="pannel in item.data"
+          :key="pannel.id"
           data-aos-once="false"
           data-aos="flip-up"
           data-aos-delay="500"
@@ -100,9 +95,9 @@
 
       <!-- Start:: New Arrival Products Section -->
       <ProductsSection
-        v-if="item.type == 'products'"
-        :section_title="item.text"
-        :section_route="`/cateories/${item.data.id}`"
+        v-if="item.view_type == 'products' && item.type == 'new_arrivals_highlights'"
+        :sectionTitle="item.text"
+        :sectionRoute="`/categories/${item.data.id}`"
         :sectionItems="item.data"
       />
       <!-- End:: New Arrival Products Section -->
@@ -143,10 +138,6 @@ export default {
     };
   },
 
-  // asyncData(context) {
-  //   console.log("ASYNC DATA CONTEXT ==>", context);
-  // },
-
   components: {
     MainLoader,
     HeroSection,
@@ -162,7 +153,7 @@ export default {
       const res = await $axiosRequest({
         url: "home",
         params: {
-          main_category_id: 6,
+          main_category_id: 27,
         }
       });
       return {
