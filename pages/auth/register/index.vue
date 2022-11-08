@@ -65,7 +65,6 @@
 // Start:: Importing Vuex Helpers
 import {mapActions} from "vuex";
 // End:: Importing Vuex Helpers
-import AuthServices from "~/services/AuthServices";
 
 export default {
   name: 'Register',
@@ -159,26 +158,12 @@ export default {
 
       try {
         // ********** Start:: Implement Request ********** //
-        // let res = await AuthServices.sendAuthData('register', REQUEST_DATA, this.$i18n.locale);
-        // this.isWaitingRequest = false;
-        // window.localStorage.setItem("outfit_user_phonecode", this.data.phoneCode.key);
-        // window.localStorage.setItem("outfit_user_country_id", this.data.phoneCode.id);
-        // this.setAuthedUserData({
-        //   phone: this.data.phoneCode.key+this.data.phone,
-        //   verificationCode: res.data.dev_message,
-        // });
-        // this.$izitoast.success({
-        //   message: this.$t('MESSAGES.registeredSuccessfully'),
-        // });
-
         let res = await this.$axiosRequest({
           method: 'POST',
           url: 'register',
           data: REQUEST_DATA,
         });
         this.isWaitingRequest = false;
-        // window.localStorage.setItem("outfit_user_phonecode", this.data.phoneCode.key);
-        // window.localStorage.setItem("outfit_user_country_id", this.data.phoneCode.id);
         this.$cookies.set('outfit_user_phonecode', this.data.phoneCode.key);
         this.$cookies.set('outfit_user_country_id', this.data.phoneCode.id);
 

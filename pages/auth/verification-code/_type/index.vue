@@ -47,7 +47,6 @@
 // Start:: Importing Vuex Helpers
 import {mapActions, mapGetters} from "vuex";
 // End:: Importing Vuex Helpers
-import AuthServices from "~/services/AuthServices";
 
 export default {
   name: "VerificationCode",
@@ -86,8 +85,8 @@ export default {
 
     // Start:: Slice Phone Number To Remove Phonecode
     phoneNumberWithoutPhoneCode() {
-      let phoneCode = window.localStorage.getItem("outfit_user_phonecode");
-      let phoneNumber = this.authedUserData.phone;
+      let phoneCode = this.$cookies.get("outfit_user_phonecode").toString();
+      let phoneNumber = this.authedUserData.phone.toString();
       return phoneNumber.slice(phoneCode.length, phoneNumber.length);
     },
     // End:: Slice Phone Number To Remove Phonecode
@@ -131,25 +130,25 @@ export default {
         this.isWaitingRequest = true;
         // Start:: Append Request Data
         const REQUEST_DATA = new FormData();
-        REQUEST_DATA.append('country_id', localStorage.getItem('outfit_user_country_id'));
+        REQUEST_DATA.append('country_id', this.$cookies.get('outfit_user_country_id'));
         REQUEST_DATA.append('phone', this.phoneNumberWithoutPhoneCode);
         REQUEST_DATA.append('code', this.data.verificationCode);
         // Start:: Append Request Data
 
         try {
-          // console.log("SUCCESS::", res.data);
           // ********** Start:: Implement Request ********** //
-          let res = await AuthServices.sendAuthData('check_code', REQUEST_DATA, this.$i18n.locale);
+          let res = await this.$axiosRequest({
+            method: 'POST',
+            url: 'check_code',
+            data: REQUEST_DATA,
+          });
           this.isWaitingRequest = false;
-
-          console.log(res.data);
-
+          // console.log(res.data);
           // Start:: Delete Cached Data From Previous Step
           // this.deleteAuthedUserData({phone: true, verificationCode: true});
-          // localStorage.removeItem('outfit_user_phonecode');
-          // localStorage.removeItem('outfit_user_country_id');
+          // this.$cookies.remove('outfit_user_phonecode');
+          // this.$cookies.remove('outfit_user_country_id');
           // End:: Delete Cached Data From Previous Step
-
           this.$izitoast.success({
             message: this.$t('MESSAGES.verifiedSuccessfully'),
           });
@@ -168,21 +167,24 @@ export default {
         this.isWaitingRequest = true;
         // Start:: Append Request Data
         const REQUEST_DATA = new FormData();
-        REQUEST_DATA.append('country_id', localStorage.getItem('outfit_user_country_id'));
-        REQUEST_DATA.append('phone', this.phoneNumberWithoutPhoneCode);
+        REQUEST_DATA.append('country_id', this.$cookies.get('outfit_user_country_id'));
+        REQUEST_DATA.append('phone', parseInt(this.phoneNumberWithoutPhoneCode));
         REQUEST_DATA.append('code', this.data.verificationCode);
         // Start:: Append Request Data
 
         try {
-          // console.log("SUCCESS::", res.data);
           // ********** Start:: Implement Request ********** //
-          let res = await AuthServices.sendAuthData('verify', REQUEST_DATA, this.$i18n.locale);
+          let res = await this.$axiosRequest({
+            method: 'POST',
+            url: 'verify',
+            data: REQUEST_DATA,
+          });
           this.isWaitingRequest = false;
 
           // Start:: Delete Cached Data From Previous Step
           this.deleteAuthedUserData({phone: true, verificationCode: true});
-          localStorage.removeItem('outfit_user_phonecode');
-          localStorage.removeItem('outfit_user_country_id');
+          this.$cookies.remove('outfit_user_phonecode');
+          this.$cookies.remove('outfit_user_country_id');
           // End:: Delete Cached Data From Previous Step
 
           // Start:: Cache Authed User Data

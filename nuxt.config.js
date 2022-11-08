@@ -101,31 +101,31 @@ export default {
     [
       'nuxt-i18n',
       {
-          locales: [{
-                  name: 'عربي ',
-                  code: 'ar',
-                  iso: 'ar-AR',
-                  file: 'ar-AR.json',
-                  dir: 'rtl',
-              },
-              {
-                  name: 'English',
-                  code: 'en',
-                  iso: 'en-US',
-                  file: 'en-US.json',
-                  dir: 'ltr',
-              },
-          ],
-          lazy: true,
-          langDir: 'locales/',
-          vueI18n: {
-              locale: 'en',
-              fallbackLocale: 'en',
-          },
-          defaultLocale: 'en',
-          detectBrowserLanguage: false,
-          vueI18nLoader: true
-      },
+        locales: [{
+                name: 'عربي ',
+                code: 'ar',
+                iso: 'ar-AR',
+                file: 'ar-AR.json',
+                dir: 'rtl',
+            },
+            {
+                name: 'English',
+                code: 'en',
+                iso: 'en-US',
+                file: 'en-US.json',
+                dir: 'ltr',
+            },
+        ],
+        lazy: true,
+        langDir: 'locales/',
+        vueI18n: {
+            locale: 'en',
+            fallbackLocale: 'en',
+        },
+        defaultLocale: 'en',
+        detectBrowserLanguage: false,
+        vueI18nLoader: true
+    },
   ],
   ],
 

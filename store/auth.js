@@ -44,37 +44,30 @@ export const mutations = {
   setAuthedUserData(state, payload) {
     if (payload.id) {
       state.userId = payload.id
-      // localStorage.setItem('outfit_website_user_id', payload.id)
       this.$cookies.set('outfit_website_user_id', payload.id);
     }
     if (payload.type) {
       state.userType = payload.type
-      // localStorage.setItem('outfit_website_user_type', payload.type)
       this.$cookies.set('outfit_website_user_type', payload.type);
     }
     if (payload.token) {
       state.userToken = payload.token
-      // localStorage.setItem('outfit_website_user_token', payload.token)
       this.$cookies.set('outfit_website_user_token', payload.token);
     }
     if (payload.avatar) {
       state.userAvatar = payload.avatar
-      // localStorage.setItem('outfit_website_user_avatar', payload.avatar)
       this.$cookies.set('outfit_website_user_avatar', payload.avatar);
     }
     if (payload.name) {
       state.userName = payload.name
-      // localStorage.setItem('outfit_website_user_name', payload.name)
       this.$cookies.set('outfit_website_user_name', payload.name);
     }
     if (payload.phone) {
       state.userPhone = payload.phone
-      // localStorage.setItem('outfit_website_user_phone', payload.phone)
       this.$cookies.set('outfit_website_user_phone', payload.phone);
     }
     if (payload.verificationCode) {
       state.verificationCode = payload.verificationCode
-      // localStorage.setItem('outfit_website_user_verification_code',payload.verificationCode)
       this.$cookies.set('outfit_website_user_verification_code', payload.verificationCode);
     }
   },
@@ -83,27 +76,21 @@ export const mutations = {
   // Start:: Delete Local Storage Authed Data Mutation
   deleteAuthedUserData(_, payload) {
     if (payload.id) {
-      // localStorage.removeItem('outfit_website_user_id')
       this.$cookies.remove('outfit_website_user_id');
     }
     if (payload.type) {
-      // localStorage.removeItem('outfit_website_user_type')
       this.$cookies.remove('outfit_website_user_type');
     }
     if (payload.token) {
-      // localStorage.removeItem('outfit_website_user_token')
       this.$cookies.remove('outfit_website_user_token');
     }
     if (payload.avatar) {
-      // localStorage.removeItem('outfit_website_user_avatar')
       this.$cookies.remove('outfit_website_user_avatar');
     }
     if (payload.phone) {
-      // localStorage.removeItem('outfit_website_user_phone')
       this.$cookies.remove('outfit_website_user_phone');
     }
     if (payload.verificationCode) {
-      // localStorage.removeItem('outfit_website_user_verification_code')
       this.$cookies.remove('outfit_website_user_verification_code');
     }
   },

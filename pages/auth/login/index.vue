@@ -70,7 +70,6 @@
 // Start:: Importing Vuex Helpers
 import {mapGetters, mapActions} from 'vuex';
 // End:: Importing Vuex Helpers
-import AuthServices from "~/services/AuthServices";
 
 export default {
   name: 'Login',
@@ -160,8 +159,12 @@ export default {
       // Start:: Append Request Data
 
       try {
-        // let res = await this.$axios.post('login', REQUEST_DATA);
-        let res = await AuthServices.sendAuthData('login', REQUEST_DATA, this.$i18n.locale);
+        let res = await this.$axiosRequest({
+          method: 'POST',
+          url: 'login',
+          data: REQUEST_DATA,
+        });
+
         this.isWaitingRequest = false;;
         // Start:: Cache Authed User Data
         this.setAuthedUserData({

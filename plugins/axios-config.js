@@ -3,7 +3,8 @@ export default ({ app, $axios }, inject) => {
         baseURL: `https://outfit.phpv8.aait-d.com/website/`,
         headers: {
             common: {
-                // "Authorization":  "Bearer " + USER_TOKEN,
+                "Authorization":  app.$cookies.get("outfit_website_user_token") ?
+                "Bearer " + app.$cookies.get("outfit_website_user_token") : null,
                 "cache-control": "cache-control",
                 "Accept": "application/json",
                 "Accept-language": app.i18n.locale,
