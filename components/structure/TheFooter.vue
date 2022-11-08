@@ -63,11 +63,11 @@
           <div class="routes_wrapper">
             <h5 class="routes_title">{{ $t('TITLES.helpAndSupport') }}</h5>
             <ul class="footer_routes_list">
-              <li class="footer_route">
+              <!-- <li class="footer_route">
                 <nuxt-link to="/terms">
                   {{ $t('NAV.terms') }}
                 </nuxt-link>
-              </li>
+              </li> -->
 
               <li class="footer_route">
                 <nuxt-link to="/contact">

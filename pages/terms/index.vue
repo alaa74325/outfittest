@@ -5,8 +5,6 @@
       <div class="page_title"> {{$t("TITLES.terms")}} </div>
       <!-- End:: Page Title -->
 
-      <!-- PageData::: {{pageData}} -->
-
         <div
           class="page_content"
           v-for="item in pageData"
@@ -19,7 +17,6 @@
 </template>
 
 <script>
-import StaticContentPagesServices from "~/services/StaticContentPagesServices";
 
 export default {
   name: "TermsOfServices",
@@ -47,9 +44,12 @@ export default {
     };
   },
 
-    async asyncData({i18n }) {
+    async asyncData({$axiosRequest}) {
     try {
-      const res = await StaticContentPagesServices.getStaticContentData( `terms`, i18n.locale);
+      const res = await $axiosRequest({
+        method: "GET",
+        url: "terms",
+      });
       return {
         pageData: res.data.data,
       }

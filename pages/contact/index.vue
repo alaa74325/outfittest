@@ -40,11 +40,18 @@
                   <!-- End:: Email Input -->
 
                   <!-- Start Phone Input -->
-                  <base-input
+                  <base-country-flag-phone-input
+                    @changeKey="phonecodeChanged"
+                    :placeholder="$t('FORMS.Placeholders.phone')"
+                    :preSelectedPhoneCode="data.phoneCode"
+                    v-model="data.phone"
+                  />
+
+                  <!-- <base-input
                     type="text"
                     :placeholder="$t('FORMS.Placeholders.phone')"
                     v-model="data.phone"
-                  />
+                  /> -->
                   <!-- End Phone Input -->
 
                   <!-- Start Message Input -->
@@ -77,7 +84,7 @@
         ref="gMap"
         :center="mapCenter"
         :options="{fullscreenControl: true, styles: mapStyle}"
-        :zoom="10"
+        :zoom="13"
       >
         <GMapMarker
           :position="mapCenter"
@@ -90,7 +97,6 @@
 </template>
 
 <script>
-import ContactUsServices from "~/services/ContactUsServices";
 
 export default {
   name: "ContactUs",
@@ -113,9 +119,12 @@ export default {
     };
   },
 
-  async asyncData() {
+  async asyncData({$axiosRequest}) {
     try {
-      const contactData = await ContactUsServices.getContactUsData();
+      const contactData = await $axiosRequest({
+        method: "GET",
+        url: "contact",
+      });
       return {
         mapCenter: {
           lat:  parseFloat(contactData.data.data.lat),
@@ -133,20 +142,21 @@ export default {
       isWaitingRequest: false,
       // End:: Loader Contrle Data
 
-    // Start:: G-map Data
-    mapStyle: [
-        {
-            featureType: "all",
-            elementType: "all",
-            stylers: [{ saturation: -100 }],
-        },
-    ],
-    // End:: G-map Data
+      // Start:: G-map Data
+      mapStyle: [
+          {
+              featureType: "all",
+              elementType: "all",
+              stylers: [{ saturation: -100 }],
+          },
+      ],
+      // End:: G-map Data
 
       // Start:: Request Data
       data: {
         name: null,
         email: null,
+        phoneCode: null,
         phone: null,
         message: null,
       },
@@ -155,6 +165,12 @@ export default {
   },
 
   methods: {
+    // Start:: Change Selected Phonecode
+    phonecodeChanged(data) {
+      this.data.phoneCode = data;
+    },
+    // End:: Change Selected Phonecode
+
     // Start:: Validate Form
     validateFormInputs() {
       if (!this.data.name) {
@@ -190,18 +206,23 @@ export default {
       const REQUEST_DATA = new FormData();
       REQUEST_DATA.append('fullname', this.data.name);
       REQUEST_DATA.append('email', this.data.email);
-      REQUEST_DATA.append('phone', this.data.phone);
+      REQUEST_DATA.append('phone', this.data.phoneCode.key+this.data.phone);
       REQUEST_DATA.append('content', this.data.message);
       // Start:: Append Request Data
 
       try {
         // ********** Start:: Implement Request ********** //
-        await ContactUsServices.sendContactMessage(REQUEST_DATA, this.$i18n.locale);
+        await this.$axiosRequest({
+          method: "POST",
+          url: 'contact',
+          data: REQUEST_DATA,
+        });
         this.isWaitingRequest = false;
         this.$izitoast.success({
           message: this.$t('MESSAGES.sentSuccessfully'),
         });
         this.clearFormInput();
+
         // ********** End:: Implement Request ********** //
       } catch (err) {
         this.isWaitingRequest = false;
@@ -214,10 +235,10 @@ export default {
 
     // Start:: Clear Form Inputs
     clearFormInput() {
-        this.data.name = null;
-        this.data.email = null;
-        this.data.phone = null;
-        this.data.message = null;
+      this.data.name = null;
+      this.data.email = null;
+      this.data.phone = null;
+      this.data.message = null;
     },
     // End:: Clear Form Inputs
   },

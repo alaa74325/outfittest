@@ -1,8 +1,6 @@
 <template>
   <div class="about_content_wrapper">
     <div class="container-xl">
-      <!-- PageData::: {{pageData}} -->
-
       <!-- Start:: AboutUS Row Content -->
       <div
         class="about_content_row"
@@ -39,8 +37,6 @@
 </template>
 
 <script>
-import StaticContentPagesServices from "~/services/StaticContentPagesServices";
-
 export default {
   name: 'AboutUs',
 
@@ -62,9 +58,12 @@ export default {
     }
   },
 
-  async asyncData({i18n }) {
+  async asyncData({$axiosRequest}) {
     try {
-      const res = await StaticContentPagesServices.getStaticContentData( `about`, i18n.locale);
+      const res = await $axiosRequest({
+        method: "GET",
+        url: "about",
+      });
       return {
         pageData: res.data.data,
       }
