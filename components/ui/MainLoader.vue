@@ -1,5 +1,5 @@
 <template>
-  <div class="main_loader_wrapper">
+  <div class="main_loader_wrapper" v-if="loading">
     <img
       class="logo"
       src="~/assets/media/logo/logo.svg"
@@ -13,6 +13,22 @@
 <script>
 export default {
   name: "MainLoader",
+
+  data() {
+    return {
+      loading: false,
+    };
+  },
+
+
+  methods: {
+    start() {
+      this.loading = true;
+    },
+    finish() {
+      this.loading = false;
+    },
+  },
 }
 </script>
 

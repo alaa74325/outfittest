@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <MainLoader v-if="!homeData" />
-
+  <section>
     <div
       class="home_page_content_wrapper"
       v-for="item in homeData"
@@ -89,7 +87,7 @@
       />
       <!-- End:: New Arrival Products Section -->
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -151,5 +149,12 @@ export default {
       homeData: "homePage/homeData",
     }),
   },
+
+  mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 2000)
+    })
+  }
 };
 </script>

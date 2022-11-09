@@ -132,7 +132,7 @@
             </template>
           </a-tooltip>
 
-          <a-tooltip placement="bottom" class="wishlist_route">
+          <a-tooltip placement="bottom" class="wishlist_route" v-if="authedUserData.token">
             <nuxt-link :to="('/profile/wishlist')">
               <img
                 src="~/assets/media/icons/ui_icons/heart.svg"
@@ -146,7 +146,7 @@
             </template>
           </a-tooltip>
 
-          <a-badge :count="5" :overflow-count="9" class="cart_route">
+          <a-badge :count="5" :overflow-count="9" class="cart_route" v-if="authedUserData.token">
             <a-tooltip placement="bottom">
               <nuxt-link :to="('/cart')">
                 <img

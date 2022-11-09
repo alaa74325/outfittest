@@ -97,12 +97,13 @@ export default {
 
     .section_desc {
       margin-block: 10px 25px;
-      font-size: 70px;
+      font-size: 65px;
       font-weight: 400;
       font-style: italic;
       line-height: 1.4;
       text-transform: uppercase;
       color: var(--theme_text_clr);
+      width: 85%;
       span {
         color: var(--main_theme_clr);
       }
