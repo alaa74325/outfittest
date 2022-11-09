@@ -222,6 +222,43 @@
         </form>
       </div>
     </div>
+    <div class="nav_sub_routes">
+      <div class="container-xl px-0">
+        <ul class="routes_list">
+          <li class="navbar_route">
+            <nuxt-link :to="('/sale')"> Sale </nuxt-link>
+          </li>
+
+          <li class="navbar_route">
+            <nuxt-link :to="('/sale')"> Clothing </nuxt-link>
+          </li>
+
+          <li class="navbar_route">
+            <nuxt-link :to="('/sale')"> Top </nuxt-link>
+          </li>
+
+          <li class="navbar_route">
+            <nuxt-link :to="('/sale')"> Dresses </nuxt-link>
+          </li>
+
+          <li class="navbar_route">
+            <nuxt-link :to="('/sale')"> Bottoms </nuxt-link>
+          </li>
+
+          <li class="navbar_route">
+            <nuxt-link :to="('/sale')"> Lingerie & Lounge </nuxt-link>
+          </li>
+
+          <li class="navbar_route">
+            <nuxt-link :to="('/sale')"> Bags </nuxt-link>
+          </li>
+
+          <li class="navbar_route">
+            <nuxt-link :to="('/sale')"> Shoses </nuxt-link>
+          </li>
+        </ul>
+      </div>
+    </div>
     <!-- End:: Nav Routes & Search Input -->
 
     <!-- Start:: Categories Drawer -->

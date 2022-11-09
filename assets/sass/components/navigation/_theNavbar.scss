@@ -170,6 +170,33 @@
 			}
 		}
 	}
+	.nav_sub_routes {
+		background-color: var(--white_clr);
+		&>div {
+			@include flexSpaceBetweenAlignment;
+			align-items: stretch;
+			.routes_list {
+				@include flexStartAlignment;
+				column-gap: 30px;
+				.navbar_route {
+					& > a {
+						display: inline-block;
+						padding-block: 12px;
+						padding-inline: 15px;
+						color: var(--dark_gray_clr);
+						font-size: 15px;
+						font-family: $regular_font;
+						@include transitioning(0.3s);
+						&.nuxt-link-exact-active,
+						&.active,
+						&:hover {
+							color: var(--main_theme_clr);
+						}
+					}
+				}
+			}
+		}
+	}
 
   .v-overlay {
     &.v-overlay--absolute {
