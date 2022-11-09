@@ -2,24 +2,22 @@
   <div>
     <MainLoader v-if="!homeData" />
 
-    <!-- <pre dir="ltr">
-      <code>
-        HOME DATA:: {{homeData}}
-      </code>
-    </pre> -->
-
     <div
       class="home_page_content_wrapper"
       v-for="item in homeData"
       :key="item.id"
     >
       <!-- Start:: Hero Carousel -->
-      <HeroSection v-if=" item.view_type == 'slider'"/>
+      <HeroSection
+        v-if=" item.view_type == 'main_banner'"
+        :sectionData="item.data"
+      />
       <!-- End:: Hero Carousel -->
 
       <!-- Start:: Categories Section -->
       <CategoriesSection
         v-if="item.view_type == 'sub_category'"
+        :categories="item.data"
       />
       <!-- End:: Categories Section -->
 
@@ -42,7 +40,7 @@
             data-aos-duration="1500"
           >
             <SmallOfferPannel
-              :offerData="firstOffer"
+              :offerData="pannel"
             />
           </div>
         </div>
@@ -55,20 +53,9 @@
         :sectionTitle="item.text"
         :sectionRoute="`/categories/${item.data.id}`"
         :sectionItems="item.data"
+        :sectionType="item.type"
       />
       <!-- End:: Top Rated Products Section -->
-
-      <!-- Start:: Offer Pannel Section -->
-      <!-- <div class="container-xl py-5">
-        <LargeOfferPannel
-          data-aos-once="false"
-          data-aos="flip-up"
-          data-aos-delay="500"
-          data-aos-duration="1500"
-          :offerData="thirdOffer"
-        />
-      </div> -->
-      <!-- End:: Offer Pannel Section -->
 
       <!-- Start:: Most Ordered Products Section -->
       <ProductsSection
@@ -76,19 +63,18 @@
         :sectionTitle="item.text"
         :sectionRoute="`/categories/${item.data.id}`"
         :sectionItems="item.data"
+        :sectionType="item.type"
       />
       <!-- End:: Most Ordered Products Section -->
 
       <!-- Start:: Offer Pannel Section -->
-      <div class="container-xl py-5" v-if="item.view_type == 'sliders'">
+      <div class="container-xl py-5" v-if="item.view_type == 'banner'">
         <LargeOfferPannel
-          v-for="pannel in item.data"
-          :key="pannel.id"
           data-aos-once="false"
           data-aos="flip-up"
           data-aos-delay="500"
           data-aos-duration="1500"
-          :offerData="fourthOffer"
+          :offerData="item.data"
         />
       </div>
       <!-- End:: Offer Pannel Section -->
@@ -99,6 +85,7 @@
         :sectionTitle="item.text"
         :sectionRoute="`/categories/${item.data.id}`"
         :sectionItems="item.data"
+        :sectionType="item.type"
       />
       <!-- End:: New Arrival Products Section -->
     </div>
@@ -106,6 +93,7 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 import MainLoader from "~/components/ui/MainLoader.vue";
 
 // Start:: Importing Home Page Components
@@ -148,53 +136,20 @@ export default {
     ProductsSection,
   },
 
-  async asyncData({$axiosRequest}) {
-    try {
-      const res = await $axiosRequest({
-        url: "home",
-        params: {
-          main_category_id: 27,
-        }
-      });
-      return {
-        homeData: res.data.data,
-      }
-    } catch(err) {
-      console.log(err.response.data.message);
-    }
+  async fetch({store}) {
+    await store.dispatch("homePage/getHomePageData");
   },
 
   data() {
     return {
       isLoading: true,
-
-      // Start:: Dummy Data
-      firstOffer: {
-        image: require("@/assets/media/images/offerPannel.png"),
-        title: "Get Jeweled",
-        route_text: "show your jewelry now",
-        route: "",
-      },
-      secondOffer: {
-        image: require("@/assets/media/images/offerPannel2.png"),
-        title: "End Of Summer",
-        route_text: "show from here",
-        route: "",
-      },
-      thirdOffer: {
-        image: require("@/assets/media/images/largeOfferPannel.png"),
-        title: "Fall 2022 Collection",
-        desc: "The Astest Fashion For Everyone",
-        route: "",
-      },
-      fourthOffer: {
-        image: require("@/assets/media/images/largeOfferPannel2.png"),
-        title: "Fall 2022 Collection",
-        desc: "The Astest Fashion For Everyone",
-        route: "",
-      },
-      // End:: Dummy Data
     };
+  },
+
+  computed: {
+    ...mapGetters({
+      homeData: "homePage/homeData",
+    }),
   },
 };
 </script>

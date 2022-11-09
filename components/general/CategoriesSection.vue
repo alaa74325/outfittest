@@ -11,7 +11,7 @@
       <div class="row justify-content-center">
         <div
           class="col-6 col-md-3 col-xl-2"
-          v-for="(item,index) in dummyCats"
+          v-for="(item,index) in categories"
           :key="item.id"
           data-aos-once="false"
           data-aos="fade"
@@ -38,6 +38,13 @@ export default {
 
   components: {
     CategoryCard
+  },
+
+  props: {
+    categories: {
+      type: Array,
+      required: true,
+    },
   },
 
   data() {

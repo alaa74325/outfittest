@@ -1,10 +1,10 @@
 <template>
-  <nuxt-link :to="`/categories/${categoryData.id}`" class="category_card_wrapper">
+  <nuxt-link :to="localePath(`/categories/${categoryData.id}`)" class="category_card_wrapper">
     <!-- Start:: Card Image -->
     <div class="img_wrapper">
       <img
         class="cat_image"
-        :src="categoryData.img"
+        :src="categoryData.image"
         :alt="categoryData.name"
         width="105"
         height="140"
@@ -39,6 +39,7 @@ export default {
     .cat_image{
       width: 105px;
       height: 140px;
+      object-fit: contain;
     }
   }
   .cat_name {

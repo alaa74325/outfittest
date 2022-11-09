@@ -12,7 +12,7 @@
         <div class="list_title">{{$t("TITLES.flashSales")}}</div>
 
         <div class="section_route_wrapper">
-          <nuxt-link to="/flash-sales">
+          <nuxt-link :to="localePath('/flash-sales')">
             <span class="timer_text"> Ends In </span>
 
             <!-- <a-statistic-countdown

@@ -6,7 +6,7 @@
         <div class="list_title">{{sectionTitle}}</div>
 
         <div class="section_route_wrapper">
-          <nuxt-link :to="sectionRoute">
+          <nuxt-link :to="localePath(sectionRoute)">
             {{ $t("BUTTONS.showAll", {sectionName: sectionTitle}) }}
           </nuxt-link>
           <img
@@ -26,7 +26,7 @@
         <div
           class="col-6 col-md-4 col-lg-3"
           v-for="(item, index) in sectionItems"
-          :key="item"
+          :key="item.id"
           data-aos-once="false"
           data-aos="fade-up"
           :data-aos-delay="'300' * (index + 1)"
@@ -34,6 +34,7 @@
         >
           <ProductCard
             :productData="item"
+            :productType="sectionType"
           />
         </div>
       </div>
@@ -64,6 +65,10 @@ export default {
     sectionItems: {
       type: Array,
       required: true,
+    },
+    sectionType: {
+      type: String,
+      required: false,
     },
   },
 }

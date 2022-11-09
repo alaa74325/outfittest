@@ -106,7 +106,7 @@
         <!-- End:: Lang & Currency -->
 
         <!-- Start:: Logo -->
-        <nuxt-link to="/" class="logo_wrapper">
+        <nuxt-link :to="('/')" class="logo_wrapper">
           <img
             src="~/assets/media/logo/logo.svg"
             width="130"
@@ -119,7 +119,7 @@
         <!-- Start:: Navbar Buttons -->
         <div class="navbar_btns_wrapper">
           <a-tooltip placement="bottom" class="profile_route" v-if="authedUserData.token">
-            <nuxt-link to="/profile">
+            <nuxt-link :to="('/profile')">
               <img
                 src="~/assets/media/icons/ui_icons/user.svg"
                 width="25"
@@ -133,7 +133,7 @@
           </a-tooltip>
 
           <a-tooltip placement="bottom" class="wishlist_route">
-            <nuxt-link to="/profile/wishlist">
+            <nuxt-link :to="('/profile/wishlist')">
               <img
                 src="~/assets/media/icons/ui_icons/heart.svg"
                 width="25"
@@ -148,7 +148,7 @@
 
           <a-badge :count="5" :overflow-count="9" class="cart_route">
             <a-tooltip placement="bottom">
-              <nuxt-link to="/cart">
+              <nuxt-link :to="('/cart')">
                 <img
                   src="~/assets/media/icons/ui_icons/cart.svg"
                   width="25"
@@ -163,7 +163,7 @@
           </a-badge>
 
           <a-tooltip placement="bottom" class="auth_route" v-if="!authedUserData.token">
-            <nuxt-link to="/auth/login">
+            <nuxt-link :to="('/auth/login')">
               <img
                 src="~/assets/media/icons/ui_icons/login.svg"
                 width="25"
@@ -193,7 +193,7 @@
       <div class="container-xl px-0">
         <ul class="routes_list">
           <li class="navbar_route">
-            <nuxt-link to="/"> {{ $t('NAV.home') }} </nuxt-link>
+            <nuxt-link :to="('/')"> {{ $t('NAV.home') }} </nuxt-link>
           </li>
 
           <li class="navbar_route">

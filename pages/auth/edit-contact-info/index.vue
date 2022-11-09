@@ -28,7 +28,7 @@
       <!-- Start:: Auth Route Wrapper -->
       <div class="auth_route_wrapper">
         <nuxt-link
-          to="/auth/register"
+          :to="localePath('/auth/register')"
           v-html="$t('BUTTONS.registerRoute')"
         ></nuxt-link>
       </div>

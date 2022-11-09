@@ -11,10 +11,7 @@
       <h3 class="section_title">Outfit Presents</h3>
 
       <h1 class="section_desc">
-        offering a
-        <span>new way </span> to shop
-        the world's finest
-        clothes!
+        {{sectionData.name}}
       </h1>
 
       <div class="btn_wrapper">
@@ -44,8 +41,8 @@
       data-aos-duration="1500"
     >
       <img
-        src="~/assets/media/images/heroImage.png"
-        alt="hero Section Image"
+        :src="sectionData.image"
+        :alt="sectionData.name"
       />
     </div>
     <!-- End:: Section Image -->
@@ -55,6 +52,13 @@
 <script>
 export default {
   name: "HeroSection",
+
+  props: {
+    sectionData: {
+      type: Object,
+      required: true,
+    },
+  },
 
   methods: {
     // Start:: Scroll To Section
@@ -146,10 +150,10 @@ export default {
 
     img {
       // width: 75%;
-      // height: 600px;
       width: 500px;
+      height: 700px;
       border-radius: 250px 250px 0 0;
-      object-fit: none;
+      object-fit: cover;
       z-index: 2;
     }
   }

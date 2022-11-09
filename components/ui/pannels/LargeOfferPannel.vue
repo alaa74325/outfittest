@@ -2,21 +2,21 @@
   <div class="large_offer_pannel_wrapper">
     <img
       :src="offerData.image"
-      :alt="offerData.title"
+      :alt="offerData.name"
       width="600"
       height="400"
     />
 
     <div class="pannel_overlay">
       <h3 class="pannel_title">
-        {{offerData.title}}
+        {{offerData.name}}
       </h3>
 
       <h5 class="pannel_desc">
         {{offerData.desc}}
       </h5>
 
-      <nuxt-link :to="`/${offerData.route}`" class="pannel_route">
+      <nuxt-link :to="localePath(`/categories/${offerData.category_id}`)" class="pannel_route">
         {{$t("BUTTONS.ShopNow")}}
       </nuxt-link>
     </div>

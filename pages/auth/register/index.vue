@@ -51,7 +51,7 @@
       <!-- Start:: Auth Route Wrapper -->
       <div class="auth_route_wrapper">
         <nuxt-link
-          to="/auth/login"
+          :to="localePath('/auth/login')"
           v-html="$t('BUTTONS.loginRoute')"
         ></nuxt-link>
       </div>

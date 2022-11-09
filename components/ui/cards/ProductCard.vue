@@ -1,22 +1,24 @@
 <template>
-  <div class="product_card_wrapper">
+  <div class="product_card_wrapper" v-if="selectedProductDetail">
     <!-- Start:: Product Image -->
     <div class="card_image_wrapper">
       <!-- ********** Start:: Product Images ********** -->
-      <img
-        class="product_image"
-        :src="productData.product_details[0].images[0].url"
-        :alt="productData.name"
-        width='300'
-        height='360'
-      />
-      <img
-        class="product_image"
-        :src="productData.product_details[0].images[1].url"
-        :alt="productData.name"
-        width='300'
-        height='360'
-      />
+      <nuxt-link :to="localePath(`/products/${productData.id}`)">
+        <img
+          class="product_image"
+          :src="selectedProductDetail.images[0].url"
+          :alt="productData.name"
+          width='330'
+          height='360'
+        />
+        <img
+          class="product_image"
+          :src="selectedProductDetail.images[1].url"
+          :alt="productData.name"
+          width='330'
+          height='360'
+        />
+      </nuxt-link>
       <!-- ********** End:: Product Images ********** -->
 
       <!-- ********** Start:: Wishlist Button ********** -->
@@ -43,55 +45,33 @@
     <!-- Start:: Product Info -->
     <div class="product_info">
       <!-- ********** Start:: Product Name & Price ********** -->
-      <p class="product_name"> {{productData.name}} </p>
-      <div class="product_price_and_badge_wrapper">
-        <p class="product_price"> {{productData.product_details[0].currency}} {{productData.product_details[0].price}} </p>
-        <!-- <div class="product_badge"> Top Rated </div> -->
-      </div>
+      <nuxt-link :to="localePath(`/products/${productData.id}`)">
+        <p class="product_name"> {{productData.name}} </p>
+        <div class="product_price_and_badge_wrapper">
+          <p class="product_price"> {{selectedProductDetail.currency}} {{selectedProductDetail.price}} </p>
+          <!-- <div class="product_badge"> Top Rated </div> -->
+        </div>
+      </nuxt-link>
       <!-- ********** End:: Product Name & Price ********** -->
 
       <!-- ********** Start:: Product Colors ********** -->
       <div class="product_colors_wrapper"
         v-for="detail in productData.product_details"
         :key="detail.id"
-        >
+      >
         <div class="radio_input_wrapper">
           <input
             :id="`product_${productData.id}_color_${detail.color.id}`"
             class="radio_input"
             type="radio"
-            :name="`product_${productData.id}_colors`"
+            :name="`${productType}_product_${productData.id}_color_${selectedProductDetail.color.id}`"
             :value="detail.color"
-            v-model="selectedProductDetail"
+            v-model="selectedProductDetail.color"
           >
           <label class="radio_label" :for="`product_${productData.id}_color_${detail.color.id}`">
             <span class="color_preview" :style="`background: ${detail.color.hex}`"></span>
           </label>
         </div>
-
-        <!-- <div class="radio_input_wrapper">
-          <input
-            id="color_2"
-            class="radio_input"
-            type="radio"
-            name="product_colors"
-            value="#BFA3B6"
-            v-model="selectedColor"
-          >
-          <label class="radio_label" for="color_2" style="background: #BFA3B6"></label>
-        </div>
-
-        <div class="radio_input_wrapper">
-          <input
-            id="color_3"
-            class="radio_input"
-            type="radio"
-            name="product_colors"
-            value="#4273B2"
-            v-model="selectedColor"
-          >
-          <label class="radio_label" for="color_3" style="background: #4273B2"></label>
-        </div> -->
       </div>
       <!-- ********** End:: Product Colors ********** -->
     </div>
@@ -108,21 +88,21 @@ export default {
       type: Object,
       required: true,
     },
+    productType: {
+      type: String,
+      required: false,
+    },
   },
 
   data() {
     return {
       selectedProductDetail: null,
-      selectedColor: null,
     }
   },
 
   mounted() {
-    console.log("PRODUCT DETAILS ==>", this.productData);
-
     // Start:: Set Initial Product Detail
     this.selectedProductDetail = this.productData.product_details[0];
-    this.selectedColor = this.productData.product_details[0].color;
     // End:: Set Initial Product Detail
   },
 }
@@ -134,7 +114,7 @@ export default {
   .card_image_wrapper {
     position: relative;
     width: 300px;
-    height: 360px;
+    height: 330px;
     border-radius: 10px;
     overflow: hidden;
 
@@ -187,6 +167,7 @@ export default {
       margin-bottom: 5px;
       color: var(--light_gray_clr);
       font-size: 15px;
+      @include textEllipsis;
     }
     .product_price_and_badge_wrapper {
       margin-bottom: 8px;

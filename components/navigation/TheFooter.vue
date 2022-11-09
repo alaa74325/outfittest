@@ -4,7 +4,7 @@
       <div class="row justify-content-between">
         <!-- Start:: Logo Wrapper -->
         <div class="col-md-3">
-          <nuxt-link to="/" class="logo_wrapper">
+          <nuxt-link :to="localePath('/')" class="logo_wrapper">
             <img
               src="~/assets/media/logo/logo_black.svg"
               width="100"
@@ -35,13 +35,13 @@
             <h5 class="routes_title">{{ $t('TITLES.companyInfo') }}</h5>
             <ul class="footer_routes_list">
               <li class="footer_route">
-                <nuxt-link to="/about">
+                <nuxt-link :to="('/about')">
                   {{ $t('NAV.about') }}
                 </nuxt-link>
               </li>
 
               <li class="footer_route">
-                <nuxt-link to="/how-to-shop">
+                <nuxt-link :to="('/how-to-shop')">
                   {{ $t('NAV.howToShop') }}
                 </nuxt-link>
               </li>
@@ -53,7 +53,7 @@
               </li> -->
 
               <li class="footer_route">
-                <nuxt-link to="/terms">
+                <nuxt-link :to="('/terms')">
                   {{ $t('NAV.terms') }}
                 </nuxt-link>
               </li>
@@ -70,7 +70,7 @@
               </li> -->
 
               <li class="footer_route">
-                <nuxt-link to="/contact">
+                <nuxt-link :to="('/contact')">
                   {{ $t('NAV.contact') }}
                 </nuxt-link>
               </li>
@@ -82,7 +82,7 @@
               </li> -->
 
               <li class="footer_route">
-                <nuxt-link to="/policy">
+                <nuxt-link :to="('/policy')">
                   {{ $t('NAV.returnsPolicy') }}
                 </nuxt-link>
               </li>

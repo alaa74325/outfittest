@@ -3,7 +3,7 @@
 
     <!-- Start:: Logo Wrapper -->
     <nuxt-link
-      to="/"
+      :to="localePath('/')"
       class="logo_wrapper"
     >
       <img

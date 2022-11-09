@@ -17,13 +17,18 @@ export default ({ app, $axios }, inject) => {
     //   console.log('Making request to =>' + config.url);
     // });
 
-    // $axios.onError(error => {
-    //   const code = parseInt(error.response && error.response.status)
-    //   if (code === 404) {
-    //     redirect('/404');
-    //   }
-    //   console.log("REQUEST ERROR ==> ", error);
-    // });
+    $axios.onError(error => {
+      const code = parseInt(error.response && error.response.status);
+      console.log("TEST GLOBAL ERROR");
+
+      if (code === 404) {
+        redirect('/404');
+      } else if (code === 500) {
+        redirect('/500');
+        console.log("500 SERVER ERROR");
+      }
+      // console.log("REQUEST ERROR ==> ", error);
+    });
 
     inject('axiosRequest', axiosRequest);
 }

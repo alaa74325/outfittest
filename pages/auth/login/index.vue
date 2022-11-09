@@ -37,7 +37,7 @@
         <!-- Start:: Forget Password Route -->
         <div class="forget_password_route_wrapper">
           <nuxt-link
-            to="/auth/phone-to-reset-password"
+            :to="localePath('/auth/phone-to-reset-password')"
             class="forget_password_route"
           >
             {{ $t('BUTTONS.forgetPassword') }}
@@ -56,7 +56,7 @@
       <!-- Start:: Auth Route Wrapper -->
       <div class="auth_route_wrapper">
         <nuxt-link
-          to="/auth/register"
+          :to="localePath('/auth/register')"
           v-html="$t('BUTTONS.registerRoute')"
         ></nuxt-link>
       </div>

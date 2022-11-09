@@ -8,7 +8,7 @@
       {{ authedUserData.phone }}
     </h4>
     <!-- <div class="edit_phone_route_wrapper">
-      <nuxt-link to="/auth/edit-contact-info"> {{$t("BUTTONS.editPhone")}} </nuxt-link>
+      <nuxt-link :to="localePath('/auth/edit-contact-info')"> {{$t("BUTTONS.editPhone")}} </nuxt-link>
     </div> -->
     <!-- End:: Form Title -->
 
@@ -33,7 +33,7 @@
       <!-- Start:: Auth Route Wrapper -->
       <div class="auth_route_wrapper">
         <nuxt-link
-          to="/auth/register"
+          :to="localePath('/auth/register')"
           v-html="$t('BUTTONS.registerRoute')"
         ></nuxt-link>
       </div>

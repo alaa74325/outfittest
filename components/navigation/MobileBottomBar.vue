@@ -1,7 +1,7 @@
 <template>
   <div class="mobile_bottom_bar">
     <!-- Start:: Home Route -->
-      <nuxt-link to="/">
+      <nuxt-link :to="localePath('/')">
         <img
           src="~/assets/media/icons/ui_icons/home.svg"
           width="23"
@@ -38,7 +38,7 @@
       <!-- End:: Categories Toggler -->
 
       <!-- Start:: Wishlist Route -->
-      <nuxt-link to="/profile/wishlist">
+      <nuxt-link :to="localePath('/profile/wishlist')">
         <img
           src="~/assets/media/icons/ui_icons/heart.svg"
           width="23"
@@ -56,7 +56,7 @@
       <!-- End:: Wishlist Route -->
 
       <!-- Start:: Cart Route -->
-        <nuxt-link to="/cart">
+        <nuxt-link :to="localePath('/cart')">
           <a-badge :count="5" :overflow-count="9">
             <img
               src="~/assets/media/icons/ui_icons/cart.svg"
@@ -76,7 +76,7 @@
       <!-- End:: Cart Route -->
 
       <!-- Start:: Profile Route -->
-      <nuxt-link to="/profile">
+      <nuxt-link :to="localePath('/profile')">
         <img
           src="~/assets/media/icons/ui_icons/user.svg"
           width="23"
