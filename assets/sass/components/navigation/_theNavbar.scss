@@ -177,7 +177,9 @@
 			align-items: stretch;
 			.routes_list {
 				@include flexStartAlignment;
+        flex-wrap: wrap;
 				column-gap: 30px;
+				row-gap: 15px;
 				.navbar_route {
 					& > a {
 						display: inline-block;
@@ -186,6 +188,7 @@
 						color: var(--dark_gray_clr);
 						font-size: 15px;
 						font-family: $regular_font;
+            width: max-content;
 						@include transitioning(0.3s);
 						&.nuxt-link-exact-active,
 						&.active,

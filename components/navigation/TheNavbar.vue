@@ -189,23 +189,20 @@
     <!-- End:: Nav Mid -->
 
     <!-- Start:: Nav Routes & Search Input -->
-    <div class="nav_routes_and_search_input_wrapper">
+    <div class="nav_routes_and_search_input_wrapper" v-if="navBarCategories.mainCategories">
       <div class="container-xl px-0">
         <ul class="routes_list">
-          <li class="navbar_route">
-            <nuxt-link :to="('/')"> {{ $t('NAV.home') }} </nuxt-link>
-          </li>
-
-          <li class="navbar_route">
-            <button>Women</button>
-          </li>
-
-          <li class="navbar_route">
-            <button>Men</button>
-          </li>
-
-          <li class="navbar_route">
-            <button>Kids</button>
+          <li
+            v-for="item in navBarCategories.mainCategories"
+            :key="item.id"
+            class="navbar_route"
+          >
+            <button
+              :class=" item.id == navBarCategories.currentActiveCategory.id ? 'active' : ''"
+              @click="getDataBasedOnMainCategoryId(item.id)"
+            >
+              {{item.name}}
+            </button>
           </li>
         </ul>
 
@@ -222,39 +219,16 @@
         </form>
       </div>
     </div>
-    <div class="nav_sub_routes">
+
+    <div class="nav_sub_routes" v-if="navBarCategories.subCategoriesBasedOnMainCategory">
       <div class="container-xl px-0">
         <ul class="routes_list">
-          <li class="navbar_route">
-            <nuxt-link :to="('/sale')"> Sale </nuxt-link>
-          </li>
-
-          <li class="navbar_route">
-            <nuxt-link :to="('/sale')"> Clothing </nuxt-link>
-          </li>
-
-          <li class="navbar_route">
-            <nuxt-link :to="('/sale')"> Top </nuxt-link>
-          </li>
-
-          <li class="navbar_route">
-            <nuxt-link :to="('/sale')"> Dresses </nuxt-link>
-          </li>
-
-          <li class="navbar_route">
-            <nuxt-link :to="('/sale')"> Bottoms </nuxt-link>
-          </li>
-
-          <li class="navbar_route">
-            <nuxt-link :to="('/sale')"> Lingerie & Lounge </nuxt-link>
-          </li>
-
-          <li class="navbar_route">
-            <nuxt-link :to="('/sale')"> Bags </nuxt-link>
-          </li>
-
-          <li class="navbar_route">
-            <nuxt-link :to="('/sale')"> Shoses </nuxt-link>
+          <li
+            v-for="item in navBarCategories.subCategoriesBasedOnMainCategory"
+            :key="item.id"
+            class="navbar_route"
+          >
+            <nuxt-link :to="(`/categories/${item.id}`)"> {{item.name}} </nuxt-link>
           </li>
         </ul>
       </div>
@@ -411,7 +385,7 @@
 
 <script>
 // Start:: Importing Vuex Helpers
-import {mapGetters} from "vuex";
+import {mapGetters, mapActions} from "vuex";
 // End:: Importing Vuex Helpers
 
 export default {
@@ -426,10 +400,6 @@ export default {
 
   data() {
     return {
-      smallScreensMenuIsOpen: false,
-      scrollPosition: null,
-      navHeight: null,
-
       // Start:: Dummy Categories Data
       categories: {
         menCat: {
@@ -464,6 +434,13 @@ export default {
         }
       },
       // End:: Dummy Categories Data
+
+      // Start:: NavBar Control Data
+      smallScreensMenuIsOpen: false,
+      scrollPosition: null,
+      navHeight: null,
+      // End:: NavBar Control Data
+
     }
   },
 
@@ -471,6 +448,7 @@ export default {
     // Start:: Vuex Get Authed User Data
     ...mapGetters({
       authedUserData: "auth/authedUserData",
+      navBarCategories: "navBarCategories/navBarCategories",
     }),
     // End:: Vuex Get Authed User Data
 
@@ -483,6 +461,85 @@ export default {
   },
 
   methods: {
+    // Start:: Vuex Actions
+    ...mapActions({
+      getHomePageData: "homePage/getHomePageData",
+      getMainCategories: "navBarCategories/getMainCategories",
+      getSubCategories: "navBarCategories/getSubCategories",
+      getDataBasedOnMainCategoryId: "navBarCategories/getDataBasedOnMainCategoryId",
+    }),
+    // End:: Vuex Actions
+
+    // // Start:: Get NavBar Categories
+    // async getMainCategories() {
+    //   this.$nextTick(() => {
+    //     this.$nuxt.$loading.start()
+    //   })
+    //   try {
+    //     let res = await this.$axiosRequest({
+    //       method: "GET",
+    //       url: "get_category",
+    //     });
+    //       console.log("Main Categories ==>", res.data.data);
+    //       this.mainCategories = res.data.data;
+    //       this.getSubCategories();
+    //       this.currentActiveCategory = this.mainCategories[0];
+
+    //       this.$nextTick(() => {
+    //         this.$nuxt.$loading.finish()
+    //       })
+    //   } catch(err) {
+    //     console.log(err.response.data.message);
+    //     this.$nextTick(() => {
+    //       this.$nuxt.$loading.finish()
+    //     })
+    //   }
+    // },
+    // async getSubCategories(mainCategoryId) {
+    //   try {
+    //     let res = await this.$axiosRequest({
+    //       method: "GET",
+    //       url: "get_category",
+    //       params: {
+    //         category_id: mainCategoryId ? mainCategoryId : this.mainCategories[0].id,
+    //       }
+    //     });
+    //       console.log("SubCategories ==>", res.data.data);
+    //       this.subCategoriesBasedOnMainCategory = res.data.data;
+    //   } catch(err) {
+    //     console.log(err.response.data.message);
+    //   }
+    // },
+    // async getDataBasedOnMainCategoryId(mainCategoryId) {
+    //   this.$nextTick(() => {
+    //     this.$nuxt.$loading.start()
+    //   })
+
+    //   try {
+    //     let res = await this.$axiosRequest({
+    //       method: "GET",
+    //       url: "get_category",
+    //       params: {
+    //         category_id: mainCategoryId
+    //       }
+    //     });
+    //       console.log("SubCategories On Click ==>", res.data.data);
+    //       this.getSubCategories(mainCategoryId);
+    //       this.currentActiveCategory = this.mainCategories.find(item => item.id == mainCategoryId);
+    //       this.getHomePageData(mainCategoryId);
+
+    //       this.$nextTick(() => {
+    //         this.$nuxt.$loading.finish()
+    //       })
+    //   } catch(err) {
+    //     console.log(err.response.data.message);
+    //     this.$nextTick(() => {
+    //       this.$nuxt.$loading.finish()
+    //     })
+    //   }
+    // },
+    // // End:: Get NavBar Categories
+
     changeLang() {
       setTimeout(() => {
         location.reload()
@@ -501,6 +558,12 @@ export default {
         : (document.body.style.paddingTop = '0')
     },
     // END:: HANDLING STICKY HEADER
+  },
+
+  created() {
+    // Start:: Fire Methods
+    this.getMainCategories();
+    // End:: Fire Methods
   },
 
   mounted() {

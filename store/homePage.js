@@ -18,6 +18,11 @@ export const mutations = {
 export const actions = {
   // Start:: Get Home Page Data
   async getHomePageData(context, payload) {
+    // console.log("MAIN CAT ID ===>", payload);
+    // context.dispatch("navBarCategories/getMainCategories",undefined, {root:true});
+    // let currentMainCategoryId = context.getters["navBarCategories/navBarCategories"];
+    // console.log("TEST ===>", currentMainCategoryId);
+
     try {
       const res = await this.$axiosRequest({
         url: "home",
