@@ -64,8 +64,8 @@
 
           <!-- ********** Start:: Currency ********** -->
           <!-- <a-dropdown :trigger="['click']"> -->
-            <!-- Start:: Selected Currency -->
-            <!-- <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
+          <!-- Start:: Selected Currency -->
+          <!-- <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
               <img
                 src="~/assets/media/icons/ar.png"
                 width="25"
@@ -74,10 +74,10 @@
               <span> KSA </span>
               <i class="fas fa-angle-down"></i>
             </a> -->
-            <!-- End:: Selected Currency -->
+          <!-- End:: Selected Currency -->
 
-            <!-- Start:: Currencies List -->
-            <!-- <a-menu slot="overlay">
+          <!-- Start:: Currencies List -->
+          <!-- <a-menu slot="overlay">
               <a-menu-item key="0">
                 <button>
                   <img
@@ -99,14 +99,14 @@
                 </button>
               </a-menu-item>
             </a-menu> -->
-            <!-- End:: Currencies List -->
+          <!-- End:: Currencies List -->
           <!-- </a-dropdown> -->
           <!-- ********** End:: Currency ********** -->
         </div>
         <!-- End:: Lang & Currency -->
 
         <!-- Start:: Logo -->
-        <nuxt-link :to="('/')" class="logo_wrapper">
+        <nuxt-link :to="'/'" class="logo_wrapper">
           <img
             src="~/assets/media/logo/logo.svg"
             width="130"
@@ -118,8 +118,12 @@
 
         <!-- Start:: Navbar Buttons -->
         <div class="navbar_btns_wrapper">
-          <a-tooltip placement="bottom" class="profile_route" v-if="authedUserData.token">
-            <nuxt-link :to="('/profile')">
+          <a-tooltip
+            placement="bottom"
+            class="profile_route"
+            v-if="authedUserData.token"
+          >
+            <nuxt-link :to="'/profile'">
               <img
                 src="~/assets/media/icons/ui_icons/user.svg"
                 width="25"
@@ -132,8 +136,12 @@
             </template>
           </a-tooltip>
 
-          <a-tooltip placement="bottom" class="wishlist_route" v-if="authedUserData.token">
-            <nuxt-link :to="('/profile/wishlist')">
+          <a-tooltip
+            placement="bottom"
+            class="wishlist_route"
+            v-if="authedUserData.token"
+          >
+            <nuxt-link :to="'/profile/wishlist'">
               <img
                 src="~/assets/media/icons/ui_icons/heart.svg"
                 width="25"
@@ -146,9 +154,14 @@
             </template>
           </a-tooltip>
 
-          <a-badge :count="5" :overflow-count="9" class="cart_route" v-if="authedUserData.token">
+          <a-badge
+            :count="5"
+            :overflow-count="9"
+            class="cart_route"
+            v-if="authedUserData.token"
+          >
             <a-tooltip placement="bottom">
-              <nuxt-link :to="('/cart')">
+              <nuxt-link :to="'/cart'">
                 <img
                   src="~/assets/media/icons/ui_icons/cart.svg"
                   width="25"
@@ -162,8 +175,12 @@
             </a-tooltip>
           </a-badge>
 
-          <a-tooltip placement="bottom" class="auth_route" v-if="!authedUserData.token">
-            <nuxt-link :to="('/auth/login')">
+          <a-tooltip
+            placement="bottom"
+            class="auth_route"
+            v-if="!authedUserData.token"
+          >
+            <nuxt-link :to="'/auth/login'">
               <img
                 src="~/assets/media/icons/ui_icons/login.svg"
                 width="25"
@@ -189,7 +206,10 @@
     <!-- End:: Nav Mid -->
 
     <!-- Start:: Nav Routes & Search Input -->
-    <div class="nav_routes_and_search_input_wrapper" v-if="navBarCategories.mainCategories">
+    <div
+      class="nav_routes_and_search_input_wrapper"
+      v-if="navBarCategories.mainCategories && categoriesIsAvailable"
+    >
       <div class="container-xl px-0">
         <ul class="routes_list">
           <li
@@ -198,10 +218,14 @@
             class="navbar_route"
           >
             <button
-              :class=" item.id == navBarCategories.currentActiveCategory.id ? 'active' : ''"
+              :class="
+                item.id == navBarCategories.currentActiveCategory.id
+                  ? 'active'
+                  : ''
+              "
               @click="getDataBasedOnMainCategoryId(item.id)"
             >
-              {{item.name}}
+              {{ item.name }}
             </button>
           </li>
         </ul>
@@ -220,7 +244,13 @@
       </div>
     </div>
 
-    <div class="nav_sub_routes" v-if="navBarCategories.subCategoriesBasedOnMainCategory">
+    <div
+      class="nav_sub_routes"
+      v-if="
+        navBarCategories.subCategoriesBasedOnMainCategory &&
+        categoriesIsAvailable
+      "
+    >
       <div class="container-xl px-0">
         <ul class="routes_list">
           <li
@@ -228,7 +258,9 @@
             :key="item.id"
             class="navbar_route"
           >
-            <nuxt-link :to="(`/categories/${item.id}`)"> {{item.name}} </nuxt-link>
+            <nuxt-link :to="`/categories/${item.id}`">
+              {{ item.name }}
+            </nuxt-link>
           </li>
         </ul>
       </div>
@@ -242,32 +274,26 @@
       absolute
       width="80%"
     >
-      <h2 class="drawer_title"> Categories </h2>
+      <h2 class="drawer_title">Categories</h2>
 
-      <v-list
-        v-for="item in categories"
-        :key="item.id"
-      >
-      <!-- Start:: Check If Main Category Has Subcategories Or Not  -->
+      <v-list v-for="item in categories" :key="item.id">
+        <!-- Start:: Check If Main Category Has Subcategories Or Not  -->
         <nuxt-link
-        class="category_route"
+          class="category_route"
           to="/categories/item"
           v-if="item.subCats.length == 0"
         >
-          {{item.title}}
+          {{ item.title }}
         </nuxt-link>
 
         <v-list-group v-else>
           <template v-slot:activator>
-            <v-list-item-title>{{item.title}}</v-list-item-title>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </template>
           <!-- ***** Start:: Main Category Route ***** -->
           <v-list-item>
-            <nuxt-link
-                class="category_route"
-                to="/categories/men"
-              >
-              <i class="fa-solid fa-circle"></i> All {{item.title}} Items
+            <nuxt-link class="category_route" to="/categories/men">
+              <i class="fa-solid fa-circle"></i> All {{ item.title }} Items
             </nuxt-link>
           </v-list-item>
           <!-- ***** End:: Main Category Route ***** -->
@@ -284,29 +310,24 @@
               v-if="levelOneSubItem.subCats.length == 0"
             >
               <i class="fa-solid fa-circle"></i>
-              {{levelOneSubItem.title}}
+              {{ levelOneSubItem.title }}
             </nuxt-link>
             <!-- *************** End:: Single Route If LevelOne Subcategory Has No Sub Categories *************** -->
 
             <!-- *************** Start:: Level Two Subcategories Routes Group If LevelOne Subcategory Has Sub Categories *************** -->
-            <v-list-group
-              v-else
-              no-action
-              sub-group
-            >
+            <v-list-group v-else no-action sub-group>
               <template v-slot:activator>
                 <v-list-item-content>
-                  <v-list-item-title>{{levelOneSubItem.title}}</v-list-item-title>
+                  <v-list-item-title>{{
+                    levelOneSubItem.title
+                  }}</v-list-item-title>
                 </v-list-item-content>
               </template>
 
               <v-list-item>
-                <nuxt-link
-                  class="category_route"
-                  to="/categories/men"
-                >
+                <nuxt-link class="category_route" to="/categories/men">
                   <i class="fa-solid fa-circle"></i>
-                  All {{levelOneSubItem.title}}
+                  All {{ levelOneSubItem.title }}
                 </nuxt-link>
               </v-list-item>
 
@@ -314,9 +335,12 @@
                 v-for="levelTwoSubItem in levelOneSubItem.subCats"
                 :key="levelTwoSubItem.id"
               >
-                <nuxt-link class="category_route" to="/categories/item/levelOneSubItem/levelTwoSubItem">
+                <nuxt-link
+                  class="category_route"
+                  to="/categories/item/levelOneSubItem/levelTwoSubItem"
+                >
                   <i class="fa-solid fa-circle"></i>
-                  {{levelTwoSubItem.title}}
+                  {{ levelTwoSubItem.title }}
                 </nuxt-link>
               </v-list-item>
             </v-list-group>
@@ -385,7 +409,7 @@
 
 <script>
 // Start:: Importing Vuex Helpers
-import {mapGetters, mapActions} from "vuex";
+import { mapGetters, mapActions } from 'vuex'
 // End:: Importing Vuex Helpers
 
 export default {
@@ -395,7 +419,12 @@ export default {
     categoriesDrawerIsActive: {
       required: true,
       type: Boolean,
-    }
+    },
+    categoriesIsAvailable: {
+      required: false,
+      type: Boolean,
+      default: true,
+    },
   },
 
   data() {
@@ -404,24 +433,24 @@ export default {
       categories: {
         menCat: {
           id: 1,
-          title: "Men",
+          title: 'Men',
           subCats: [
             {
               id: 1,
-              title: "T-Shirts",
+              title: 'T-Shirts',
               subCats: [],
             },
             {
               id: 2,
-              title: "Jackets",
+              title: 'Jackets',
               subCats: [
                 {
                   id: 1,
-                  title: "Long Jacket"
+                  title: 'Long Jacket',
                 },
                 {
                   id: 2,
-                  title: "Short Jacket"
+                  title: 'Short Jacket',
                 },
               ],
             },
@@ -429,9 +458,9 @@ export default {
         },
         kidsCat: {
           id: 2,
-          title: "Kids",
+          title: 'Kids',
           subCats: [],
-        }
+        },
       },
       // End:: Dummy Categories Data
 
@@ -440,15 +469,14 @@ export default {
       scrollPosition: null,
       navHeight: null,
       // End:: NavBar Control Data
-
     }
   },
 
   computed: {
     // Start:: Vuex Get Authed User Data
     ...mapGetters({
-      authedUserData: "auth/authedUserData",
-      navBarCategories: "navBarCategories/navBarCategories",
+      authedUserData: 'auth/authedUserData',
+      navBarCategories: 'navBarCategories/navBarCategories',
     }),
     // End:: Vuex Get Authed User Data
 
@@ -463,10 +491,11 @@ export default {
   methods: {
     // Start:: Vuex Actions
     ...mapActions({
-      getHomePageData: "homePage/getHomePageData",
-      getMainCategories: "navBarCategories/getMainCategories",
-      getSubCategories: "navBarCategories/getSubCategories",
-      getDataBasedOnMainCategoryId: "navBarCategories/getDataBasedOnMainCategoryId",
+      getHomePageData: 'homePage/getHomePageData',
+      getMainCategories: 'navBarCategories/getMainCategories',
+      getSubCategories: 'navBarCategories/getSubCategories',
+      getDataBasedOnMainCategoryId:
+        'navBarCategories/getDataBasedOnMainCategoryId',
     }),
     // End:: Vuex Actions
 
@@ -562,7 +591,7 @@ export default {
 
   created() {
     // Start:: Fire Methods
-    this.getMainCategories();
+    this.getMainCategories()
     // End:: Fire Methods
   },
 

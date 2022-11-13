@@ -43,7 +43,14 @@
     "terms": "Terms Of Service",
     "returnsPolicy": "Returns Policy",
     "howToShop": "How To Shop",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "orders": "My Orders",
+    "gift": "Gift & Voucher",
+    "reviews": "MY Reviews",
+    "addresses": "My Addresses",
+    "wallet": "My Wallet",
+    "deleteMyAccount": "Delete My Account",
+    "logout": "Logout"
   },
 
   "BUTTONS": {

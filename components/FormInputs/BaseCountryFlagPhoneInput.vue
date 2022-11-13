@@ -70,7 +70,7 @@
 
 <script>
 export default {
-  name: "BaseCountryFlagPhoneInput",
+  name: 'BaseCountryFlagPhoneInput',
 
   props: {
     // ====== General Inputs Props
@@ -101,7 +101,7 @@ export default {
     return {
       // Validation Alert
       showAlert: false,
-      validationMessage: "error",
+      validationMessage: 'error',
 
       countriesKeys: [],
 
@@ -115,54 +115,54 @@ export default {
 
       // Start:: Front End Input Validation
       frontEndInputValidation: {
-        inputValue: [(val) => (val || "").length > 0 || this.validationHint],
+        inputValue: [(val) => (val || '').length > 0 || this.validationHint],
       },
       // End:: Front End Input Validation
-    };
+    }
   },
 
   methods: {
     // Start:: Update Input Value
     updateValue(e) {
-      this.$emit("input", e);
+      this.$emit('input', e)
     },
     // End:: Update Input Value
 
     // Start:: Toggle Countries Keys Menu
     toggleCountriesKeysMenu() {
-      this.countriesKeysMenuIsOpen = !this.countriesKeysMenuIsOpen;
+      this.countriesKeysMenuIsOpen = !this.countriesKeysMenuIsOpen
     },
     // End:: Toggle Countries Keys Menu
 
     // Start:: Update Selected Country Key Value
     updateSelectedCountryKeyValue() {
       // this.$emit("changeKey", this.selectedCountry.key);
-      this.$emit("changeKey", this.selectedCountry);
+      this.$emit('changeKey', this.selectedCountry)
     },
     // End:: Update Selected Country Key Value
 
     // Start:: Select Country Key
     selectKey(country) {
-      this.selectedCountry = country;
-      this.updateSelectedCountryKeyValue();
-      this.toggleCountriesKeysMenu();
+      this.selectedCountry = country
+      this.updateSelectedCountryKeyValue()
+      this.toggleCountriesKeysMenu()
     },
     // End:: Select Country Key
 
     validateInput(value) {
-      let valid = true;
+      let valid = true
 
       if (!value) {
-        this.validationMessage = this.$t("validation.empty");
-        valid = false;
+        this.validationMessage = this.$t('validation.empty')
+        valid = false
       }
 
-      this.showAlert = !valid;
+      this.showAlert = !valid
     },
 
     getCountryKeys() {
       this.$axiosRequest({
-        method: "GET",
+        method: 'GET',
         url: `countries`,
       })
         .then((res) => {
@@ -171,36 +171,36 @@ export default {
               id: item.id,
               key: item.phone_code,
               // flag: item.flag,
-            };
-          });
+            }
+          })
 
           // ********** Start:: Set Initial Selected Key **********
 
           if (this.preSelectedPhoneCode) {
             this.selectedCountry = this.countriesKeys.find(
               (country) => country.key == this.preSelectedPhoneCode
-            );
+            )
           } else {
-            this.selectedCountry = this.countriesKeys[0];
+            this.selectedCountry = this.countriesKeys[0]
           }
-          this.updateSelectedCountryKeyValue();
+          this.updateSelectedCountryKeyValue()
           // ********** End:: Set Initial Selected Key **********
         })
         .catch((err) => {
-          console.log(err);
-        });
+          console.log(err)
+        })
     },
   },
 
   created() {
     // Start:: Fire Methods
-    this.getCountryKeys();
-    if(process.client) {
-      window.addEventListener("click", () => {
-          this.countriesKeysMenuIsOpen = false;
-      });
+    this.getCountryKeys()
+    if (process.client) {
+      window.addEventListener('click', () => {
+        this.countriesKeysMenuIsOpen = false
+      })
     }
     // End:: Fire Methods
   },
-};
+}
 </script>
