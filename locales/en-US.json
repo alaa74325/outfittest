@@ -66,7 +66,8 @@
     "save": "Save",
     "editPhone": "Edit Phone Number",
     "verify": "Verify",
-    "sendMessage": "Send Message"
+    "sendMessage": "Send Message",
+    "resend": "Resend"
   },
 
   "FORMS": {
@@ -75,10 +76,12 @@
       "emailOrPhone": "Email Or Phone Number",
       "password": "Password",
       "confirmPassword": "Confirm Password",
+      "confirmationCode": "Confirmation Code",
       "phone": "Phone Number",
       "email": "Email",
       "fullName": "Full Name",
-      "howCanWeHelp": "How Can We Help ?"
+      "howCanWeHelp": "How Can We Help ?",
+      "username": "User Name"
     },
     "Validation": {
       "emailOrPhone": "Email Or Phone Input Is Required",
@@ -92,7 +95,8 @@
       "notEqualPasswords": "Passwords Are Not The Same",
       "verificationCode": "Verification Code Input Is Required",
       "verificationCodeLength": "Verification Code Inputs Must Be Filled",
-      "message": "Message Input Is Required"
+      "message": "Message Input Is Required",
+      "resend": "Didn't receive the code?"
     }
   },
 

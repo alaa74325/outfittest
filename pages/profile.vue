@@ -18,10 +18,65 @@
             </div>
 
             <div class="profile_info_edit_btn">
-              <button>
+              <button @click="isEditModel = true">
                 <img src="@/assets/media/icons/ui_icons/edit.svg" alt="" />
               </button>
             </div>
+            <!-- START ::  Edit model  -->
+            <v-dialog v-model="isEditModel" width="500">
+              <v-card class="p-4 card_container">
+                <v-form>
+                  <h3 class="card_title">Edit Info</h3>
+                  <!-- input image -->
+                  <div class="user_img_container">
+                    <img
+                      src="https://images.pexels.com/photos/13984623/pexels-photo-13984623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                      alt=""
+                    />
+                  </div>
+                  <!-- email input -->
+                  <v-text-field
+                    :label="$t('FORMS.Placeholders.email')"
+                    v-model="data.email"
+                  />
+                  <!-- username input  -->
+                  <v-text-field
+                    :label="$t('FORMS.Placeholders.username')"
+                    v-model="data.username"
+                  />
+
+                  <!-- Start Phone -->
+                  <base-country-flag-phone-input
+                    @changeKey="phonecodeChanged"
+                    :placeholder="$t('FORMS.Placeholders.phone')"
+                    :preSelectedPhoneCode="data.phoneCode"
+                    v-model="data.phone"
+                  />
+                  <!-- End Phone -->
+
+                  <!-- confirmation code  -->
+                  <v-text-field
+                    :label="$t('FORMS.Placeholders.confirmationCode')"
+                    v-model="data.code"
+                  />
+                  <!-- resend code  -->
+                  <div class="resend_code_container my-2">
+                    <div>
+                      {{ $t('FORMS.Validation.resend') }}
+                      <button class="resend_btn">
+                        {{ $t('BUTTONS.resend') }}
+                      </button>
+                    </div>
+                    <!-- Start:: CountDown Timer -->
+                    <div class="timer_wrapper">
+                      <h3 class="timer">{{ '0 : ' + timerCount }}</h3>
+                    </div>
+                    <!-- End:: CountDown Timer -->
+                  </div>
+                </v-form>
+              </v-card>
+            </v-dialog>
+            <!-- End ::  Edit model  -->
           </li>
           <!-- orders -->
           <li class="profile_tap_container">
@@ -132,7 +187,7 @@
           </li>
           <!-- Delete My Account  -->
           <li class="profile_tap_container">
-            <div to="/profile" class="profile_tap">
+            <div to="/profile" class="profile_tap danger">
               <div>
                 <img
                   src="@/assets/media/icons/ui_icons/linear-user.svg"
@@ -151,7 +206,7 @@
           </li>
           <!-- log out  -->
           <li class="profile_tap_container">
-            <div to="/profile" class="profile_tap">
+            <div to="/profile" class="profile_tap danger">
               <div>
                 <img
                   src="@/assets/media/icons/ui_icons/outline-logout.svg"
@@ -180,6 +235,36 @@
 <script>
 export default {
   layout: 'profile',
+  data() {
+    return {
+      isEditModel: false,
+      timerCount: 60,
+      data: {
+        email: '',
+        username: '',
+        phoneCode: '',
+        code: '',
+      },
+    }
+  },
+  methods: {
+    // Start:: Change Selected Phonecode
+    phonecodeChanged(data) {
+      this.data.phoneCode = data
+    },
+    // End:: Change Selected Phonecode
+
+    // Start:: CountDown Timer
+    countDown() {
+      if (timerCount > 0) {
+        setTimeout(() => {
+          timerCount -= 1
+          this.countDown()
+        }, 1000)
+      }
+    },
+    // End:: CountDown Timer
+  },
 }
 </script>
 
@@ -230,8 +315,9 @@ export default {
         }
       }
       .profile_tap {
-        display: flex;
-        justify-content: space-between;
+        @include flexSpaceBetweenAlignment;
+        // display: flex;
+        // justify-content: space-between;
         padding: 1rem;
         border-bottom: 1px solid rgba(144, 158, 172, 0.3);
         font-size: 1.1rem;
@@ -241,13 +327,48 @@ export default {
           * {
             color: #222;
           }
+          img {
+            filter: brightness(0) invert(0);
+          }
+        }
+        &.nuxt-link-exact-active {
+          * {
+            color: #222;
+          }
+          img {
+            filter: brightness(0) invert(0);
+          }
+        }
+        &.danger {
+          * {
+            color: red;
+          }
+          &:hover {
+            opacity: 0.7;
+          }
+          img {
+            filter: none;
+          }
         }
       }
-      .profile_tap.nuxt-link-exact-active {
-        * {
-          color: #222;
-        }
-      }
+    }
+  }
+}
+.card_container {
+  .card_title {
+    font-style: italic;
+  }
+  .user_img_container {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 1rem auto;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
   }
 }
