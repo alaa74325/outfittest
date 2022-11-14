@@ -99,7 +99,17 @@
       "resend": "Didn't receive the code?"
     }
   },
-
+  "FlashSales":{
+    "gridSection":"View As",
+    "filterOptions":{
+          "women":"Women",
+          "Men":"Men",
+          "Kids":"Kids",
+          "Baby&Mom":"Baby&Mom",
+          "Sports":"Sports"
+    },
+    "saleNow":"On Sale Now"
+  },
   "MESSAGES": {
     "registeredSuccessfully": "Registered Successfully, Verify Your Account",
     "loggedInSuccessfully": "Logged Successfully",
