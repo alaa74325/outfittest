@@ -196,7 +196,6 @@ export default {
     max-width: 22rem;
     .profile_taps {
       width: 100%;
-
       .profile_info_tap {
         display: flex;
         align-items: center;
@@ -236,6 +235,13 @@ export default {
         padding: 1rem;
         border-bottom: 1px solid rgba(144, 158, 172, 0.3);
         font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease-in;
+        &:hover {
+          * {
+            color: #222;
+          }
+        }
       }
       .profile_tap.nuxt-link-exact-active {
         * {
