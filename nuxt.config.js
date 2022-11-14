@@ -91,44 +91,51 @@ export default {
 
     'nuxt-izitoast',
 
-    ['cookie-universal-nuxt', {
-      path: '/',
-      maxAge: 60 * 60 * 24 * 7
-    }],
+    [
+      'cookie-universal-nuxt',
+      {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 7,
+      },
+    ],
 
-    ['nuxt-gmaps', {
-      key: 'AIzaSyC2MTR_vRbsbQQRPt5f5ZLCvvaKOpzkzlA',
-      libraries: ['places']
-    }],
+    [
+      'nuxt-gmaps',
+      {
+        key: 'AIzaSyC2MTR_vRbsbQQRPt5f5ZLCvvaKOpzkzlA',
+        libraries: ['places'],
+      },
+    ],
     [
       'nuxt-i18n',
       {
-        locales: [{
-                name: 'عربي ',
-                code: 'ar',
-                iso: 'ar-AR',
-                file: 'ar-AR.json',
-                dir: 'rtl',
-            },
-            {
-                name: 'English',
-                code: 'en',
-                iso: 'en-US',
-                file: 'en-US.json',
-                dir: 'ltr',
-            },
+        locales: [
+          {
+            name: 'عربي ',
+            code: 'ar',
+            iso: 'ar-AR',
+            file: 'ar-AR.json',
+            dir: 'rtl',
+          },
+          {
+            name: 'English',
+            code: 'en',
+            iso: 'en-US',
+            file: 'en-US.json',
+            dir: 'ltr',
+          },
         ],
         lazy: true,
         langDir: 'locales/',
         vueI18n: {
-            locale: 'en',
-            fallbackLocale: 'en',
+          locale: 'en',
+          fallbackLocale: 'en',
         },
         defaultLocale: 'en',
         detectBrowserLanguage: false,
-        vueI18nLoader: true
-    },
-  ],
+        vueI18nLoader: true,
+      },
+    ],
   ],
 
   styleResources: {
@@ -168,6 +175,7 @@ export default {
   router: {
     mode: 'history',
     base: '/',
+
     // extendRoutes(routes) {
     //     routes.push({
     //         path: '*',
