@@ -1,8 +1,11 @@
 <template>
-  <button>
-    {{btnText}}
-    <span class="btn_loader" v-if="isLoading"></span>
-  </button>
+    <div>
+      <nuxt-link :to="link"  v-if="link">{{btnText}}</nuxt-link>
+      <button v-else>
+        {{btnText}}
+        <span class="btn_loader" v-if="isLoading"></span>
+      </button>
+    </div>
 </template>
 
 <script>
@@ -14,7 +17,10 @@ export default {
       required: true,
       type: String,
     },
-
+    link: {
+      required: true,
+      type: String,
+    },
     isLoading: {
       type: Boolean,
       required: false,
@@ -29,9 +35,7 @@ button {
   text-decoration: none;
   position: relative;
   display: inline-block;
-  width: 150px;
   text-align: center;
-  margin-top: 15px;
   padding: 8px 20px;
   font-size: 18px;
   color: var(--white_clr);
@@ -66,5 +70,25 @@ button {
       border: 3px dotted var(--main_theme_clr);
     }
   }
+}
+a{
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  margin-top: 15px;
+  padding: 8px 20px;
+  font-size: 18px;
+  color: var(--white_clr);
+  border-radius: 10px;
+  background-image: linear-gradient(
+    90deg,
+    transparent 50%,
+    var(--main_theme_clr) 50%
+  );
+  background-position: 100%;
+  background-size: 400%;
+  border: 1px solid var(--main_theme_clr)
 }
 </style>

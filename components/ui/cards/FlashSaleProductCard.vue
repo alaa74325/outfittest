@@ -23,14 +23,14 @@
         src="@/assets/media/images/product_1_1.png"
         alt="product name"
         width='300'
-        height='360'
+        height='400'
       />
       <img
         class="product_image"
         src="@/assets/media/images/product_1_2.png"
         alt="product name"
         width='300'
-        height='360'
+        height='400'
       />
       <!-- ********** End:: Product Images ********** -->
     </div>
@@ -79,8 +79,8 @@ export default {
   // ********** Start:: Product Image **********
   .card_image_wrapper {
     position: relative;
-    width: 300px;
-    height: 360px;
+    width: 99%;
+    height: 400px;
     border-radius: 10px;
     overflow: hidden;
 

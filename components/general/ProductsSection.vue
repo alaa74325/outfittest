@@ -2,7 +2,7 @@
     <div class="container-xl">
   <div class="products_section_wrapper" v-if="sectionItems.length > 0">
       <!-- Start:: Products List -->
-      <div class="list_title_wrapper">
+      <div class="list_title_wrapper" v-if="sectionTitle">
         <div class="list_title">{{sectionTitle}}</div>
 
         <div class="section_route_wrapper">
@@ -56,14 +56,14 @@ export default {
   props: {
     sectionTitle: {
       type: String,
-      required: true,
+      required: false,
     },
     sectionRoute: {
       type: String,
       required: true,
     },
     sectionItems: {
-      type: Array,
+      type: Object,
       required: true,
     },
     sectionType: {
