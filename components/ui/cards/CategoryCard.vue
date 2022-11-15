@@ -12,7 +12,7 @@
     </div>
     <!-- End:: Card Image -->
 
-    <h5 class="cat_name">{{categoryData.name}}</h5>
+    <h5 class="cat_name">{{categoryData.name}} hgdvbfhbuuyb</h5>
   </nuxt-link>
 </template>
 
