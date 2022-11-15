@@ -35,9 +35,7 @@ button {
   text-decoration: none;
   position: relative;
   display: inline-block;
-  width: 150px;
   text-align: center;
-  margin-top: 15px;
   padding: 8px 20px;
   font-size: 18px;
   color: var(--white_clr);

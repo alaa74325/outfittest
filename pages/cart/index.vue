@@ -14,9 +14,11 @@
               <nuxt-link to="/">Back To Home</nuxt-link>
             </div>
           </div>
-          <div  class="col-lg-12 row" v-else>
+          <div  class="col-lg-12 data-table" v-else>
             <cart-items  class="col-lg-9"></cart-items>
-            <order-summary class="col-lg-3"></order-summary>
+            <div  class="col-lg-3">
+              <order-summary></order-summary>
+            </div>
           </div>
 
         </div>
@@ -74,24 +76,28 @@ export default {
   }
   .content-cart{
     .empty-cart{
-          text-decoration: none;
-          position: relative;
-          display: inline-block;
-          width: 150px;
-          text-align: center;
-          margin-top: 15px;
-          padding: 8px 20px;
-          font-size: 18px;
-          color: var(--white_clr);
-          border-radius: 10px;
-          background-image: linear-gradient(
-            90deg,
-            transparent 50%,
-            var(--main_theme_clr) 50%
-          );
-          background-position: 100%;
-          background-size: 400%;
-          border: 1px solid var(--main_theme_clr);
+          // text-decoration: none;
+          // position: relative;
+          // display: inline-block;
+          // width: 150px;
+          // text-align: center;
+          // margin-top: 15px;
+          // padding: 8px 20px;
+          // font-size: 18px;
+          // color: var(--white_clr);
+          // border-radius: 10px;
+          // background-image: linear-gradient(
+          //   90deg,
+          //   transparent 50%,
+          //   var(--main_theme_clr) 50%
+          // );
+          // background-position: 100%;
+          // background-size: 400%;
+          // border: 1px solid var(--main_theme_clr);
+    }
+    .data-table{
+      @include flexSpaceBetweenAlignment;
+      align-items: flex-start;
     }
   }
 }

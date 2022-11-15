@@ -13,12 +13,12 @@
         <div class="col-lg-10 row">
           <div class="reset-grid">
           <span>{{ $t("FlashSales.gridSection") }}</span>
-          <button><img src="../../assets/images/icons/col12.png"/></button>
-          <button><img src="../../assets/images/icons/col6.png"/></button>
-          <button><img src="../../assets/images/icons/col4.png"/></button>
+          <button><img src="@/assets/images/icons/col12.png"/></button>
+          <button><img src="@/assets/images/icons/col6.png"/></button>
+          <button><img src="@/assets/images/icons/col4.png"/></button>
         </div>
         <!-- Start:: Products -->
-        <product-card v-for="product in products" :key="product" :productData="product" class="col-lg-4"></product-card>
+        <category-card v-for="product in products" :key="product" :sectionItems="product" class="col-lg-4"></category-card>
         <!-- End:: Products -->
         </div>
       </div>
@@ -26,12 +26,13 @@
   </div>
 </template>
 <script>
-import salesNow from '../../components/flashSales/salesNow.vue';
-import productCard from '../../components/ui/cards/ProductCard.vue';
-import filterProduct from '../../components/flashSales/filterOption.vue';
-import filter from '../../components/filter/Thefilter.vue'
+import salesNow from '@/components/flashSales/salesNow.vue';
+import categoryCard from '@/components/general/ProductsSection.vue';
+import filterProduct from '@/components/flashSales/filterOption.vue';
+import filter from '@/components/filter/Thefilter.vue'
+
 export default {
-  components: { salesNow, productCard ,filterProduct,filter},
+  components: { salesNow, categoryCard ,filterProduct,filter},
   name: "All Product",
   head() {
     return {
