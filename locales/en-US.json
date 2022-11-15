@@ -50,7 +50,15 @@
     "addresses": "My Addresses",
     "wallet": "My Wallet",
     "deleteMyAccount": "Delete My Account",
-    "logout": "Logout"
+    "logout": "Logout",
+    "deleteAccount": "You will delete Your Account! Are You Sure?",
+    "logoutMessage": "You will Logout! Are You Sure?",
+    "allOrders": "All Orders",
+    "delivered": "Delivered",
+    "unpaid": "Unpaid",
+    "processing": "Processing",
+    "shipped": "Shipped",
+    "returns": "Returns"
   },
 
   "BUTTONS": {
@@ -67,7 +75,13 @@
     "editPhone": "Edit Phone Number",
     "verify": "Verify",
     "sendMessage": "Send Message",
-    "resend": "Resend"
+    "resend": "Resend",
+    "saveChanges": "Save Changes",
+    "changePassword": "Change Password",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "keepMeIn": "Keep Me In",
+    "logout": "Logout"
   },
 
   "FORMS": {
@@ -81,7 +95,9 @@
       "email": "Email",
       "fullName": "Full Name",
       "howCanWeHelp": "How Can We Help ?",
-      "username": "User Name"
+      "username": "User Name",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password"
     },
     "Validation": {
       "emailOrPhone": "Email Or Phone Input Is Required",
