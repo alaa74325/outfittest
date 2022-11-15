@@ -2,11 +2,13 @@
   <div class="flash-sales">
     <div class="container">
       <div class="row">
-        <div  class="col-lg-12">
-          <flash-sales-sales-now v-for="i in 2" :key="i"></flash-sales-sales-now>
+        <div  class="col-lg-12 sales-now">
+          <sales-now class="" v-for="sale in 2" :key="sale"></sales-now>
         </div>
-        <div class="col-lg-12 filter-product">
-          <flashSalesFilterOption v-for="item in 6" :key="item" :filterItem="item"></flashSalesFilterOption>
+        <div class="col-lg-12 ">
+          <div class="filter-product">
+            <flashSalesFilterOption v-for="item in 6" :key="item" :filterItem="item"></flashSalesFilterOption>
+          </div>
         </div>
         <div class="col-lg-12 reset-grid">
           <span>{{ $t("FlashSales.gridSection") }}</span>
@@ -22,10 +24,10 @@
   </div>
 </template>
 <script>
-import FlashSalesSalesNow from '../../components/flashSales/salesNow.vue';
+import salesNow from '../../components/flashSales/salesNow.vue';
 export default {
+  components: { salesNow },
   name: "FlashSalesPage",
-
   head() {
     return {
       title: "Flash Sales",
@@ -50,11 +52,14 @@ export default {
   @include flexStartAlignment;
   background:#F4F5F7;
   border-radius: 6px;
-  padding:30px 25px ;
-  margin: 30px 0 0;
+  padding: 20px 25px ;
+  margin: 0;
+}
+.sales-now{
+  @include flexSpaceBetweenAlignment;
 }
 .reset-grid{
-  margin:20px 0;
+  margin:10px 0 15px;
   span{
     color:var(--theme_text_clr);
     font-size: 16px;

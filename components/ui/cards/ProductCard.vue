@@ -6,14 +6,14 @@
       <nuxt-link :to="localePath(`/products/${productData.id}`)">
         <img
           class="product_image"
-          :src="selectedProductDetail.images[0].url"
+          :src="selectedProductDetail.main_image"
           :alt="productData.name"
           width='330'
           height='360'
         />
         <img
           class="product_image"
-          :src="selectedProductDetail.images[1].url"
+          :src="selectedProductDetail.hover_image"
           :alt="productData.name"
           width='330'
           height='360'
@@ -24,14 +24,14 @@
       <!-- ********** Start:: Wishlist Button ********** -->
       <button class="wishlist_btn">
         <img
-          v-show="!productData.product_details[0].is_fav"
+          v-show="!productData.is_favourite"
           src="@/assets/media/icons/ui_icons/heart.svg"
           alt="heart icon"
           width='30'
           height='30'
         />
         <img
-          v-show="productData.product_details[0].is_fav"
+          v-show="productData.is_favourite"
           src="@/assets/media/icons/ui_icons/colored_heart.svg"
           alt="heart icon"
           width='35'
@@ -48,14 +48,14 @@
       <nuxt-link :to="localePath(`/products/${productData.id}`)">
         <p class="product_name"> {{productData.name}} </p>
         <div class="product_price_and_badge_wrapper">
-          <p class="product_price"> {{selectedProductDetail.currency}} {{selectedProductDetail.price}} </p>
+          <p class="product_price"> $ {{selectedProductDetail.price}} </p>
           <!-- <div class="product_badge"> Top Rated </div> -->
         </div>
       </nuxt-link>
       <!-- ********** End:: Product Name & Price ********** -->
 
       <!-- ********** Start:: Product Colors ********** -->
-      <div class="product_colors_wrapper"
+      <!-- <div class="product_colors_wrapper"
         v-for="detail in productData.product_details"
         :key="detail.id"
       >
@@ -72,7 +72,7 @@
             <span class="color_preview" :style="`background: ${detail.color.hex}`"></span>
           </label>
         </div>
-      </div>
+      </div> -->
       <!-- ********** End:: Product Colors ********** -->
     </div>
     <!-- End:: Product Info -->
@@ -102,7 +102,7 @@ export default {
 
   mounted() {
     // Start:: Set Initial Product Detail
-    this.selectedProductDetail = this.productData.product_details[0];
+    this.selectedProductDetail = this.productData;
     // End:: Set Initial Product Detail
   },
 }

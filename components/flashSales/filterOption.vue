@@ -15,9 +15,9 @@ export default {
 </script>
 <style lang="scss" scoped>
 .filter-options{
-  padding: 8px 15px ;
+  padding: 6px 15px ;
   margin:0 10px;
-  font-size: 16px;
+  font-size: 14px;
   color:var(--light_gray_clr);
   border-radius: 6px;
   background: var(--white_clr);
